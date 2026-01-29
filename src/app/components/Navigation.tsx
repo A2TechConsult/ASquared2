@@ -1,3 +1,4 @@
+const logo = "/assets/ASquareTechConsult_logo.png";
 import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
@@ -30,13 +31,32 @@ export function Navigation() {
               to="/" 
               className="flex items-center gap-4 group"
             >
-              <span className="text-2xl font-light text-gray-900 tracking-tight group-hover:text-gray-600 transition-colors duration-300">
-                A²
-              </span>
-              <div className="h-6 w-px bg-gray-300"></div>
-              <span className="text-sm font-light text-gray-500 tracking-wide group-hover:text-gray-900 transition-colors duration-300">
-                ASquared Technologies
-              </span>
+          <img
+              src={logo}
+              alt="ASquared Technologies"
+              className="
+              h-8 w-auto
+              transition-transform transition-opacity
+              duration-300
+              group-hover:scale-110
+              group-hover:opacity-80
+              "
+             />
+
+            <div className="h-6 w-px bg-gray-300"></div>
+
+            <span className="
+              text-sm
+              font-light
+  	      text-gray-500
+  	      tracking-wide
+   	      transition-colors
+              duration-300
+              group-hover:text-gray-900
+              ">
+              ASquared Technologies
+            </span>
+
             </Link>
             
             {/* Desktop Navigation */}
