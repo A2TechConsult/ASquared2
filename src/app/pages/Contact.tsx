@@ -117,9 +117,7 @@ export function Contact() {
       {/* Form Section - Premium Layout */}
       <section className="px-6 mb-32">
         <div className="max-w-4xl mx-auto">
-          <motion.form
-		<input type="hidden" name="form-name" value="contact" />
-		<input type="hidden" name="bot-field" />
+          <motion.form		
 		name="contact"
   		method="POST"
   		data-netlify="true"
@@ -130,6 +128,8 @@ export function Contact() {
             onSubmit={handleSubmit}
             className="bg-white border border-gray-200 p-12 md:p-16"
           >
+<input type="hidden" name="form-name" value="contact" />
+  <input type="hidden" name="bot-field" />
             <div className="space-y-10">
               {/* Email Field */}
               <div className="group">
