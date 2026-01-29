@@ -118,6 +118,12 @@ export function Contact() {
       <section className="px-6 mb-32">
         <div className="max-w-4xl mx-auto">
           <motion.form
+		<input type="hidden" name="form-name" value="contact" />
+		<input type="hidden" name="bot-field" />
+		name="contact"
+  		method="POST"
+  		data-netlify="true"
+  		netlify-honeypot="bot-field"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
