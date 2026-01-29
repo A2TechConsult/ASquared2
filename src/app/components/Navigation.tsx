@@ -29,19 +29,28 @@ export function Navigation() {
             {/* Logo */}
             <Link 
               to="/" 
-              className="flex items-center gap-4 group"
+              className="relative flex items-center gap-4 group"
             >
           <img
-              src={logo}
-              alt="ASquared Technologies"
-              className="
-              h-8 w-auto
-              transition-transform transition-opacity
-              duration-300
-              group-hover:scale-110
-              group-hover:opacity-80
-              "
-             />
+  src={logo}
+  alt="ASquared Technologies"
+  style={{
+    height: '32px',
+    width: 'auto',
+    transition: 'transform 0.5s ease, box-shadow 0.5s ease',
+    transformOrigin: 'top left',
+    zIndex: 50,
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = 'scale(3.75)';
+    e.currentTarget.style.boxShadow = '0 25px 50px rgba(0,0,0,0.25)';
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = 'scale(1)';
+    e.currentTarget.style.boxShadow = 'none';
+  }}
+/>
+
 
             <div className="h-6 w-px bg-gray-300"></div>
 
