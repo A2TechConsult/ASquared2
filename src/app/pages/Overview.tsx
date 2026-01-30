@@ -24,6 +24,7 @@ import sapLogo from '../../assets/c9abc9544e6f5a5b70e5eec942b60f8010decd05.png';
 import vistexLogo from '../../assets/0e35773da41fd1c0fdd252643e1eeeaab9fa05a2.png';
 import plexLogo from '../../assets/7de126a42128b3415fbb82c656b7d3d3e3e932bd.png';
 import siebelLogo from '../../assets/b90c03a57ba77a183f10ad49c663a6b123f7f0e0.png';
+import johnsonControlsLogo from '../../assets/JohnsonControls.png';
 
 
 export function Overview() {
@@ -179,6 +180,14 @@ export function Overview() {
               alt="Essel"
               url="https://www.esselpropack.com"
             />
+
+	    {/* Johnson Controls */}
+	    <ClientLogo
+  	      src={johnsonControlsLogo}
+  	      alt="Johnson Controls"
+  	      url="https://www.johnsoncontrols.com"
+            />
+
           </motion.div>
         </div>
       </section>
