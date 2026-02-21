@@ -351,10 +351,10 @@ export function Contact() {
                       </div>
                       <div>
                         <a 
-                          href="mailto:sales@blueaquaintegrators.com" 
+                          href="mailto:sales@a2techconsult.com" 
                           className="text-gray-600 hover:text-gray-900 transition-colors inline-block"
                         >
-                          sales@blueaquaintegrators.com
+                          sales@a2techconsult.com
                         </a>
                       </div>
                     </div>
