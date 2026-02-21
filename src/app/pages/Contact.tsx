@@ -343,10 +343,10 @@ export function Contact() {
                     <div className="space-y-2 pl-6">
                       <div>
                         <a 
-                          href="mailto:hr@blueaquaintegrators.com" 
+                          href="mailto:hr@a2techconsult.com" 
                           className="text-gray-600 hover:text-gray-900 transition-colors inline-block"
                         >
-                          hr@blueaquaintegrators.com
+                          hr@a2techconsult.com
                         </a>
                       </div>
                       <div>
