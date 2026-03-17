@@ -295,7 +295,7 @@ export function Contact() {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-500">GST No</span>
-                      <span className="text-gray-900 font-medium">36ABCCA3060C1Z9</span>
+                      <span className="text-gray-900 font-medium">36ABCCA3060C129</span>
                     </div>
                   </div>
                 </div>
