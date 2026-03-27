@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
 import { ClientLogo } from '@/app/components/ClientLogo';
 import { Database, DollarSign, Factory, Network, Brain, Rocket, Users } from 'lucide-react';
+import { Settings } from 'lucide-react';
 
 // Import client logos - Batch 1
 import logo1 from '../../assets/17a876490970448871e6331ad39dd508943d5a91.png';
@@ -254,6 +255,12 @@ export function Overview() {
                 description: 'Platinum-level certified consultants with deep expertise. SAP architects, Vistex specialists, Plex experts, and integration developers.',
                 areas: ['Certified Experts', '15+ Years Experience', 'On-Demand Resources', 'Dedicated Teams'],
               },
+	      {
+  		icon: Settings,
+  		title: 'SAP Managed Services',
+  		description: 'End-to-end ownership of your SAP landscape — from Basis to business processes. 24×7 monitoring, proactive issue resolution, and continuous optimization.',
+  		areas: ['AMS Support', '24×7 Monitoring', 'S/4HANA Ops', 'Cloud Management', 'AIOps'],
+	      },
             ].map((area, index) => {
               const Icon = area.icon;
               return (

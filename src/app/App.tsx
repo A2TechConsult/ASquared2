@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { Overview } from '@/app/pages/Overview';
 import { Capabilities } from '@/app/pages/Capabilities';
 import { OurApproach } from '@/app/pages/OurApproach';
@@ -11,20 +12,23 @@ import { Confidentiality } from '@/app/pages/Confidentiality';
 import { AICapabilities } from '@/app/pages/AICapabilities';
 import { StaffAugmentation } from '@/app/pages/StaffAugmentation';
 import { GDPRRequest } from '@/app/pages/GDPRRequest';
+import SAPManagedServices from '@/app/pages/SAPManagedServices';
+
 import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
-import { ScrollProgress } from '@/app/components/ScrollProgress';
-import { PageTransition } from '@/app/components/PageTransition';
 import { CookieConsent } from '@/app/components/CookieConsent';
+
 import '@/styles/hero-gradient.css';
 
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white text-gray-900 font-sans antialiased">
-        <ScrollProgress />
+      <div className="bg-white text-gray-900 font-sans antialiased">
+        
         <Navigation />
-        <PageTransition>
+
+        {/* 👇 THIS FIXES YOUR ENTIRE ISSUE */}
+        <main className="pt-[110px] min-h-screen">
           <Routes>
             <Route path="/" element={<Overview />} />
             <Route path="/capabilities" element={<Capabilities />} />
@@ -38,10 +42,13 @@ export default function App() {
             <Route path="/cookies" element={<CookiePolicy />} />
             <Route path="/confidentiality" element={<Confidentiality />} />
             <Route path="/gdpr-request" element={<GDPRRequest />} />
+            <Route path="/sap-managed-services" element={<SAPManagedServices />} />
           </Routes>
-        </PageTransition>
+        </main>
+
         <Footer />
         <CookieConsent />
+
       </div>
     </Router>
   );
