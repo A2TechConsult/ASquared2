@@ -1,7 +1,7 @@
 
-  # Enterprise Consulting Website Build
+  # A2TechConsult Website Build
 
-  This is a code bundle for Enterprise Consulting Website Build. The original project is available at https://www.figma.com/design/P3Bl40HDgzr3LhaKU1TN7B/Enterprise-Consulting-Website-Build.
+  This is a code bundle for www.a2techconsult.com 
 
   ## Running the code
 
