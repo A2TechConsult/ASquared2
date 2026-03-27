@@ -26,7 +26,7 @@ import vistexLogo from '../../assets/0e35773da41fd1c0fdd252643e1eeeaab9fa05a2.pn
 import plexLogo from '../../assets/7de126a42128b3415fbb82c656b7d3d3e3e932bd.png';
 import siebelLogo from '../../assets/b90c03a57ba77a183f10ad49c663a6b123f7f0e0.png';
 // import johnsoncontrolsLogo from '../../assets/JohnsonControls.png';
-
+import jcLogo from '@/assets/johnson-controls.png';
 
 export function Overview() {
   return (
@@ -182,13 +182,12 @@ export function Overview() {
               url="https://www.esselpropack.com"
             />
 
-	    {/*
+	    {/* Johnson Controls */}
 	    <ClientLogo
-  	      src={johnsonControlsLogo}
+  	      src={jcLogo}
   	      alt="Johnson Controls"
   	      url="https://www.johnsoncontrols.com"
             />
-            */}
 
           </motion.div>
         </div>
