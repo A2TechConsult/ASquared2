@@ -295,7 +295,7 @@ export function Contact() {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-500">GST No</span>
-                      <span className="text-gray-900 font-medium">36ABCCA3060C129</span>
+                      <span className="text-gray-900 font-medium">36ABCCA3060C1Z9</span>
                     </div>
                   </div>
                 </div>
@@ -340,24 +340,12 @@ export function Contact() {
                         Email
                       </div>
                     </div>
-                    <div className="space-y-2 pl-6">
-                      <div>
-                        <a 
-                          href="mailto:hr@a2techconsult.com" 
-                          className="text-gray-600 hover:text-gray-900 transition-colors inline-block"
-                        >
-                          hr@a2techconsult.com
-                        </a>
-                      </div>
-                      <div>
-                        <a 
-                          href="mailto:sales@a2techconsult.com" 
-                          className="text-gray-600 hover:text-gray-900 transition-colors inline-block"
-                        >
-                          sales@a2techconsult.com
-                        </a>
-                      </div>
-                    </div>
+                    <a 
+                      href="mailto:admin@a2techconsult.com" 
+                      className="text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
+                    >
+                      admin@a2techconsult.com
+                    </a>
                   </div>
 
                   {/* Phone */}
