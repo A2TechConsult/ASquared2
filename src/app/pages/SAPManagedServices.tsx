@@ -141,8 +141,7 @@ export default function SAPManagedServices() {
         </p>
 
         <div className="space-y-2 text-gray-700">
-          <p>hr@a2techconsult.com</p>
-          <p>sales@a2techconsult.com</p>
+          <p>admin@a2techconsult.com</p>
           <p>+1 (408) 499-3596</p>
         </div>
       </section>
