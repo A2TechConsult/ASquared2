@@ -12,24 +12,51 @@ export function GDPRRequest() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const encode = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('GDPR Request:', formData);
-    setSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: '',
-        email: '',
-        linkedinUrl: '',
-        requestType: '',
-        message: '',
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'gdpr-request', ...formData }),
       });
-    }, 3000);
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status ${response.status}`);
+      }
+
+      setSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          fullName: '',
+          email: '',
+          linkedinUrl: '',
+          requestType: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      setSubmitError(
+        "Something went wrong sending your request. Please email us directly at admin@a2techconsult.com."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -87,12 +114,18 @@ export function GDPRRequest() {
       <section className="px-6">
         <div className="max-w-2xl mx-auto">
           <motion.form
+            name="gdpr-request"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={handleSubmit}
             className="space-y-8"
           >
+            <input type="hidden" name="form-name" value="gdpr-request" />
+            <input type="hidden" name="bot-field" />
             {/* Full Name */}
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-3">
@@ -183,10 +216,20 @@ export function GDPRRequest() {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors text-sm font-medium"
+                disabled={isSubmitting}
+                className="w-full px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit Request
+                {isSubmitting ? 'Submittingâ¦' : 'Submit Request'}
               </button>
+              {submitError && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-3 text-sm text-red-600 text-center"
+                >
+                  {submitError}
+                </motion.p>
+              )}
             </div>
 
             {/* Legal Notice */}
