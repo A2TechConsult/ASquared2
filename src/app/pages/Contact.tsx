@@ -15,13 +15,20 @@ export function Contact() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const encode = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newErrors = {
@@ -41,10 +48,31 @@ export function Contact() {
 
     setErrors(newErrors);
 
-    if (!newErrors.email && !newErrors.company) {
+    if (newErrors.email || newErrors.company) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...formData }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status ${response.status}`);
+      }
+
       setIsSubmitted(true);
-      // In a real application, this would submit to a backend
-      console.log('Form submitted:', formData);
+    } catch (error) {
+      setSubmitError(
+        "Something went wrong sending your message. Please email us directly at admin@a2techconsult.com."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -214,10 +242,20 @@ export function Contact() {
               <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full md:w-auto px-12 py-5 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 text-sm font-medium tracking-wide hover:shadow-lg hover:scale-[1.02]"
+                  disabled={isSubmitting}
+                  className="w-full md:w-auto px-12 py-5 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 text-sm font-medium tracking-wide hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Send request
+                  {isSubmitting ? 'Sendingâ¦' : 'Send request'}
                 </button>
+                {submitError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 text-sm text-red-600"
+                  >
+                    {submitError}
+                  </motion.p>
+                )}
               </div>
             </div>
           </motion.form>
