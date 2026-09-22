@@ -152,9 +152,12 @@ export function Footer() {
                   <li>
                     <Link 
                       to="/ai-capabilities" 
-                      className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                      className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 inline-flex items-center gap-2"
                     >
                       AI Capabilities
+                      <span className="text-[9px] font-semibold uppercase tracking-wider bg-gray-900 text-white px-1.5 py-[1px] rounded-full leading-none">
+                        New
+                      </span>
                     </Link>
                   </li>
                   <li>
