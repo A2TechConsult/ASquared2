@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+  This page is never linked to and never shown to a visitor.
+  Netlify only detects forms by scanning static HTML at build time, and this
+  site's real forms are rendered by React at runtime, so Netlify can't see
+  them. This file is a plain-HTML copy of each form's fields so Netlify's
+  build-time scan registers them. Keep field names here in sync with
+  src/app/pages/Contact.tsx and src/app/pages/GDPRRequest.tsx.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Form definitions (not a real page)</title>
+  </head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="context"></textarea>
+      <input name="bot-field" />
+    </form>
+
+    <form name="gdpr-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="fullName" />
+      <input type="email" name="email" />
+      <input type="url" name="linkedinUrl" />
+      <input type="text" name="requestType" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>
