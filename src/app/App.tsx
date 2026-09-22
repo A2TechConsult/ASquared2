@@ -17,17 +17,19 @@ import SAPManagedServices from '@/app/pages/SAPManagedServices';
 import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { CookieConsent } from '@/app/components/CookieConsent';
+import { ScrollToTop } from '@/app/components/ScrollToTop';
 
 import '@/styles/hero-gradient.css';
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="bg-white text-gray-900 font-sans antialiased">
         
         <Navigation />
 
-        {/* 👇 THIS FIXES YOUR ENTIRE ISSUE */}
+        {/* ð THIS FIXES YOUR ENTIRE ISSUE */}
         <main className="pt-[110px] min-h-screen">
           <Routes>
             <Route path="/" element={<Overview />} />
