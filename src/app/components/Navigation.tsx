@@ -15,6 +15,7 @@ export function Navigation() {
     { label: 'SAP Managed Services', path: '/sap-managed-services' },
     { label: 'AI', path: '/ai-capabilities' },
     { label: 'Healthcare', path: '/healthcare' },
+    { label: 'Expertise', path: '/staff-augmentation' },
     { label: 'Contact', path: '/contact' },
   ];
 
