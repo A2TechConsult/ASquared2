@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
 import { ClientLogo } from '@/app/components/ClientLogo';
-import { Database, DollarSign, Factory, Network, Brain, Rocket, Users } from 'lucide-react';
+import { Database, DollarSign, Factory, Network, Brain, Rocket, Users, Stethoscope } from 'lucide-react';
 import { Settings } from 'lucide-react';
 
 // Import client logos - Batch 1
@@ -40,12 +40,12 @@ export function Overview() {
           className="max-w-5xl text-center"
         >
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 mb-8">
-            SAP consulting.
+            SAP. AI. Healthcare.
             <br />
             Without the noise.
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Enterprise-grade SAP solutions delivered with precision. From S/4HANA migrations to complex integrations.
+            Enterprise-grade consulting delivered with precision. From S/4HANA migrations to agentic AI systems and clinical workflow automation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -75,10 +75,10 @@ export function Overview() {
             className="text-center"
           >
             <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-8">
-              Focused on SAP. Built for the enterprise.
+              Focused on outcomes. Built for the enterprise.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-              We help Fortune 500 companies and global enterprises implement, optimize, and maintain mission-critical SAP systems. Our expertise spans ECC to S/4HANA migrations, complex integrations with Vistex and Plex platforms, and enterprise-wide rollouts across manufacturing, pharmaceutical, and industrial sectors.
+              We help Fortune 500 companies and global enterprises implement, optimize, and extend mission-critical systems — SAP S/4HANA at the core, enterprise AI across the stack, and purpose-built healthcare workflows. Our expertise spans ECC to S/4HANA migrations, Vistex and Plex integrations, agentic AI and RAG systems, and clinical automation across manufacturing, pharmaceutical, industrial, and healthcare sectors.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-16 text-left">
               <div>
@@ -182,11 +182,11 @@ export function Overview() {
               url="https://www.esselpropack.com"
             />
 
-	    {/* Johnson Controls */}
-	    <ClientLogo
-  	      src={jcLogo}
-  	      alt="Johnson Controls"
-  	      url="https://www.johnsoncontrols.com"
+            {/* Johnson Controls */}
+            <ClientLogo
+              src={jcLogo}
+              alt="Johnson Controls"
+              url="https://www.johnsoncontrols.com"
             />
 
           </motion.div>
@@ -206,7 +206,7 @@ export function Overview() {
           >
             <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">Core competencies</h2>
             <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-              Deep technical expertise in SAP ecosystem platforms. From greenfield implementations to large-scale transformations.
+              Deep technical expertise across SAP, enterprise AI, and healthcare systems. From greenfield implementations to large-scale transformations.
             </p>
           </motion.div>
 
@@ -239,8 +239,14 @@ export function Overview() {
               {
                 icon: Brain,
                 title: 'Enterprise AI & Intelligent Automation',
-                description: 'AI-powered solutions across SAP landscapes. SAP Joule, Einstein AI, Databricks, RAG systems, and agentic AI implementations.',
+                description: 'AI-powered solutions across enterprise landscapes. SAP Joule, Einstein AI, Databricks, RAG systems, and agentic AI implementations.',
                 areas: ['AI in ERP', 'SAP AI Services', 'Predictive Analytics', 'Intelligent RPA'],
+              },
+              {
+                icon: Stethoscope,
+                title: 'Healthcare & Clinical Workflows',
+                description: 'HIPAA-ready AI for clinical dictation, lab document processing, cross-EHR case mapping, and real-time anomaly detection.',
+                areas: ['Ambient Dictation', 'PDF-to-HL7 / FHIR', 'EHR Integration', 'Clinical Anomaly Detection'],
               },
               {
                 icon: Rocket,
@@ -254,12 +260,12 @@ export function Overview() {
                 description: 'Platinum-level certified consultants with deep expertise. SAP architects, Vistex specialists, Plex experts, and integration developers.',
                 areas: ['Certified Experts', '15+ Years Experience', 'On-Demand Resources', 'Dedicated Teams'],
               },
-	      {
-  		icon: Settings,
-  		title: 'SAP Managed Services',
-  		description: 'End-to-end ownership of your SAP landscape — from Basis to business processes. 24×7 monitoring, proactive issue resolution, and continuous optimization.',
-  		areas: ['AMS Support', '24×7 Monitoring', 'S/4HANA Ops', 'Cloud Management', 'AIOps'],
-	      },
+              {
+                icon: Settings,
+                title: 'SAP Managed Services',
+                description: 'End-to-end ownership of your SAP landscape — from Basis to business processes. 24×7 monitoring, proactive issue resolution, and continuous optimization.',
+                areas: ['AMS Support', '24×7 Monitoring', 'S/4HANA Ops', 'Cloud Management', 'AIOps'],
+              },
             ].map((area, index) => {
               const Icon = area.icon;
               return (
@@ -296,8 +302,8 @@ export function Overview() {
                         {/* Tags */}
                         <div className="flex flex-wrap gap-2">
                           {area.areas.map((item, i) => (
-                            <span 
-                              key={i} 
+                            <span
+                              key={i}
                               className="text-xs uppercase tracking-wider text-gray-500 bg-gray-50 group-hover:bg-white px-3 py-1.5 transition-colors duration-200"
                             >
                               {item}
@@ -335,49 +341,49 @@ export function Overview() {
             viewport={{ once: true }}
             className="flex flex-wrap items-center justify-center gap-16 md:gap-20"
           >
-            <a 
-              href="https://www.sap.com" 
-              target="_blank" 
+            <a
+              href="https://www.sap.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={sapLogo}
                 alt="SAP"
                 className="h-16 w-auto object-contain"
               />
             </a>
-            <a 
-              href="https://www.vistex.com" 
-              target="_blank" 
+            <a
+              href="https://www.vistex.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={vistexLogo}
                 alt="Vistex"
                 className="h-12 w-auto object-contain"
               />
             </a>
-            <a 
-              href="https://www.rockwellautomation.com/en-us/products/software/plex.html" 
-              target="_blank" 
+            <a
+              href="https://www.rockwellautomation.com/en-us/products/software/plex.html"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 bg-gray-900 px-8 py-4 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={plexLogo}
                 alt="Plex"
                 className="h-10 w-auto object-contain"
               />
             </a>
-            <a 
-              href="https://www.oracle.com" 
-              target="_blank" 
+            <a
+              href="https://www.oracle.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={siebelLogo}
                 alt="Siebel"
                 className="h-16 w-auto object-contain"
@@ -419,6 +425,7 @@ export function Overview() {
                   { name: 'Retail', detail: 'Omnichannel', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Utilities & Energy', detail: 'Power & Resources', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Life Sciences & Pharma', detail: 'Regulated Industries', gradient: 'from-gray-50 to-gray-100' },
+                  { name: 'Healthcare', detail: 'Providers & MedTech', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Automotive', detail: 'OEMs & Suppliers', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Chemicals', detail: 'Process Industries', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Engineering & Construction', detail: 'EPC Projects', gradient: 'from-gray-50 to-gray-100' },
@@ -457,7 +464,15 @@ export function Overview() {
           </motion.div>
         </div>
 
-        <style dangerouslySetInnerHTML={{__html: `\n          .scrollbar-hide::-webkit-scrollbar {\n            display: none;\n          }\n          .scrollbar-hide {\n            -ms-overflow-style: none;\n            scrollbar-width: none;\n          }\n        `}} />
+        <style dangerouslySetInnerHTML={{__html: `
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}} />
       </section>
 
       {/* Approach Preview */}
