@@ -170,7 +170,7 @@ export function Healthcare() {
   ];
 
   return (
-    <main className="pt-32 pb-24">
+    <main className="pt-8 pb-24">
       {/* Hero */}
       <section className="px-6 mb-32">
         <div className="max-w-6xl mx-auto text-center">
