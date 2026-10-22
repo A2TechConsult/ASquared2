@@ -13,8 +13,8 @@ export function Navigation() {
     { label: 'Overview', path: '/' },
     { label: 'Capabilities', path: '/capabilities' },
     { label: 'SAP Managed Services', path: '/sap-managed-services' },
+    { label: 'AI', path: '/ai-capabilities' },
     { label: 'Healthcare', path: '/healthcare' },
-    { label: 'Our Approach', path: '/approach' },
     { label: 'Client Outcomes', path: '/outcomes' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -152,7 +152,7 @@ export function Navigation() {
                         >
                           {item.label}
                         </Link>
-                      </li>
+              </li>
                     );
                   })}
                 </ul>
