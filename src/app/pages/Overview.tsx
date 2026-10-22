@@ -39,13 +39,11 @@ export function Overview() {
           transition={{ duration: 1, delay: 0.2 }}
           className="max-w-5xl text-center"
         >
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 mb-8">
-            SAP. AI. Healthcare.
-            <br />
-            Without the noise.
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+            Enterprise consulting for SAP, AI, and healthcare.
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Enterprise-grade consulting delivered with precision. From S/4HANA migrations to agentic AI systems and clinical workflow automation.
+          <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Precision execution without the noise — from S/4HANA migrations to agentic AI systems and clinical workflow automation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
