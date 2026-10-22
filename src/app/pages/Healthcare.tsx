@@ -47,10 +47,10 @@ export function Healthcare() {
       title: 'Cross-EHR Case Mapping',
       subtitle: 'Longitudinal Patient View',
       description:
-        'Patient records fractured across Epic, Cerner, Meditech, labs, imaging centers, specialty clinics. We build the longitudinal case view — probabilistic identity resolution, FHIR Patient \$everything, SNOMED-hierarchy problem-list reconciliation.',
+        'Patient records fractured across Epic, Cerner, Meditech, labs, imaging centers, specialty clinics. We build the longitudinal case view — probabilistic identity resolution, FHIR Patient $everything, SNOMED-hierarchy problem-list reconciliation.',
       features: [
         'Probabilistic patient identity matching',
-        'FHIR Patient \$everything orchestration',
+        'FHIR Patient $everything orchestration',
         'SNOMED-hierarchy problem-list reconciliation',
         'RxNorm-based medication deduplication',
         'Workflow-surfaced in clinician EHR',
@@ -179,18 +179,11 @@ export function Healthcare() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 mb-8">
-              <Stethoscope className="size-4 text-gray-600" />
-              <span className="text-xs font-medium uppercase tracking-widest text-gray-600">
-                Healthcare Technology
-              </span>
-            </div>
-
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-8 tracking-tight">
               Healthcare
             </h1>
 
-            <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
               Clinical AI that respects the clinician's workflow and the HIPAA perimeter. From ambient dictation to HL7 interoperability to surgical video intelligence — for hospitals, health systems, and ambulatory surgery centers.
             </p>
           </motion.div>
@@ -200,21 +193,6 @@ export function Healthcare() {
       {/* Capabilities */}
       <section className="px-6 mb-32">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center"
-          >
-            <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
-              Clinical Capabilities
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Six capabilities. Each one grounded in Azure Health Data Services and FHIR R4. Each scoped to a measurable clinical outcome.
-            </p>
-          </motion.div>
-
           <div className="space-y-1">
             {capabilities.map((capability, index) => {
               const Icon = capability.icon;
