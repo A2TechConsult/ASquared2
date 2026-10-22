@@ -13,6 +13,7 @@ export function Navigation() {
     { label: 'Overview', path: '/' },
     { label: 'Capabilities', path: '/capabilities' },
     { label: 'SAP Managed Services', path: '/sap-managed-services' },
+    { label: 'Healthcare', path: '/healthcare' },
     { label: 'Our Approach', path: '/approach' },
     { label: 'Client Outcomes', path: '/outcomes' },
     { label: 'Contact', path: '/contact' },
