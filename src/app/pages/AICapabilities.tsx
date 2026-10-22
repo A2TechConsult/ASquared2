@@ -3,7 +3,21 @@ import { Link } from 'react-router-dom';
 import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp, Mic, FileText, Activity, ShieldCheck } from 'lucide-react';
 
 export function AICapabilities() {
+  // Mixed order: healthcare and enterprise AI interleaved so SAP is not first
   const capabilities = [
+    {
+      icon: Mic,
+      title: 'Clinical AI & Ambient Dictation',
+      subtitle: 'Healthcare — Speech & Documentation',
+      description: 'HIPAA-ready ambient dictation and clinical scribing that captures the physician-patient encounter and produces structured notes, orders, and codes.',
+      features: [
+        'Azure Speech + medical ASR with specialty vocabularies',
+        'Structured SOAP note generation',
+        'ICD-10 / CPT coding assistance',
+        'EHR write-back (Epic, Cerner, Meditech)',
+        'Clinician review and sign-off workflows',
+      ],
+    },
     {
       icon: Brain,
       title: 'Retrieval-Augmented Generation',
@@ -15,6 +29,19 @@ export function AICapabilities() {
         'Multi-modal data integration',
         'Fine-tuned embedding models',
         'Real-time knowledge graph updates',
+      ],
+    },
+    {
+      icon: Activity,
+      title: 'Medical Anomaly Detection',
+      subtitle: 'Healthcare — Real-Time Signals',
+      description: 'Real-time anomaly detection across vitals, imaging, and surgical / triage video to surface early sepsis, deterioration, and procedural risks.',
+      features: [
+        'ICU vitals streaming and early-warning scoring',
+        'Surgical and triage video analysis',
+        'Imaging triage with radiologist workflow',
+        'Alerting that respects clinical escalation paths',
+        'Model monitoring and bias mitigation',
       ],
     },
     {
@@ -31,6 +58,19 @@ export function AICapabilities() {
       ],
     },
     {
+      icon: FileText,
+      title: 'Lab Documents & Cross-EHR Mapping',
+      subtitle: 'Healthcare — Interoperability',
+      description: 'Automated conversion of lab PDFs, scanned reports, and legacy formats into HL7 v2 and FHIR R4/R5, with cross-EHR case mapping for continuity of care.',
+      features: [
+        'PDF / image to HL7 v2 and FHIR conversion',
+        'USCDI v4 and payer data model alignment',
+        'Cross-EHR patient and case reconciliation',
+        'Document AI with specialty validators',
+        'Audit trails for 21 CFR Part 11',
+      ],
+    },
+    {
       icon: Sparkles,
       title: 'SAP Joule Integration',
       subtitle: 'Generative AI for SAP',
@@ -41,19 +81,6 @@ export function AICapabilities() {
         'Integration with SAP Analytics Cloud',
         'Natural language query interfaces',
         'Workflow automation using generative AI',
-      ],
-    },
-    {
-      icon: Network,
-      title: 'Salesforce Einstein AI',
-      subtitle: 'Intelligent CRM',
-      description: 'Advanced Einstein implementations that predict customer behavior, automate sales workflows, and deliver personalized engagement at scale.',
-      features: [
-        'Einstein GPT for personalized content generation',
-        'Predictive lead scoring and opportunity insights',
-        'Einstein Bots for intelligent customer service',
-        'Einstein Discovery for automated analytics',
-        'Custom Einstein model training and deployment',
       ],
     },
     {
@@ -70,6 +97,19 @@ export function AICapabilities() {
       ],
     },
     {
+      icon: Network,
+      title: 'Salesforce Einstein AI',
+      subtitle: 'Intelligent CRM',
+      description: 'Advanced Einstein implementations that predict customer behavior, automate sales workflows, and deliver personalized engagement at scale.',
+      features: [
+        'Einstein GPT for personalized content generation',
+        'Predictive lead scoring and opportunity insights',
+        'Einstein Bots for intelligent customer service',
+        'Einstein Discovery for automated analytics',
+        'Custom Einstein model training and deployment',
+      ],
+    },
+    {
       icon: Cpu,
       title: 'Custom AI Solutions',
       subtitle: 'Precision-Engineered Intelligence',
@@ -80,45 +120,6 @@ export function AICapabilities() {
         'Edge AI for low-latency inference',
         'Responsible AI frameworks and bias mitigation',
         'AI explainability and model interpretability',
-      ],
-    },
-    {
-      icon: Mic,
-      title: 'Clinical AI & Ambient Dictation',
-      subtitle: 'Healthcare — Speech & Documentation',
-      description: 'HIPAA-ready ambient dictation and clinical scribing that captures the physician-patient encounter and produces structured notes, orders, and codes.',
-      features: [
-        'Azure Speech + medical ASR with specialty vocabularies',
-        'Structured SOAP note generation',
-        'ICD-10 / CPT coding assistance',
-        'EHR write-back (Epic, Cerner, Meditech)',
-        'Clinician review and sign-off workflows',
-      ],
-    },
-    {
-      icon: FileText,
-      title: 'Lab Documents & Cross-EHR Mapping',
-      subtitle: 'Healthcare — Interoperability',
-      description: 'Automated conversion of lab PDFs, scanned reports, and legacy formats into HL7 v2 and FHIR R4/R5, with cross-EHR case mapping for continuity of care.',
-      features: [
-        'PDF / image to HL7 v2 and FHIR conversion',
-        'USCDI v4 and payer data model alignment',
-        'Cross-EHR patient and case reconciliation',
-        'Document AI with specialty validators',
-        'Audit trails for 21 CFR Part 11',
-      ],
-    },
-    {
-      icon: Activity,
-      title: 'Medical Anomaly Detection',
-      subtitle: 'Healthcare — Real-Time Signals',
-      description: 'Real-time anomaly detection across vitals, imaging, and surgical / triage video to surface early sepsis, deterioration, and procedural risks.',
-      features: [
-        'ICU vitals streaming and early-warning scoring',
-        'Surgical and triage video analysis',
-        'Imaging triage with radiologist workflow',
-        'Alerting that respects clinical escalation paths',
-        'Model monitoring and bias mitigation',
       ],
     },
   ];
@@ -142,12 +143,25 @@ export function AICapabilities() {
     },
   ];
 
+  // Mixed order: healthcare and enterprise projects interleaved
   const projects = [
+    {
+      title: 'Ambient Dictation — 7-Hospital System',
+      challenge: 'Regional health system needed to reduce clinician documentation burden across 7 hospitals',
+      solution: 'Deployed ambient dictation with Azure Speech, specialty vocabularies, and Epic write-back',
+      impact: '62% reduction in after-hours charting, higher clinician satisfaction scores',
+    },
     {
       title: 'Manufacturing Intelligence',
       challenge: 'Global manufacturer needed real-time quality prediction across 40+ production lines',
       solution: 'Deployed Databricks lakehouse with MLflow-managed models, achieving 94% defect prediction accuracy',
       impact: '23% reduction in scrap costs, 15% improvement in first-pass yield',
+    },
+    {
+      title: 'ICU Anomaly Detection — Early Sepsis',
+      challenge: 'Academic medical center wanted earlier detection of sepsis in ICU populations',
+      solution: 'Streaming anomaly detection on vitals and labs with clinician-tuned escalation paths',
+      impact: 'Alerts 4–6 hours earlier than standard scoring, with reduced alert fatigue',
     },
     {
       title: 'Procurement Copilot',
@@ -156,28 +170,16 @@ export function AICapabilities() {
       impact: '40% faster vendor selection, 60% reduction in manual data lookup',
     },
     {
-      title: 'Sales Forecasting',
-      challenge: 'Distribution company needed accurate demand prediction across 200,000 SKUs',
-      solution: 'Salesforce Einstein Discovery with external data enrichment and custom algorithms',
-      impact: '18% forecast accuracy improvement, $12M inventory optimization',
-    },
-    {
-      title: 'Ambient Dictation — 7-Hospital System',
-      challenge: 'Regional health system needed to reduce clinician documentation burden across 7 hospitals',
-      solution: 'Deployed ambient dictation with Azure Speech, specialty vocabularies, and Epic write-back',
-      impact: '62% reduction in after-hours charting, higher clinician satisfaction scores',
-    },
-    {
       title: 'PDF-to-HL7 Lab Pipeline — MedTech ISV',
       challenge: 'MedTech ISV needed to ingest lab PDFs from 300+ facilities into a FHIR-based platform',
       solution: 'Document AI pipeline converting PDFs to HL7 v2 and FHIR R4 with specialty validators',
       impact: '94% straight-through processing, days-to-minutes turnaround for new facilities',
     },
     {
-      title: 'ICU Anomaly Detection — Early Sepsis',
-      challenge: 'Academic medical center wanted earlier detection of sepsis in ICU populations',
-      solution: 'Streaming anomaly detection on vitals and labs with clinician-tuned escalation paths',
-      impact: 'Alerts 4–6 hours earlier than standard scoring, with reduced alert fatigue',
+      title: 'Sales Forecasting',
+      challenge: 'Distribution company needed accurate demand prediction across 200,000 SKUs',
+      solution: 'Salesforce Einstein Discovery with external data enrichment and custom algorithms',
+      impact: '18% forecast accuracy improvement, $12M inventory optimization',
     },
   ];
 
@@ -207,32 +209,17 @@ export function AICapabilities() {
               AI Capabilities
             </h1>
 
-            <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Enterprise-grade AI across SAP, operations, and healthcare. From generative AI and autonomous agents to clinical dictation and medical anomaly detection — delivered with measurable outcomes.
+            <p className="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed">
+              Enterprise-grade AI across SAP, operations, and healthcare. From generative AI and autonomous agents to clinical dictation and medical anomaly detection — precision-engineered AI systems designed for enterprise scale, security, and governance, including HIPAA-ready healthcare workflows, delivered with measurable outcomes.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Capabilities - Premium Borderless List */}
+      {/* Capabilities - Two-column grid */}
       <section className="px-6 mb-32">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center"
-          >
-            <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
-              Our Expertise
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Precision-engineered AI systems designed for enterprise scale, security, and governance — including HIPAA-ready healthcare workflows.
-            </p>
-          </motion.div>
-
-          <div className="space-y-1">
+          <div className="grid md:grid-cols-2 gap-6">
             {capabilities.map((capability, index) => {
               const Icon = capability.icon;
               return (
@@ -242,47 +229,30 @@ export function AICapabilities() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="group"
+                  className="group bg-white border border-gray-100 p-10 hover:bg-gray-50 hover:border-gray-200 transition-all duration-300"
                 >
-                  <motion.div
-                    className="bg-white hover:bg-gray-50 transition-all duration-300"
-                    whileHover={{ x: 8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="px-12 py-10 border-b border-gray-100">
-                      <div className="flex items-start gap-8 mb-8">
-                        {/* Icon */}
-                        <div className="flex-shrink-0 pt-1">
-                          <div className="w-16 h-16 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center">
-                            <Icon className="size-8 text-white" />
-                          </div>
-                        </div>
+                  <div className="w-14 h-14 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center mb-6">
+                    <Icon className="size-7 text-white" />
+                  </div>
 
-                        {/* Header & Description */}
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-3xl font-light text-gray-900 tracking-tight mb-2">
-                            {capability.title}
-                          </h3>
-                          <p className="text-sm text-gray-500 uppercase tracking-wider mb-6">
-                            {capability.subtitle}
-                          </p>
-                          <p className="text-gray-600 leading-relaxed max-w-3xl">
-                            {capability.description}
-                          </p>
-                        </div>
-                      </div>
+                  <h3 className="text-2xl font-light text-gray-900 tracking-tight mb-2">
+                    {capability.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-5">
+                    {capability.subtitle}
+                  </p>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                    {capability.description}
+                  </p>
 
-                      {/* Features Grid */}
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 pl-[96px]">
-                        {capability.features.map((feature, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <ArrowRight className="size-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
-                          </div>
-                        ))}
+                  <div className="space-y-2">
+                    {capability.features.map((feature, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <ArrowRight className="size-3.5 text-gray-400 flex-shrink-0 mt-1" />
+                        <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
                       </div>
-                    </div>
-                  </motion.div>
+                    ))}
+                  </div>
                 </motion.div>
               );
             })}
@@ -322,7 +292,6 @@ export function AICapabilities() {
                   viewport={{ once: true }}
                   className="relative text-center"
                 >
-                  {/* Circle Badge */}
                   <div className="relative z-10 w-24 h-24 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <div className="text-3xl font-light text-gray-900">
                       {String(index + 1).padStart(2, '0')}
@@ -342,15 +311,15 @@ export function AICapabilities() {
         </div>
       </section>
 
-      {/* Representative Projects - Premium Card Layout */}
+      {/* Representative Projects - Two-column grid */}
       <section className="px-6 mb-32">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-20 text-center"
+            className="mb-16 text-center"
           >
             <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
               Representative Projects
@@ -360,7 +329,7 @@ export function AICapabilities() {
             </p>
           </motion.div>
 
-          <div className="space-y-1">
+          <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -368,58 +337,41 @@ export function AICapabilities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
+                className="group bg-white border border-gray-100 p-10 hover:bg-gray-50 hover:border-gray-200 transition-all duration-300"
               >
-                <motion.div
-                  className="bg-white hover:bg-gray-50 transition-all duration-300"
-                  whileHover={{ x: 8 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {/* Header */}
-                  <div className="px-12 py-6 border-b border-gray-100">
-                    <h3 className="text-3xl font-light text-gray-900 tracking-tight">
-                      {project.title}
-                    </h3>
+                <h3 className="text-2xl font-light text-gray-900 tracking-tight mb-6">
+                  {project.title}
+                </h3>
+
+                <div className="mb-5">
+                  <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-2">
+                    Challenge
                   </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {project.challenge}
+                  </p>
+                </div>
 
-                  {/* Content Grid */}
-                  <div className="px-12 py-10">
-                    <div className="grid md:grid-cols-3 gap-10">
-                      {/* Challenge */}
-                      <div>
-                        <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-3">
-                          Challenge
-                        </div>
-                        <p className="text-gray-600 leading-relaxed">
-                          {project.challenge}
-                        </p>
-                      </div>
+                <div className="mb-5">
+                  <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-2">
+                    Solution
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {project.solution}
+                  </p>
+                </div>
 
-                      {/* Solution */}
-                      <div>
-                        <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-3">
-                          Solution
-                        </div>
-                        <p className="text-gray-600 leading-relaxed">
-                          {project.solution}
-                        </p>
-                      </div>
-
-                      {/* Impact */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <TrendingUp className="size-4 text-gray-900" />
-                          <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                            Impact
-                          </div>
-                        </div>
-                        <p className="text-gray-900 font-medium leading-relaxed">
-                          {project.impact}
-                        </p>
-                      </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="size-4 text-gray-900" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Impact
                     </div>
                   </div>
-                </motion.div>
+                  <p className="text-sm text-gray-900 font-medium leading-relaxed">
+                    {project.impact}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
