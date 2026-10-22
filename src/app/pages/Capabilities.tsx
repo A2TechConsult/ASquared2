@@ -1,23 +1,19 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { 
-  Database, 
-  DollarSign, 
-  Factory, 
-  Network, 
-  Truck, 
-  Shield, 
-  Smartphone, 
-  Cloud, 
-  Brain, 
-  Headphones, 
-  Users, 
-  Rocket 
+import {
+  Database,
+  DollarSign,
+  Factory,
+  Network,
+  Truck,
+  Shield,
+  Smartphone,
+  Cloud,
+  Brain,
+  Headphones,
+  Users,
+  Rocket
 } from 'lucide-react';
-import sapLogo from '../../assets/c9abc9544e6f5a5b70e5eec942b60f8010decd05.png';
-import vistexLogo from '../../assets/0e35773da41fd1c0fdd252643e1eeeaab9fa05a2.png';
-import plexLogo from '../../assets/7de126a42128b3415fbb82c656b7d3d3e3e932bd.png';
-import siebelLogo from '../../assets/b90c03a57ba77a183f10ad49c663a6b123f7f0e0.png';
 
 export function Capabilities() {
   const capabilities = [
@@ -181,32 +177,87 @@ export function Capabilities() {
 
   return (
     <main className="pt-32 pb-24 px-6">
-      {/* Hero Section */}
-      <section className="max-w-6xl mx-auto mb-32">
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto mb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 mb-8">
-            <Rocket className="size-4 text-gray-600" />
-            <span className="text-xs font-medium uppercase tracking-wider text-gray-600">
-              Service Catalog
-            </span>
-          </div>
-          
-          <h1 className="text-6xl font-light text-gray-900 mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
             Capabilities
           </h1>
-          
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Full-spectrum SAP consulting services. From strategy and implementation to managed services and staff augmentation.
+
+          <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            Full-spectrum SAP consulting services. From strategy and implementation to managed services and specialist talent.
           </p>
         </motion.div>
       </section>
 
-      {/* Service Delivery Approach */}
+      {/* Capabilities list */}
+      <section className="max-w-7xl mx-auto mb-32">
+        <div className="space-y-1">
+          {capabilities.map((capability, index) => {
+            const Icon = capability.icon;
+            return (
+              <motion.div
+                key={capability.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.03 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <motion.div
+                  className="px-12 py-10 bg-white hover:bg-gray-50 transition-all duration-300 cursor-default"
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex items-start gap-8">
+                    <div className="flex-shrink-0 pt-1">
+                      <div className="w-12 h-12 flex items-center justify-center">
+                        <Icon className="size-7 text-gray-900 group-hover:scale-110 transition-transform duration-300" />
+                      </div>
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="mb-6">
+                        <div className="flex items-baseline gap-3 mb-2">
+                          <h3 className="text-2xl font-light text-gray-900 tracking-tight">
+                            {capability.title}
+                          </h3>
+                          <span className="text-xs font-medium uppercase tracking-widest text-gray-400">
+                            {capability.subtitle}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-x-12 gap-y-3">
+                        {capability.items.map((item, itemIndex) => (
+                          <div
+                            key={itemIndex}
+                            className="flex items-start gap-3 group/item"
+                          >
+                            <span className="text-gray-300 group-hover/item:text-gray-900 transition-colors duration-200 mt-0.5">
+                              •
+                            </span>
+                            <span className="text-sm text-gray-600 group-hover/item:text-gray-900 transition-colors duration-200 leading-relaxed">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Delivery Excellence */}
       <section className="max-w-6xl mx-auto mb-32">
         <motion.div
           initial={{ opacity: 0 }}
@@ -261,167 +312,6 @@ export function Capabilities() {
                 </p>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Capabilities Grid */}
-      <section className="max-w-7xl mx-auto mb-32">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-24 text-center"
-        >
-          <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
-            Service Portfolio
-          </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Enterprise-grade SAP solutions across the entire technology stack.
-          </p>
-        </motion.div>
-
-        <div className="space-y-1">
-          {capabilities.map((capability, index) => {
-            const Icon = capability.icon;
-            return (
-              <motion.div
-                key={capability.title}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.03 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <motion.div
-                  className="px-12 py-10 bg-white hover:bg-gray-50 transition-all duration-300 cursor-default"
-                  whileHover={{ x: 8 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="flex items-start gap-8">
-                    {/* Icon */}
-                    <div className="flex-shrink-0 pt-1">
-                      <div className="w-12 h-12 flex items-center justify-center">
-                        <Icon className="size-7 text-gray-900 group-hover:scale-110 transition-transform duration-300" />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="mb-6">
-                        <div className="flex items-baseline gap-3 mb-2">
-                          <h3 className="text-2xl font-light text-gray-900 tracking-tight">
-                            {capability.title}
-                          </h3>
-                          <span className="text-xs font-medium uppercase tracking-widest text-gray-400">
-                            {capability.subtitle}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Features Grid */}
-                      <div className="grid md:grid-cols-2 gap-x-12 gap-y-3">
-                        {capability.items.map((item, itemIndex) => (
-                          <div 
-                            key={itemIndex} 
-                            className="flex items-start gap-3 group/item"
-                          >
-                            <span className="text-gray-300 group-hover/item:text-gray-900 transition-colors duration-200 mt-0.5">
-                              •
-                            </span>
-                            <span className="text-sm text-gray-600 group-hover/item:text-gray-900 transition-colors duration-200 leading-relaxed">
-                              {item}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Technology Partners */}
-      <section className="max-w-6xl mx-auto mb-32">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-12">
-            <div className="text-xs font-medium uppercase tracking-wider text-gray-500 mb-4">
-              Technology Expertise
-            </div>
-            <h2 className="text-3xl font-light text-gray-900">
-              Certified Partners
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <motion.a 
-              href="https://www.sap.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center h-32 border border-gray-200 hover:border-gray-300 transition-all hover:shadow-sm p-6"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
-              <img 
-                src={sapLogo} 
-                alt="SAP" 
-                className="h-12 w-auto object-contain" 
-              />
-            </motion.a>
-            
-            <motion.a 
-              href="https://www.vistex.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center h-32 border border-gray-200 hover:border-gray-300 transition-all hover:shadow-sm p-6"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
-              <img 
-                src={vistexLogo} 
-                alt="Vistex" 
-                className="h-10 w-auto object-contain" 
-              />
-            </motion.a>
-            
-            <motion.a 
-              href="https://www.rockwellautomation.com/en-us/products/software/plex.html" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center h-32 border border-gray-200 hover:border-gray-300 transition-all hover:shadow-sm bg-gray-900 p-6"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
-              <img 
-                src={plexLogo} 
-                alt="Plex" 
-                className="h-8 w-auto object-contain" 
-              />
-            </motion.a>
-            
-            <motion.a 
-              href="https://www.oracle.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center h-32 border border-gray-200 hover:border-gray-300 transition-all hover:shadow-sm p-6"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
-              <img 
-                src={siebelLogo} 
-                alt="Siebel" 
-                className="h-12 w-auto object-contain" 
-              />
-            </motion.a>
           </div>
         </motion.div>
       </section>
