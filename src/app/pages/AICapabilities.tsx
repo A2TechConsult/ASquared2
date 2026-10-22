@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp } from 'lucide-react';
+import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp, Mic, FileText, Activity, ShieldCheck } from 'lucide-react';
 
 export function AICapabilities() {
   const capabilities = [
@@ -82,6 +82,45 @@ export function AICapabilities() {
         'AI explainability and model interpretability',
       ],
     },
+    {
+      icon: Mic,
+      title: 'Clinical AI & Ambient Dictation',
+      subtitle: 'Healthcare — Speech & Documentation',
+      description: 'HIPAA-ready ambient dictation and clinical scribing that captures the physician-patient encounter and produces structured notes, orders, and codes.',
+      features: [
+        'Azure Speech + medical ASR with specialty vocabularies',
+        'Structured SOAP note generation',
+        'ICD-10 / CPT coding assistance',
+        'EHR write-back (Epic, Cerner, Meditech)',
+        'Clinician review and sign-off workflows',
+      ],
+    },
+    {
+      icon: FileText,
+      title: 'Lab Documents & Cross-EHR Mapping',
+      subtitle: 'Healthcare — Interoperability',
+      description: 'Automated conversion of lab PDFs, scanned reports, and legacy formats into HL7 v2 and FHIR R4/R5, with cross-EHR case mapping for continuity of care.',
+      features: [
+        'PDF / image to HL7 v2 and FHIR conversion',
+        'USCDI v4 and payer data model alignment',
+        'Cross-EHR patient and case reconciliation',
+        'Document AI with specialty validators',
+        'Audit trails for 21 CFR Part 11',
+      ],
+    },
+    {
+      icon: Activity,
+      title: 'Medical Anomaly Detection',
+      subtitle: 'Healthcare — Real-Time Signals',
+      description: 'Real-time anomaly detection across vitals, imaging, and surgical / triage video to surface early sepsis, deterioration, and procedural risks.',
+      features: [
+        'ICU vitals streaming and early-warning scoring',
+        'Surgical and triage video analysis',
+        'Imaging triage with radiologist workflow',
+        'Alerting that respects clinical escalation paths',
+        'Model monitoring and bias mitigation',
+      ],
+    },
   ];
 
   const deliveryApproach = [
@@ -122,6 +161,29 @@ export function AICapabilities() {
       solution: 'Salesforce Einstein Discovery with external data enrichment and custom algorithms',
       impact: '18% forecast accuracy improvement, $12M inventory optimization',
     },
+    {
+      title: 'Ambient Dictation — 7-Hospital System',
+      challenge: 'Regional health system needed to reduce clinician documentation burden across 7 hospitals',
+      solution: 'Deployed ambient dictation with Azure Speech, specialty vocabularies, and Epic write-back',
+      impact: '62% reduction in after-hours charting, higher clinician satisfaction scores',
+    },
+    {
+      title: 'PDF-to-HL7 Lab Pipeline — MedTech ISV',
+      challenge: 'MedTech ISV needed to ingest lab PDFs from 300+ facilities into a FHIR-based platform',
+      solution: 'Document AI pipeline converting PDFs to HL7 v2 and FHIR R4 with specialty validators',
+      impact: '94% straight-through processing, days-to-minutes turnaround for new facilities',
+    },
+    {
+      title: 'ICU Anomaly Detection — Early Sepsis',
+      challenge: 'Academic medical center wanted earlier detection of sepsis in ICU populations',
+      solution: 'Streaming anomaly detection on vitals and labs with clinician-tuned escalation paths',
+      impact: 'Alerts 4–6 hours earlier than standard scoring, with reduced alert fatigue',
+    },
+  ];
+
+  const compliance = [
+    'HIPAA', 'HITRUST', 'SOC 2 Type II', 'ISO 27001', 'ISO 27701',
+    'HL7 v2', 'FHIR R4/R5', 'USCDI v4', '21 CFR Part 11', 'EU GDPR', 'EU AI Act', 'BAA-ready',
   ];
 
   return (
@@ -137,16 +199,16 @@ export function AICapabilities() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 mb-8">
               <Sparkles className="size-4 text-gray-600" />
               <span className="text-xs font-medium uppercase tracking-widest text-gray-600">
-                Artificial Intelligence
+                AI & Healthcare
               </span>
             </div>
-            
+
             <h1 className="text-6xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight">
               AI Capabilities
             </h1>
-            
+
             <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Enterprise-grade AI solutions that transform data into decisive advantage. From generative AI to autonomous agents, we deliver measurable outcomes.
+              Enterprise-grade AI across SAP, operations, and healthcare. From generative AI and autonomous agents to clinical dictation and medical anomaly detection — delivered with measurable outcomes.
             </p>
           </motion.div>
         </div>
@@ -166,7 +228,7 @@ export function AICapabilities() {
               Our Expertise
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Precision-engineered AI systems designed for enterprise scale, security, and governance.
+              Precision-engineered AI systems designed for enterprise scale, security, and governance — including HIPAA-ready healthcare workflows.
             </p>
           </motion.div>
 
@@ -294,7 +356,7 @@ export function AICapabilities() {
               Representative Projects
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Real implementations delivering measurable business value.
+              Real implementations delivering measurable business value — across enterprise AI and healthcare.
             </p>
           </motion.div>
 
@@ -361,6 +423,39 @@ export function AICapabilities() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Compliance Badges */}
+      <section className="px-6 mb-32">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 mb-6">
+              <ShieldCheck className="size-5 text-gray-700" />
+              <span className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                Security & Compliance
+              </span>
+            </div>
+            <h2 className="text-3xl font-light text-gray-900 mb-10 tracking-tight">
+              Built for regulated environments
+            </h2>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {compliance.map((item) => (
+                <span
+                  key={item}
+                  className="text-xs uppercase tracking-wider text-gray-600 bg-gray-50 border border-gray-200 px-3 py-1.5"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
