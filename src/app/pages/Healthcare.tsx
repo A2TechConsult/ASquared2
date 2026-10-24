@@ -10,6 +10,7 @@ import {
   TrendingUp,
   ArrowRight,
 } from 'lucide-react';
+import { HeroImage } from '@/app/components/HeroImage';
 
 export function Healthcare() {
   const capabilities = [
@@ -171,6 +172,13 @@ export function Healthcare() {
               Clinical AI that respects the clinician's workflow and the HIPAA perimeter. From ambient dictation to HL7 interoperability to continuous glucose monitoring — for hospitals, health systems, and ambulatory surgery centers.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Hero graphic */}
+      <section className="px-6 mb-24">
+        <div className="max-w-7xl mx-auto">
+          <HeroImage variant="healthcare" />
         </div>
       </section>
 
