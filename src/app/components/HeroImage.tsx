@@ -1,6 +1,7 @@
+// trigger preview2 netlify branch deploy — build 2
 /**
- * HeroImage — monochrome, Apple-esque SVG hero graphics.
- * Palette: pure white, black, grey. Vector-sharp at any resolution.
+ * HeroImage — monochrome, Apple-esque SVG hero graphics with slow,
+ * unhurried animations. Palette: white, black, grey. Vector-sharp.
  * variants: 'ai' | 'healthcare' | 'expertise'
  */
 export function HeroImage({
@@ -19,16 +20,17 @@ export function HeroImage({
       {variant === 'ai' && <AiArt />}
       {variant === 'healthcare' && <HealthcareArt />}
       {variant === 'expertise' && <ExpertiseArt />}
-      {/* Edge fade for Apple-style vignette */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/0 via-transparent to-white"></div>
     </div>
   );
 }
 
-/* ---------- AI: neural / agentic network ---------- */
+/* ============================================================
+   AI — neural network with slow breathing highlight nodes and
+   subtle shimmer along select links. Nothing jumps or flickers.
+   ============================================================ */
 
 function AiArt() {
-  // Deterministic node grid for a neural-network aesthetic.
   const nodes: { x: number; y: number; r: number }[] = [];
   const cols = 14;
   const rows = 5;
@@ -42,8 +44,8 @@ function AiArt() {
       nodes.push({ x, y, r: r2 });
     }
   }
-  // Connect nearest neighbours between adjacent columns.
-  const links: { x1: number; y1: number; x2: number; y2: number; o: number }[] = [];
+  const links: { x1: number; y1: number; x2: number; y2: number; o: number; i: number }[] = [];
+  let li = 0;
   for (let c = 0; c < cols - 1; c++) {
     for (let r = 0; r < rows; r++) {
       const a = nodes[c * rows + r];
@@ -52,17 +54,18 @@ function AiArt() {
         if (r2 < 0 || r2 >= rows) continue;
         const b = nodes[(c + 1) * rows + r2];
         const o = dr === 0 ? 0.35 : 0.15;
-        links.push({ x1: a.x, y1: a.y, x2: b.x, y2: b.y, o });
+        links.push({ x1: a.x, y1: a.y, x2: b.x, y2: b.y, o, i: li++ });
       }
     }
   }
-  // A few highlight nodes.
   const highlights = [
-    { x: 290, y: 180, r: 10 },
-    { x: 720, y: 110, r: 8 },
-    { x: 1020, y: 230, r: 11 },
-    { x: 1300, y: 150, r: 7 },
+    { x: 290, y: 180, r: 10, dur: 7.5, delay: 0 },
+    { x: 720, y: 110, r: 8, dur: 9, delay: 2.3 },
+    { x: 1020, y: 230, r: 11, dur: 8, delay: 1.1 },
+    { x: 1300, y: 150, r: 7, dur: 10, delay: 3.4 },
   ];
+  // Pick a few links to shimmer slowly.
+  const shimmerIdx = new Set([3, 11, 27, 44, 61, 78, 95, 112, 129, 146]);
 
   return (
     <svg
@@ -81,69 +84,135 @@ function AiArt() {
         </radialGradient>
       </defs>
       <rect width="1600" height="500" fill="url(#aibg)" />
-      {/* subtle horizon band */}
       <rect y="200" width="1600" height="1" fill="#000" opacity="0.04" />
 
       {/* links */}
-      {links.map((l, i) => (
-        <line
-          key={i}
-          x1={l.x1}
-          y1={l.y1}
-          x2={l.x2}
-          y2={l.y2}
-          stroke="#111111"
-          strokeWidth="0.75"
-          opacity={l.o}
-        />
-      ))}
+      {links.map((l) => {
+        const shimmer = shimmerIdx.has(l.i);
+        return (
+          <line
+            key={l.i}
+            x1={l.x1}
+            y1={l.y1}
+            x2={l.x2}
+            y2={l.y2}
+            stroke="#111111"
+            strokeWidth="0.75"
+            opacity={l.o}
+          >
+            {shimmer && (
+              <animate
+                attributeName="opacity"
+                values={`${l.o};${Math.min(0.9, l.o + 0.35)};${l.o}`}
+                dur={`${8 + (l.i % 5)}s`}
+                begin={`${(l.i * 0.37) % 6}s`}
+                repeatCount="indefinite"
+                calcMode="spline"
+                keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                keyTimes="0;0.5;1"
+              />
+            )}
+          </line>
+        );
+      })}
 
-      {/* nodes */}
-      {nodes.map((n, i) => (
-        <circle key={i} cx={n.x} cy={n.y} r={n.r} fill="#111111" opacity="0.55" />
-      ))}
+      {/* standard nodes with very subtle breathing on a subset */}
+      {nodes.map((n, i) => {
+        const breathe = i % 11 === 0;
+        return (
+          <circle key={i} cx={n.x} cy={n.y} r={n.r} fill="#111111" opacity="0.55">
+            {breathe && (
+              <animate
+                attributeName="opacity"
+                values="0.35;0.75;0.35"
+                dur={`${11 + (i % 4)}s`}
+                begin={`${(i * 0.21) % 5}s`}
+                repeatCount="indefinite"
+                calcMode="spline"
+                keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                keyTimes="0;0.5;1"
+              />
+            )}
+          </circle>
+        );
+      })}
 
-      {/* glowing highlight nodes */}
+      {/* highlight nodes — slow breathing halos */}
       {highlights.map((h, i) => (
         <g key={i}>
-          <circle cx={h.x} cy={h.y} r={h.r * 3.5} fill="url(#aiglow)" opacity="0.35" />
+          <circle cx={h.x} cy={h.y} r={h.r * 3.5} fill="url(#aiglow)" opacity="0.3">
+            <animate
+              attributeName="opacity"
+              values="0.18;0.45;0.18"
+              dur={`${h.dur}s`}
+              begin={`${h.delay}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+            <animate
+              attributeName="r"
+              values={`${h.r * 3};${h.r * 4.2};${h.r * 3}`}
+              dur={`${h.dur}s`}
+              begin={`${h.delay}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          </circle>
           <circle cx={h.x} cy={h.y} r={h.r} fill="#000" />
-          <circle cx={h.x} cy={h.y} r={h.r - 2} fill="#fff" opacity="0.7" />
+          <circle cx={h.x} cy={h.y} r={h.r - 2} fill="#fff" opacity="0.7">
+            <animate
+              attributeName="opacity"
+              values="0.6;0.95;0.6"
+              dur={`${h.dur}s`}
+              begin={`${h.delay}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          </circle>
         </g>
       ))}
     </svg>
   );
 }
 
-/* ---------- Healthcare: ECG pulse + dot grid ---------- */
+/* ============================================================
+   Healthcare — ECG pulse scrolling slowly across, dot grid,
+   abstract molecule rings with very gentle breathing.
+   ============================================================ */
 
 function HealthcareArt() {
-  // Dot grid
-  const dots = [];
+  const dots: { x: number; y: number }[] = [];
   for (let x = 40; x < 1600; x += 28) {
     for (let y = 40; y < 500; y += 28) {
       dots.push({ x, y });
     }
   }
 
-  // ECG waveform path
-  const ecgPath = (() => {
-    let d = 'M 0 250';
-    const seg = 320;
-    for (let i = 0; i < 5; i++) {
-      const x0 = i * seg;
-      d += ` L ${x0 + 80} 250`;
-      d += ` L ${x0 + 95} 240`;
-      d += ` L ${x0 + 110} 260`;
-      d += ` L ${x0 + 120} 180`;
-      d += ` L ${x0 + 135} 320`;
-      d += ` L ${x0 + 150} 230`;
-      d += ` L ${x0 + 165} 260`;
-      d += ` L ${x0 + 180} 250`;
-      d += ` L ${x0 + seg} 250`;
-    }
-    return d;
-  })();
+  // Build one ECG segment, then repeat it enough to fill 2× viewBox so we can scroll by one segment.
+  const seg = 320;
+  const makeSegment = (x0: number) =>
+    `L ${x0 + 80} 250 ` +
+    `L ${x0 + 95} 240 ` +
+    `L ${x0 + 110} 260 ` +
+    `L ${x0 + 120} 180 ` +
+    `L ${x0 + 135} 320 ` +
+    `L ${x0 + 150} 230 ` +
+    `L ${x0 + 165} 260 ` +
+    `L ${x0 + 180} 250 ` +
+    `L ${x0 + seg} 250`;
+
+  // Enough segments to cover 2× viewBox (we offset-translate by one seg).
+  let ecgPath = 'M -320 250 ';
+  const totalSegs = 8;
+  for (let i = 0; i < totalSegs; i++) {
+    ecgPath += makeSegment(-320 + i * seg) + ' ';
+  }
 
   return (
     <svg
@@ -166,29 +235,139 @@ function HealthcareArt() {
         ))}
       </g>
 
-      {/* soft ellipse accents (abstract molecules) */}
+      {/* soft breathing molecule accents */}
       <g opacity="0.08" fill="#000">
-        <ellipse cx="220" cy="140" rx="90" ry="90" />
-        <ellipse cx="1380" cy="360" rx="120" ry="120" />
+        <ellipse cx="220" cy="140" rx="90" ry="90">
+          <animate
+            attributeName="rx"
+            values="86;94;86"
+            dur="14s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+          <animate
+            attributeName="ry"
+            values="86;94;86"
+            dur="14s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </ellipse>
+        <ellipse cx="1380" cy="360" rx="120" ry="120">
+          <animate
+            attributeName="rx"
+            values="115;126;115"
+            dur="16s"
+            begin="2s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+          <animate
+            attributeName="ry"
+            values="115;126;115"
+            dur="16s"
+            begin="2s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </ellipse>
       </g>
       <g opacity="0.14" stroke="#000" strokeWidth="1" fill="none">
-        <circle cx="220" cy="140" r="140" />
-        <circle cx="220" cy="140" r="190" />
-        <circle cx="1380" cy="360" r="170" />
-        <circle cx="1380" cy="360" r="220" />
+        <circle cx="220" cy="140" r="140">
+          <animate
+            attributeName="opacity"
+            values="0.08;0.20;0.08"
+            dur="12s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </circle>
+        <circle cx="220" cy="140" r="190">
+          <animate
+            attributeName="opacity"
+            values="0.05;0.14;0.05"
+            dur="12s"
+            begin="1s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </circle>
+        <circle cx="1380" cy="360" r="170">
+          <animate
+            attributeName="opacity"
+            values="0.07;0.18;0.07"
+            dur="14s"
+            begin="2s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </circle>
+        <circle cx="1380" cy="360" r="220">
+          <animate
+            attributeName="opacity"
+            values="0.04;0.12;0.04"
+            dur="14s"
+            begin="3.5s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </circle>
       </g>
 
-      {/* ECG waveform */}
-      <path d={ecgPath} fill="none" stroke="#000" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-      <path d={ecgPath} fill="none" stroke="#000" strokeWidth="7" strokeLinejoin="round" strokeLinecap="round" opacity="0.08" />
+      {/* ECG — scrolls one segment width over 10s, loops seamlessly */}
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          from="0 0"
+          to="-320 0"
+          dur="10s"
+          repeatCount="indefinite"
+        />
+        <path
+          d={ecgPath}
+          fill="none"
+          stroke="#000"
+          strokeWidth="7"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          opacity="0.08"
+        />
+        <path
+          d={ecgPath}
+          fill="none"
+          stroke="#000"
+          strokeWidth="2.5"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+      </g>
     </svg>
   );
 }
 
-/* ---------- Expertise: layered constellation of expert nodes ---------- */
+/* ============================================================
+   Expertise — constellation that gently shines. Centre halos
+   breathe, selected nodes twinkle slowly across the scene.
+   ============================================================ */
 
 function ExpertiseArt() {
-  // Expert constellation — grouped clusters connected by thin lines
   const clusters = [
     { cx: 230, cy: 250, nodes: 8 },
     { cx: 560, cy: 190, nodes: 10 },
@@ -196,23 +375,26 @@ function ExpertiseArt() {
     { cx: 1210, cy: 210, nodes: 11 },
     { cx: 1450, cy: 320, nodes: 7 },
   ];
-  const pts: { x: number; y: number; r: number; i: number }[] = [];
+  const pts: { x: number; y: number; r: number; ci: number; twinkleDur?: number; twinkleBegin?: number }[] = [];
+  let globalIdx = 0;
   clusters.forEach((cl, ci) => {
     for (let i = 0; i < cl.nodes; i++) {
       const ang = (i / cl.nodes) * Math.PI * 2 + ci * 0.6;
       const radius = 55 + ((i * 13) % 60);
+      const twinkle = globalIdx % 4 === 0;
       pts.push({
         x: cl.cx + Math.cos(ang) * radius,
         y: cl.cy + Math.sin(ang) * radius * 0.7,
         r: 2 + (i % 3),
-        i: ci,
+        ci,
+        twinkleDur: twinkle ? 7 + (globalIdx % 5) : undefined,
+        twinkleBegin: twinkle ? (globalIdx * 0.37) % 6 : undefined,
       });
+      globalIdx++;
     }
-    // cluster centre
-    pts.push({ x: cl.cx, y: cl.cy, r: 7, i: ci });
+    pts.push({ x: cl.cx, y: cl.cy, r: 7, ci });
   });
 
-  // Inter-cluster connections (centre to centre of adjacent clusters)
   const centres = clusters.map((c) => ({ x: c.cx, y: c.cy }));
 
   return (
@@ -226,10 +408,13 @@ function ExpertiseArt() {
           <stop offset="0" stopColor="#f6f6f6" />
           <stop offset="1" stopColor="#ffffff" />
         </linearGradient>
+        <radialGradient id="expglow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#000" stopOpacity="0.6" />
+          <stop offset="1" stopColor="#000" stopOpacity="0" />
+        </radialGradient>
       </defs>
       <rect width="1600" height="500" fill="url(#expbg)" />
 
-      {/* long horizontal reference lines */}
       <g stroke="#000" opacity="0.05">
         <line x1="0" y1="150" x2="1600" y2="150" />
         <line x1="0" y1="350" x2="1600" y2="350" />
@@ -246,7 +431,18 @@ function ExpertiseArt() {
           stroke="#111"
           strokeWidth="1"
           opacity="0.25"
-        />
+        >
+          <animate
+            attributeName="opacity"
+            values="0.14;0.32;0.14"
+            dur={`${13 + i * 2}s`}
+            begin={`${i * 1.3}s`}
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+            keyTimes="0;0.5;1"
+          />
+        </line>
       ))}
 
       {/* within-cluster connections */}
@@ -262,14 +458,63 @@ function ExpertiseArt() {
         </g>
       ))}
 
-      {/* nodes */}
+      {/* nodes — some twinkle slowly */}
       {pts.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r={p.r} fill="#111" opacity="0.65" />
+        <circle key={i} cx={p.x} cy={p.y} r={p.r} fill="#111" opacity="0.65">
+          {p.twinkleDur !== undefined && (
+            <animate
+              attributeName="opacity"
+              values="0.35;1;0.35"
+              dur={`${p.twinkleDur}s`}
+              begin={`${p.twinkleBegin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          )}
+          {p.twinkleDur !== undefined && (
+            <animate
+              attributeName="r"
+              values={`${p.r};${p.r + 1.2};${p.r}`}
+              dur={`${p.twinkleDur}s`}
+              begin={`${p.twinkleBegin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          )}
+        </circle>
       ))}
 
-      {/* centre halos */}
+      {/* centre halos — slow shine */}
       {centres.map((c, i) => (
-        <circle key={`h-${i}`} cx={c.x} cy={c.y} r="18" fill="none" stroke="#000" opacity="0.15" />
+        <g key={`h-${i}`}>
+          <circle cx={c.x} cy={c.y} r="42" fill="url(#expglow)" opacity="0.2">
+            <animate
+              attributeName="opacity"
+              values="0.08;0.28;0.08"
+              dur={`${11 + i * 2}s`}
+              begin={`${i * 1.7}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+            <animate
+              attributeName="r"
+              values="36;52;36"
+              dur={`${11 + i * 2}s`}
+              begin={`${i * 1.7}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          </circle>
+          <circle cx={c.x} cy={c.y} r="18" fill="none" stroke="#000" opacity="0.15" />
+        </g>
       ))}
     </svg>
   );
