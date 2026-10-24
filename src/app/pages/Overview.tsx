@@ -208,62 +208,16 @@ export function Overview() {
             </p>
           </motion.div>
 
-          <div className="space-y-1">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
-              {
-                icon: Database,
-                title: 'SAP S/4HANA Transformation',
-                description: 'End-to-end migration from ECC to S/4HANA. System conversion, selective data transition, and greenfield implementations.',
-                areas: ['Brownfield & Greenfield', 'Finance & Logistics', 'Manufacturing & PP', 'Custom Code Remediation'],
-              },
-              {
-                icon: DollarSign,
-                title: 'Revenue & Pricing Solutions',
-                description: 'Complex pricing, rebate management, and incentive compensation using SAP Vistex platform.',
-                areas: ['Vistex Implementation', 'Channel Incentives', 'Rebate Processing', 'Trade Promotions'],
-              },
-              {
-                icon: Factory,
-                title: 'Manufacturing Systems',
-                description: 'Plant-level ERP and MES implementations. Plex systems for discrete and process manufacturing.',
-                areas: ['Plex ERP & MES', 'Shop Floor Control', 'Quality Management', 'Production Monitoring'],
-              },
-              {
-                icon: Network,
-                title: 'Integration & Middleware',
-                description: 'SAP PI/PO, CPI, and custom integration frameworks. Real-time data synchronization across enterprise systems.',
-                areas: ['SAP CPI/PI', 'API Management', 'EDI & B2B', 'Master Data Sync'],
-              },
-              {
-                icon: Brain,
-                title: 'Enterprise AI & Intelligent Automation',
-                description: 'AI-powered solutions across enterprise landscapes. SAP Joule, Einstein AI, Databricks, RAG systems, and agentic AI implementations.',
-                areas: ['AI in ERP', 'SAP AI Services', 'Predictive Analytics', 'Intelligent RPA'],
-              },
-              {
-                icon: Stethoscope,
-                title: 'Healthcare & Clinical Workflows',
-                description: 'HIPAA-ready AI for clinical dictation, lab document processing, cross-EHR case mapping, and real-time anomaly detection.',
-                areas: ['Ambient Dictation', 'PDF-to-HL7 / FHIR', 'EHR Integration', 'Clinical Anomaly Detection'],
-              },
-              {
-                icon: Rocket,
-                title: 'End-to-End Project Delivery',
-                description: 'Full lifecycle program management across SAP, Vistex, and Plex platforms. From discovery through hypercare support.',
-                areas: ['Global Rollouts', 'SAP Activate', 'Program Management', 'Go-Live Execution'],
-              },
-              {
-                icon: Users,
-                title: 'Staff Augmentation',
-                description: 'Platinum-level certified consultants with deep expertise. SAP architects, Vistex specialists, Plex experts, and integration developers.',
-                areas: ['Certified Experts', '15+ Years Experience', 'On-Demand Resources', 'Dedicated Teams'],
-              },
-              {
-                icon: Settings,
-                title: 'SAP Managed Services',
-                description: 'End-to-end ownership of your SAP landscape — from Basis to business processes. 24×7 monitoring, proactive issue resolution, and continuous optimization.',
-                areas: ['AMS Support', '24×7 Monitoring', 'S/4HANA Ops', 'Cloud Management', 'AIOps'],
-              },
+              { icon: Database, title: 'SAP S/4HANA Transformation', description: 'Brownfield conversions, greenfield builds, and selective data transition from ECC to S/4HANA.' },
+              { icon: Brain, title: 'Enterprise AI & Intelligent Automation', description: 'Generative AI, RAG, agentic systems, and SAP Joule across your landscape.' },
+              { icon: Users, title: 'Staff Augmentation', description: 'Platinum-level AI/ML, SAP, Vistex, and Plex specialists integrated into your teams.' },
+              { icon: Stethoscope, title: 'Healthcare & Clinical Workflows', description: 'HIPAA-ready clinical AI — ambient dictation, HL7 / FHIR pipelines, CGM intelligence.' },
+              { icon: Settings, title: 'SAP Managed Services', description: '24×7 monitoring, L2 / L3 support, and continuous optimization on Solution Manager / Cloud ALM.' },
+              { icon: Factory, title: 'Manufacturing Systems', description: 'Plex ERP and MES for discrete and process manufacturing, integrated with SAP.' },
+              { icon: Network, title: 'Integration & Middleware', description: 'SAP CPI, PI / PO, API management, and real-time data replication across the enterprise.' },
+              { icon: Rocket, title: 'End-to-End Project Delivery', description: 'SAP Activate program management from discovery through hypercare for global rollouts.' },
             ].map((area, index) => {
               const Icon = area.icon;
               return (
@@ -273,44 +227,23 @@ export function Overview() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="group"
+                  className="group bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 p-8"
                 >
-                  <motion.div
-                    className="px-12 py-10 bg-white hover:bg-gray-50 transition-all duration-300 cursor-default"
-                    whileHover={{ x: 8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="flex items-start gap-8">
-                      {/* Icon */}
-                      <div className="flex-shrink-0 pt-1">
-                        <div className="w-12 h-12 flex items-center justify-center">
-                          <Icon className="size-7 text-gray-900 group-hover:scale-110 transition-transform duration-300" />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-2xl font-light text-gray-900 tracking-tight mb-3">
-                          {area.title}
-                        </h3>
-                        <p className="text-gray-600 mb-6 leading-relaxed">
-                          {area.description}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {area.areas.map((item, i) => (
-                            <span
-                              key={i}
-                              className="text-xs uppercase tracking-wider text-gray-500 bg-gray-50 group-hover:bg-white px-3 py-1.5 transition-colors duration-200"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
+                  <div className="flex items-start gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center">
+                        <Icon className="size-6 text-white" />
                       </div>
                     </div>
-                  </motion.div>
+                    <div className="flex-1 min-w-0 pt-1">
+                      <h3 className="text-xl font-light text-gray-900 tracking-tight mb-2">
+                        {area.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {area.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
