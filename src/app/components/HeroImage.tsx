@@ -1,3 +1,4 @@
+// trigger preview2 netlify branch deploy
 /**
  * HeroImage — monochrome, Apple-esque SVG hero graphics.
  * Palette: pure white, black, grey. Vector-sharp at any resolution.
