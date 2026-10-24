@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Users, Award, Target, Briefcase, Code, Shield, Brain, Check, ArrowRight } from 'lucide-react';
+import { HeroImage } from '@/app/components/HeroImage';
 
 export function StaffAugmentation() {
   const expertiseAreas = [
@@ -175,6 +176,13 @@ export function StaffAugmentation() {
               Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, and specialty talent for critical enterprise initiatives.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Hero graphic */}
+      <section className="px-6 mb-20">
+        <div className="max-w-7xl mx-auto">
+          <HeroImage variant="expertise" />
         </div>
       </section>
 
