@@ -40,10 +40,10 @@ export function Overview() {
           className="max-w-5xl text-center"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
-            Enterprise consulting for SAP, AI, and healthcare.
+            AI-first consulting. Enterprise-ready.
           </h1>
           <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Precision execution without the noise — from S/4HANA migrations to agentic AI systems and clinical workflow automation.
+            An AI development partner at our core — with expert talent, deep SAP foundations, and the discipline to make AI real in production. Without the noise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -73,10 +73,10 @@ export function Overview() {
             className="text-center"
           >
             <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-8">
-              Focused on outcomes. Built for the enterprise.
+              AI-forward. Enterprise-grounded.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-              We help Fortune 500 companies and global enterprises implement, optimize, and extend mission-critical systems — SAP S/4HANA at the core, enterprise AI across the stack, and purpose-built healthcare workflows. Our expertise spans ECC to S/4HANA migrations, Vistex and Plex integrations, agentic AI and RAG systems, and clinical automation across manufacturing, pharmaceutical, industrial, and healthcare sectors.
+              We build AI that reaches production — generative AI, RAG, and agentic systems — and we back it with the staff augmentation core, SAP depth, and healthcare specialization that keep enterprise programs on track. Fortune 500 clients across manufacturing, life sciences, industrial, and healthcare.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-16 text-left">
               <div>
@@ -204,7 +204,7 @@ export function Overview() {
           >
             <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">Core competencies</h2>
             <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-              Deep technical expertise across SAP, enterprise AI, and healthcare systems. From greenfield implementations to large-scale transformations.
+              AI-first expertise, built on deep enterprise foundations across SAP, cloud, and healthcare systems.
             </p>
           </motion.div>
 
