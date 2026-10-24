@@ -1,7 +1,7 @@
-// trigger preview2 netlify branch deploy — build 2
+// trigger preview2 netlify branch deploy â build 3 (visible slow animations)
 /**
- * HeroImage — monochrome, Apple-esque SVG hero graphics with slow,
- * unhurried animations. Palette: white, black, grey. Vector-sharp.
+ * HeroImage â monochrome, Apple-esque SVG hero graphics with visibly
+ * live but unhurried animations. Palette: white, black, grey.
  * variants: 'ai' | 'healthcare' | 'expertise'
  */
 export function HeroImage({
@@ -26,8 +26,8 @@ export function HeroImage({
 }
 
 /* ============================================================
-   AI — neural network with slow breathing highlight nodes and
-   subtle shimmer along select links. Nothing jumps or flickers.
+   AI â neural network with slow-drifting data particles traveling
+   along the links, plus breathing highlight halos.
    ============================================================ */
 
 function AiArt() {
@@ -58,14 +58,19 @@ function AiArt() {
       }
     }
   }
+
+  // Hand-picked traveling-particle paths across the grid â slow drift LâR,
+  // staggered so there's always motion somewhere on the canvas.
+  const particles = links
+    .filter((l) => [8, 25, 42, 59, 73, 90, 107, 124, 140, 155, 7, 50, 100].includes(l.i))
+    .map((l, idx) => ({ ...l, dur: 12 + (idx % 6), begin: (idx * 1.3) % 10 }));
+
   const highlights = [
     { x: 290, y: 180, r: 10, dur: 7.5, delay: 0 },
     { x: 720, y: 110, r: 8, dur: 9, delay: 2.3 },
     { x: 1020, y: 230, r: 11, dur: 8, delay: 1.1 },
     { x: 1300, y: 150, r: 7, dur: 10, delay: 3.4 },
   ];
-  // Pick a few links to shimmer slowly.
-  const shimmerIdx = new Set([3, 11, 27, 44, 61, 78, 95, 112, 129, 146]);
 
   return (
     <svg
@@ -82,50 +87,39 @@ function AiArt() {
           <stop offset="0" stopColor="#111" stopOpacity="0.9" />
           <stop offset="1" stopColor="#111" stopOpacity="0" />
         </radialGradient>
+        <radialGradient id="aipart" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#000" stopOpacity="1" />
+          <stop offset="0.6" stopColor="#000" stopOpacity="0.4" />
+          <stop offset="1" stopColor="#000" stopOpacity="0" />
+        </radialGradient>
       </defs>
       <rect width="1600" height="500" fill="url(#aibg)" />
       <rect y="200" width="1600" height="1" fill="#000" opacity="0.04" />
 
-      {/* links */}
-      {links.map((l) => {
-        const shimmer = shimmerIdx.has(l.i);
-        return (
-          <line
-            key={l.i}
-            x1={l.x1}
-            y1={l.y1}
-            x2={l.x2}
-            y2={l.y2}
-            stroke="#111111"
-            strokeWidth="0.75"
-            opacity={l.o}
-          >
-            {shimmer && (
-              <animate
-                attributeName="opacity"
-                values={`${l.o};${Math.min(0.9, l.o + 0.35)};${l.o}`}
-                dur={`${8 + (l.i % 5)}s`}
-                begin={`${(l.i * 0.37) % 6}s`}
-                repeatCount="indefinite"
-                calcMode="spline"
-                keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-                keyTimes="0;0.5;1"
-              />
-            )}
-          </line>
-        );
-      })}
+      {/* static links */}
+      {links.map((l) => (
+        <line
+          key={l.i}
+          x1={l.x1}
+          y1={l.y1}
+          x2={l.x2}
+          y2={l.y2}
+          stroke="#111111"
+          strokeWidth="0.75"
+          opacity={l.o}
+        />
+      ))}
 
-      {/* standard nodes with very subtle breathing on a subset */}
+      {/* breathing standard nodes (every 4th) */}
       {nodes.map((n, i) => {
-        const breathe = i % 11 === 0;
+        const breathe = i % 4 === 0;
         return (
           <circle key={i} cx={n.x} cy={n.y} r={n.r} fill="#111111" opacity="0.55">
             {breathe && (
               <animate
                 attributeName="opacity"
-                values="0.35;0.75;0.35"
-                dur={`${11 + (i % 4)}s`}
+                values="0.3;0.85;0.3"
+                dur={`${8 + (i % 5)}s`}
                 begin={`${(i * 0.21) % 5}s`}
                 repeatCount="indefinite"
                 calcMode="spline"
@@ -137,13 +131,65 @@ function AiArt() {
         );
       })}
 
-      {/* highlight nodes — slow breathing halos */}
+      {/* traveling data particles â drift slowly along select edges */}
+      {particles.map((p, i) => (
+        <g key={`p-${i}`}>
+          {/* soft trailing glow */}
+          <circle r="7" fill="url(#aipart)" opacity="0.5">
+            <animate
+              attributeName="cx"
+              values={`${p.x1};${p.x2};${p.x1}`}
+              dur={`${p.dur}s`}
+              begin={`${p.begin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+            <animate
+              attributeName="cy"
+              values={`${p.y1};${p.y2};${p.y1}`}
+              dur={`${p.dur}s`}
+              begin={`${p.begin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          </circle>
+          {/* bright core */}
+          <circle r="1.8" fill="#000">
+            <animate
+              attributeName="cx"
+              values={`${p.x1};${p.x2};${p.x1}`}
+              dur={`${p.dur}s`}
+              begin={`${p.begin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+            <animate
+              attributeName="cy"
+              values={`${p.y1};${p.y2};${p.y1}`}
+              dur={`${p.dur}s`}
+              begin={`${p.begin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+              keyTimes="0;0.5;1"
+            />
+          </circle>
+        </g>
+      ))}
+
+      {/* highlight nodes â breathing halos */}
       {highlights.map((h, i) => (
         <g key={i}>
           <circle cx={h.x} cy={h.y} r={h.r * 3.5} fill="url(#aiglow)" opacity="0.3">
             <animate
               attributeName="opacity"
-              values="0.18;0.45;0.18"
+              values="0.15;0.5;0.15"
               dur={`${h.dur}s`}
               begin={`${h.delay}s`}
               repeatCount="indefinite"
@@ -153,7 +199,7 @@ function AiArt() {
             />
             <animate
               attributeName="r"
-              values={`${h.r * 3};${h.r * 4.2};${h.r * 3}`}
+              values={`${h.r * 2.8};${h.r * 4.6};${h.r * 2.8}`}
               dur={`${h.dur}s`}
               begin={`${h.delay}s`}
               repeatCount="indefinite"
@@ -166,7 +212,7 @@ function AiArt() {
           <circle cx={h.x} cy={h.y} r={h.r - 2} fill="#fff" opacity="0.7">
             <animate
               attributeName="opacity"
-              values="0.6;0.95;0.6"
+              values="0.55;1;0.55"
               dur={`${h.dur}s`}
               begin={`${h.delay}s`}
               repeatCount="indefinite"
@@ -182,8 +228,7 @@ function AiArt() {
 }
 
 /* ============================================================
-   Healthcare — ECG pulse scrolling slowly across, dot grid,
-   abstract molecule rings with very gentle breathing.
+   Healthcare â ECG scrolling slowly across. (Already live.)
    ============================================================ */
 
 function HealthcareArt() {
@@ -194,7 +239,6 @@ function HealthcareArt() {
     }
   }
 
-  // Build one ECG segment, then repeat it enough to fill 2× viewBox so we can scroll by one segment.
   const seg = 320;
   const makeSegment = (x0: number) =>
     `L ${x0 + 80} 250 ` +
@@ -207,7 +251,6 @@ function HealthcareArt() {
     `L ${x0 + 180} 250 ` +
     `L ${x0 + seg} 250`;
 
-  // Enough segments to cover 2× viewBox (we offset-translate by one seg).
   let ecgPath = 'M -320 250 ';
   const totalSegs = 8;
   for (let i = 0; i < totalSegs; i++) {
@@ -228,109 +271,33 @@ function HealthcareArt() {
       </defs>
       <rect width="1600" height="500" fill="url(#hcbg)" />
 
-      {/* dot grid */}
       <g fill="#111111" opacity="0.12">
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r="1.1" />
         ))}
       </g>
 
-      {/* soft breathing molecule accents */}
       <g opacity="0.08" fill="#000">
         <ellipse cx="220" cy="140" rx="90" ry="90">
-          <animate
-            attributeName="rx"
-            values="86;94;86"
-            dur="14s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-          <animate
-            attributeName="ry"
-            values="86;94;86"
-            dur="14s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
+          <animate attributeName="rx" values="86;96;86" dur="12s" repeatCount="indefinite"
+            calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
+          <animate attributeName="ry" values="86;96;86" dur="12s" repeatCount="indefinite"
+            calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
         </ellipse>
         <ellipse cx="1380" cy="360" rx="120" ry="120">
-          <animate
-            attributeName="rx"
-            values="115;126;115"
-            dur="16s"
-            begin="2s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-          <animate
-            attributeName="ry"
-            values="115;126;115"
-            dur="16s"
-            begin="2s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
+          <animate attributeName="rx" values="115;130;115" dur="14s" begin="2s" repeatCount="indefinite"
+            calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
+          <animate attributeName="ry" values="115;130;115" dur="14s" begin="2s" repeatCount="indefinite"
+            calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
         </ellipse>
       </g>
       <g opacity="0.14" stroke="#000" strokeWidth="1" fill="none">
-        <circle cx="220" cy="140" r="140">
-          <animate
-            attributeName="opacity"
-            values="0.08;0.20;0.08"
-            dur="12s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-        </circle>
-        <circle cx="220" cy="140" r="190">
-          <animate
-            attributeName="opacity"
-            values="0.05;0.14;0.05"
-            dur="12s"
-            begin="1s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-        </circle>
-        <circle cx="1380" cy="360" r="170">
-          <animate
-            attributeName="opacity"
-            values="0.07;0.18;0.07"
-            dur="14s"
-            begin="2s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-        </circle>
-        <circle cx="1380" cy="360" r="220">
-          <animate
-            attributeName="opacity"
-            values="0.04;0.12;0.04"
-            dur="14s"
-            begin="3.5s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-        </circle>
+        <circle cx="220" cy="140" r="140" />
+        <circle cx="220" cy="140" r="190" />
+        <circle cx="1380" cy="360" r="170" />
+        <circle cx="1380" cy="360" r="220" />
       </g>
 
-      {/* ECG — scrolls one segment width over 10s, loops seamlessly */}
       <g>
         <animateTransform
           attributeName="transform"
@@ -340,60 +307,26 @@ function HealthcareArt() {
           dur="10s"
           repeatCount="indefinite"
         />
-        <path
-          d={ecgPath}
-          fill="none"
-          stroke="#000"
-          strokeWidth="7"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-          opacity="0.08"
-        />
-        <path
-          d={ecgPath}
-          fill="none"
-          stroke="#000"
-          strokeWidth="2.5"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-        />
+        <path d={ecgPath} fill="none" stroke="#000" strokeWidth="7" strokeLinejoin="round" strokeLinecap="round" opacity="0.08" />
+        <path d={ecgPath} fill="none" stroke="#000" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
       </g>
     </svg>
   );
 }
 
 /* ============================================================
-   Expertise — constellation that gently shines. Centre halos
-   breathe, selected nodes twinkle slowly across the scene.
+   Expertise â constellation whose clusters slowly rotate around
+   their centres (60â85s per revolution) and whose halos breathe.
    ============================================================ */
 
 function ExpertiseArt() {
   const clusters = [
-    { cx: 230, cy: 250, nodes: 8 },
-    { cx: 560, cy: 190, nodes: 10 },
-    { cx: 880, cy: 290, nodes: 9 },
-    { cx: 1210, cy: 210, nodes: 11 },
-    { cx: 1450, cy: 320, nodes: 7 },
+    { cx: 230, cy: 250, nodes: 8, dur: 72, dir: 1 },
+    { cx: 560, cy: 190, nodes: 10, dur: 85, dir: -1 },
+    { cx: 880, cy: 290, nodes: 9, dur: 68, dir: 1 },
+    { cx: 1210, cy: 210, nodes: 11, dur: 90, dir: -1 },
+    { cx: 1450, cy: 320, nodes: 7, dur: 76, dir: 1 },
   ];
-  const pts: { x: number; y: number; r: number; ci: number; twinkleDur?: number; twinkleBegin?: number }[] = [];
-  let globalIdx = 0;
-  clusters.forEach((cl, ci) => {
-    for (let i = 0; i < cl.nodes; i++) {
-      const ang = (i / cl.nodes) * Math.PI * 2 + ci * 0.6;
-      const radius = 55 + ((i * 13) % 60);
-      const twinkle = globalIdx % 4 === 0;
-      pts.push({
-        x: cl.cx + Math.cos(ang) * radius,
-        y: cl.cy + Math.sin(ang) * radius * 0.7,
-        r: 2 + (i % 3),
-        ci,
-        twinkleDur: twinkle ? 7 + (globalIdx % 5) : undefined,
-        twinkleBegin: twinkle ? (globalIdx * 0.37) % 6 : undefined,
-      });
-      globalIdx++;
-    }
-    pts.push({ x: cl.cx, y: cl.cy, r: 7, ci });
-  });
 
   const centres = clusters.map((c) => ({ x: c.cx, y: c.cy }));
 
@@ -420,7 +353,7 @@ function ExpertiseArt() {
         <line x1="0" y1="350" x2="1600" y2="350" />
       </g>
 
-      {/* cluster-to-cluster lines */}
+      {/* cluster-to-cluster lines with slow opacity drift */}
       {centres.slice(0, -1).map((a, i) => (
         <line
           key={`c-${i}`}
@@ -434,7 +367,7 @@ function ExpertiseArt() {
         >
           <animate
             attributeName="opacity"
-            values="0.14;0.32;0.14"
+            values="0.1;0.4;0.1"
             dur={`${13 + i * 2}s`}
             begin={`${i * 1.3}s`}
             repeatCount="indefinite"
@@ -445,56 +378,78 @@ function ExpertiseArt() {
         </line>
       ))}
 
-      {/* within-cluster connections */}
-      {clusters.map((cl, ci) => (
-        <g key={`cl-${ci}`} stroke="#111" opacity="0.18" strokeWidth="0.8">
-          {Array.from({ length: cl.nodes }).map((_, i) => {
-            const ang1 = (i / cl.nodes) * Math.PI * 2 + ci * 0.6;
-            const radius1 = 55 + ((i * 13) % 60);
-            const x1 = cl.cx + Math.cos(ang1) * radius1;
-            const y1 = cl.cy + Math.sin(ang1) * radius1 * 0.7;
-            return <line key={i} x1={cl.cx} y1={cl.cy} x2={x1} y2={y1} />;
-          })}
-        </g>
-      ))}
-
-      {/* nodes — some twinkle slowly */}
-      {pts.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r={p.r} fill="#111" opacity="0.65">
-          {p.twinkleDur !== undefined && (
-            <animate
-              attributeName="opacity"
-              values="0.35;1;0.35"
-              dur={`${p.twinkleDur}s`}
-              begin={`${p.twinkleBegin}s`}
+      {/* each cluster â ROTATES slowly around its centre */}
+      {clusters.map((cl, ci) => {
+        const to = cl.dir === 1 ? 360 : -360;
+        const nodes: { x: number; y: number; r: number; twinkle: boolean; tDur: number; tBegin: number }[] = [];
+        for (let i = 0; i < cl.nodes; i++) {
+          const ang = (i / cl.nodes) * Math.PI * 2 + ci * 0.6;
+          const radius = 55 + ((i * 13) % 60);
+          nodes.push({
+            x: cl.cx + Math.cos(ang) * radius,
+            y: cl.cy + Math.sin(ang) * radius * 0.7,
+            r: 2 + (i % 3),
+            twinkle: i % 2 === 0,
+            tDur: 6 + (i % 4),
+            tBegin: (i * 0.5 + ci * 0.9) % 5,
+          });
+        }
+        return (
+          <g key={`cl-${ci}`}>
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from={`0 ${cl.cx} ${cl.cy}`}
+              to={`${to} ${cl.cx} ${cl.cy}`}
+              dur={`${cl.dur}s`}
               repeatCount="indefinite"
-              calcMode="spline"
-              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-              keyTimes="0;0.5;1"
             />
-          )}
-          {p.twinkleDur !== undefined && (
-            <animate
-              attributeName="r"
-              values={`${p.r};${p.r + 1.2};${p.r}`}
-              dur={`${p.twinkleDur}s`}
-              begin={`${p.twinkleBegin}s`}
-              repeatCount="indefinite"
-              calcMode="spline"
-              keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-              keyTimes="0;0.5;1"
-            />
-          )}
-        </circle>
-      ))}
+            {/* within-cluster spokes */}
+            <g stroke="#111" opacity="0.2" strokeWidth="0.8">
+              {nodes.map((n, i) => (
+                <line key={i} x1={cl.cx} y1={cl.cy} x2={n.x} y2={n.y} />
+              ))}
+            </g>
+            {/* orbiting nodes */}
+            {nodes.map((n, i) => (
+              <circle key={i} cx={n.x} cy={n.y} r={n.r} fill="#111" opacity="0.7">
+                {n.twinkle && (
+                  <animate
+                    attributeName="opacity"
+                    values="0.4;1;0.4"
+                    dur={`${n.tDur}s`}
+                    begin={`${n.tBegin}s`}
+                    repeatCount="indefinite"
+                    calcMode="spline"
+                    keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                    keyTimes="0;0.5;1"
+                  />
+                )}
+                {n.twinkle && (
+                  <animate
+                    attributeName="r"
+                    values={`${n.r};${n.r + 1.5};${n.r}`}
+                    dur={`${n.tDur}s`}
+                    begin={`${n.tBegin}s`}
+                    repeatCount="indefinite"
+                    calcMode="spline"
+                    keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                    keyTimes="0;0.5;1"
+                  />
+                )}
+              </circle>
+            ))}
+          </g>
+        );
+      })}
 
-      {/* centre halos — slow shine */}
+      {/* centre halos â slow shine (static, not inside rotating groups) */}
       {centres.map((c, i) => (
         <g key={`h-${i}`}>
           <circle cx={c.x} cy={c.y} r="42" fill="url(#expglow)" opacity="0.2">
             <animate
               attributeName="opacity"
-              values="0.08;0.28;0.08"
+              values="0.08;0.32;0.08"
               dur={`${11 + i * 2}s`}
               begin={`${i * 1.7}s`}
               repeatCount="indefinite"
@@ -504,7 +459,7 @@ function ExpertiseArt() {
             />
             <animate
               attributeName="r"
-              values="36;52;36"
+              values="34;56;34"
               dur={`${11 + i * 2}s`}
               begin={`${i * 1.7}s`}
               repeatCount="indefinite"
@@ -513,6 +468,7 @@ function ExpertiseArt() {
               keyTimes="0;0.5;1"
             />
           </circle>
+          <circle cx={c.x} cy={c.y} r="7" fill="#111" opacity="0.9" />
           <circle cx={c.x} cy={c.y} r="18" fill="none" stroke="#000" opacity="0.15" />
         </g>
       ))}
