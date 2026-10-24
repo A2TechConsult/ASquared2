@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Users, Award, Target, Briefcase, Code, Shield, Brain, Check, ArrowRight } from 'lucide-react';
+import { Users, Award, Target, Briefcase, Code, Shield, Brain, Stethoscope, Check, ArrowRight } from 'lucide-react';
 import { HeroImage } from '@/app/components/HeroImage';
 
 export function StaffAugmentation() {
@@ -21,36 +21,6 @@ export function StaffAugmentation() {
       ],
     },
     {
-      icon: Award,
-      title: 'Vistex Specialists',
-      subtitle: 'Pricing & Incentive Management',
-      roles: [
-        'Vistex Solution Architects',
-        'Vistex Functional Consultants (Rebates, Chargebacks)',
-        'Vistex Technical Developers (ABAP, Workflow)',
-        'Channel Incentive Management Experts',
-        'Vistex Integration Specialists (SAP SD / FI)',
-        'Trade Promotion Management Consultants',
-        'Vistex Upgrade & Migration Specialists',
-        'Royalty & Licensing Management Experts',
-      ],
-    },
-    {
-      icon: Briefcase,
-      title: 'Plex / Rockwell Automation',
-      subtitle: 'Manufacturing Cloud Solutions',
-      roles: [
-        'Plex ERP Implementation Consultants',
-        'Plex MES (Manufacturing Execution) Specialists',
-        'Plex Quality Management Experts (APQP, PPAP, SPC)',
-        'Plex Supply Chain Consultants',
-        'Rockwell Automation Integration Architects',
-        'Plex–SAP Integration Developers',
-        'Plex Production Monitoring Analysts',
-        'Automotive Industry Plex Specialists',
-      ],
-    },
-    {
       icon: Brain,
       title: 'AI, ML & Data Science',
       subtitle: 'Modern Intelligence Engineering',
@@ -66,8 +36,23 @@ export function StaffAugmentation() {
       ],
     },
     {
+      icon: Stethoscope,
+      title: 'Healthcare Experts',
+      subtitle: 'Clinical & Life Sciences Specialists',
+      roles: [
+        'Clinical AI Specialists (ambient dictation, clinical documentation)',
+        'HL7 / FHIR Integration Engineers',
+        'Epic & Cerner EHR Consultants',
+        'HIPAA Compliance & Security Specialists',
+        'Healthcare Data Scientists (claims, clinical, CGM)',
+        'Medical Device & Wearables Integration Engineers',
+        'Pharma / Life Sciences SAP Consultants',
+        'Clinical Workflow & Revenue Cycle Analysts',
+      ],
+    },
+    {
       icon: Target,
-      title: 'Project Execution',
+      title: 'Project Execution Specialists',
       subtitle: 'Leadership & Delivery',
       roles: [
         'SAP Program Managers (PMP, SAFe certified)',
@@ -78,6 +63,21 @@ export function StaffAugmentation() {
         'Scrum Masters & Agile Coaches',
         'Cutover & Go-Live Managers',
         'Post-Production Support Leads',
+      ],
+    },
+    {
+      icon: Users,
+      title: 'Proof of Concept Delivery',
+      subtitle: 'Rapid Innovation',
+      roles: [
+        'PoC Solution Architects',
+        'Rapid Prototyping Developers',
+        'SAP Innovation Consultants (BTP, AI/ML)',
+        'Demo Environment Specialists',
+        'Technical Feasibility Analysts',
+        'PoC-to-Production Transition Managers',
+        'SAP Fiori UX / UI Designers',
+        'Integration PoC Specialists (APIs, Middleware)',
       ],
     },
     {
@@ -96,18 +96,33 @@ export function StaffAugmentation() {
       ],
     },
     {
-      icon: Users,
-      title: 'Proof of Concept Delivery',
-      subtitle: 'Rapid Innovation',
+      icon: Briefcase,
+      title: 'Plex / Rockwell Automation',
+      subtitle: 'Manufacturing Cloud Solutions',
       roles: [
-        'PoC Solution Architects',
-        'Rapid Prototyping Developers',
-        'SAP Innovation Consultants (BTP, AI/ML)',
-        'Demo Environment Specialists',
-        'Technical Feasibility Analysts',
-        'PoC-to-Production Transition Managers',
-        'SAP Fiori UX / UI Designers',
-        'Integration PoC Specialists (APIs, Middleware)',
+        'Plex ERP Implementation Consultants',
+        'Plex MES (Manufacturing Execution) Specialists',
+        'Plex Quality Management Experts (APQP, PPAP, SPC)',
+        'Plex Supply Chain Consultants',
+        'Rockwell Automation Integration Architects',
+        'Plex–SAP Integration Developers',
+        'Plex Production Monitoring Analysts',
+        'Automotive Industry Plex Specialists',
+      ],
+    },
+    {
+      icon: Award,
+      title: 'Vistex Specialists',
+      subtitle: 'Pricing & Incentive Management',
+      roles: [
+        'Vistex Solution Architects',
+        'Vistex Functional Consultants (Rebates, Chargebacks)',
+        'Vistex Technical Developers (ABAP, Workflow)',
+        'Channel Incentive Management Experts',
+        'Vistex Integration Specialists (SAP SD / FI)',
+        'Trade Promotion Management Consultants',
+        'Vistex Upgrade & Migration Specialists',
+        'Royalty & Licensing Management Experts',
       ],
     },
   ];
