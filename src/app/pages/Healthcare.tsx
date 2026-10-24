@@ -1,12 +1,11 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
-  Stethoscope,
   Mic,
   FileText,
   Activity,
-  Video,
   Workflow,
+  Droplets,
   ShieldCheck,
   TrendingUp,
   ArrowRight,
@@ -71,32 +70,17 @@ export function Healthcare() {
       ],
     },
     {
-      icon: Video,
-      title: 'Surgical & Triage Video',
-      subtitle: 'Real-Time Video Intelligence',
+      icon: Droplets,
+      title: 'CGM Intelligence & Glycemic Risk',
+      subtitle: 'Continuous Glucose Monitoring AI',
       description:
-        'Real-time video stream analysis for surgical workflow phases, instrument tracking, and triage-room monitoring. Azure Video Indexer plus Custom Vision detectors — edge-first for low-latency intra-op signals, with a human-review loop on high-stakes classifications.',
+        'AI on continuous glucose monitor streams (Dexcom, FreeStyle Libre, Medtronic) fused with nutrition, insulin, and activity context. Early flags for hypo and hyper events, pattern coaching, and clinician dashboards — tuned per patient and surfaced inside the clinical workflow.',
       features: [
-        'Surgical phase classification',
-        'Visible instrument detection',
-        'De-identified triage-room acuity signals',
-        'Edge-first inference for intra-op latency',
-        'FDA-adjacent documentation ready',
-      ],
-    },
-    {
-      icon: Stethoscope,
-      title: 'Specialty Workflows',
-      subtitle: 'GI · Ortho · Anesthesia · Nursing · Primary Care · ASCs',
-      description:
-        "Clinical workflows are specialty-shaped. The dictation that works in GI does not work in Orthopedics. The anesthesia record does not look like a nursing note. The ASC's cost ceiling does not match the health system's. We build with that in mind.",
-      features: [
-        'Gastroenterology — scope procedures, specimens',
-        'Orthopedics — surgeon dictation, implant tracking',
-        'Anesthesia — AIMS, pre-op, intra-op capture',
-        'Nursing — bedside, charting, patient tracking',
-        'Primary care — ambient SOAP, grounded Rx',
-        'Ambulatory Surgery Centers — mobile-first, cost-sensitive',
+        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
+        'Hypo / hyper early-warning scoring with personalized thresholds',
+        'Nutrition, insulin, and activity context fusion',
+        'TIR, TBR, GMI dashboards for endocrinology teams',
+        'FHIR Observation output with per-patient escalation paths',
       ],
     },
   ];
@@ -184,7 +168,7 @@ export function Healthcare() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Clinical AI that respects the clinician's workflow and the HIPAA perimeter. From ambient dictation to HL7 interoperability to surgical video intelligence — for hospitals, health systems, and ambulatory surgery centers.
+              Clinical AI that respects the clinician's workflow and the HIPAA perimeter. From ambient dictation to HL7 interoperability to continuous glucose monitoring — for hospitals, health systems, and ambulatory surgery centers.
             </p>
           </motion.div>
         </div>
