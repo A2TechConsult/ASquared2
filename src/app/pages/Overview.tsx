@@ -415,23 +415,23 @@ export function Overview() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="overflow-x-auto overflow-y-hidden scrollbar-hide pb-8">
-              <div className="flex gap-6 min-w-max px-4">
-                {[
+            <div className="industry-marquee overflow-hidden pb-8">
+              <div className="flex gap-6 min-w-max px-4 industry-track">
+                {((items) => [...items, ...items])([
                   { name: 'Manufacturing', detail: 'Discrete & Process', gradient: 'from-gray-50 to-gray-100' },
+                  { name: 'Life Sciences & Pharma', detail: 'Regulated Industries', gradient: 'from-gray-50 to-gray-100' },
+                  { name: 'Healthcare', detail: 'Providers & MedTech', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Consumer Goods', detail: 'CPG / FMCG', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Retail', detail: 'Omnichannel', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Utilities & Energy', detail: 'Power & Resources', gradient: 'from-gray-50 to-gray-100' },
-                  { name: 'Life Sciences & Pharma', detail: 'Regulated Industries', gradient: 'from-gray-50 to-gray-100' },
-                  { name: 'Healthcare', detail: 'Providers & MedTech', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Automotive', detail: 'OEMs & Suppliers', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Chemicals', detail: 'Process Industries', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Engineering & Construction', detail: 'EPC Projects', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Public Sector', detail: 'Government Services', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Financial Services', detail: 'Banking & Insurance', gradient: 'from-gray-50 to-gray-100' },
-                ].map((industry, index) => (
+                ]).map((industry, index) => (
                   <motion.div
-                    key={industry.name}
+                    key={`${industry.name}-${index}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
@@ -453,22 +453,29 @@ export function Overview() {
               </div>
             </div>
 
-            {/* Scroll Hint */}
+            {/* Hover hint */}
             <div className="text-center mt-8">
               <p className="text-xs uppercase tracking-widest text-gray-400">
-                Scroll to explore
+                Hover to glide across industries
               </p>
             </div>
           </motion.div>
         </div>
 
         <style dangerouslySetInnerHTML={{__html: `
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+          .scrollbar-hide::-webkit-scrollbar { display: none; }
+          .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+          .industry-track {
+            animation: industry-scroll 65s linear infinite;
+            animation-play-state: paused;
+            will-change: transform;
           }
-          .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+          .industry-marquee:hover .industry-track {
+            animation-play-state: running;
+          }
+          @keyframes industry-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
           }
         `}} />
       </section>
