@@ -1,29 +1,43 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Database, Headphones, Brain, Rocket, Network, DollarSign } from 'lucide-react';
+import { Brain, Users, Stethoscope, Database, Rocket, Network } from 'lucide-react';
 
 export function Capabilities() {
   const groups = [
     {
-      icon: Database,
-      title: 'SAP S/4HANA & AI Automation',
-      tags: ['S/4HANA', 'ECC to S/4', 'SAP Joule', 'Intelligent RPA'],
-      description:
-        'End-to-end S/4HANA transformation — brownfield conversions, greenfield builds, custom-code remediation — paired with embedded AI across your SAP landscape (Joule, predictive analytics, intelligent automation).',
-    },
-    {
-      icon: Headphones,
-      title: 'Managed Services & Staff Augmentation',
-      tags: ['L2/L3 AMS', 'Cloud ALM', 'Certified Experts', 'Dedicated Teams'],
-      description:
-        'Production support, proactive monitoring, and continuous optimization through SAP Solution Manager / Cloud ALM — plus platinum-level consultants (SAP, Vistex, ABAP, Fiori, Integration) ready to join your team.',
-    },
-    {
       icon: Brain,
-      title: 'Data Science & AI Expertise',
-      tags: ['AI / ML', 'RAG', 'Agentic AI', 'MLOps'],
+      title: 'AI Engineering & Agentic Systems',
+      tags: ['LLM / RAG', 'Agentic AI', 'MLOps', 'Responsible AI'],
       description:
-        'Modern AI engineering across the enterprise — generative AI and LLM apps, RAG on your proprietary data, autonomous agents, MLOps on Databricks and Vertex, and clinical / healthcare AI with FHIR and HIPAA controls.',
+        'An AI development partner at our core — generative AI and LLM applications, RAG on your proprietary data, autonomous agents (LangGraph / AutoGen), MLOps on Databricks and Vertex, and governance frameworks for responsible, production-grade AI.',
+    },
+    {
+      icon: Users,
+      title: 'Expert Talent & Staff Augmentation',
+      tags: ['AI / ML Engineers', 'Data Scientists', 'SAP Architects', 'Dedicated Teams'],
+      description:
+        'Our core business — platinum-level technologists integrated into your teams: AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, Fiori developers. Current, reliable, ready to execute from day one.',
+    },
+    {
+      icon: Stethoscope,
+      title: 'Healthcare AI & Clinical Workflows',
+      tags: ['Ambient Dictation', 'HL7 / FHIR', 'CGM AI', 'HIPAA'],
+      description:
+        'HIPAA-ready clinical AI — ambient dictation into Epic and Cerner, PDF-to-HL7 lab pipelines, continuous glucose monitoring intelligence, and streaming anomaly detection on ICU vitals. Built around the clinician workflow.',
+    },
+    {
+      icon: Database,
+      title: 'SAP S/4HANA & Managed Services',
+      tags: ['S/4HANA', 'ECC to S/4', 'SAP Joule', 'AMS / Cloud ALM'],
+      description:
+        'Deep SAP foundations — brownfield conversions, greenfield builds, SAP Joule copilot integration — paired with 24×7 managed services, L2 / L3 support, and continuous optimization through SAP Solution Manager and Cloud ALM.',
+    },
+    {
+      icon: Network,
+      title: 'Integration, Vistex & Plex Manufacturing',
+      tags: ['CPI / PI / PO', 'Vistex Pricing', 'Plex ERP', 'IBP / EWM'],
+      description:
+        'Hybrid integration on SAP CPI / PI / PO, complex pricing and rebate management on Vistex, Plex ERP and MES for manufacturing (APQP, PPAP, SPC), and end-to-end supply chain execution across IBP, EWM, TM, and GTS.',
     },
     {
       icon: Rocket,
@@ -31,20 +45,6 @@ export function Capabilities() {
       tags: ['SAP Activate', 'Global Rollouts', 'Agile / Hybrid', 'Go-Live'],
       description:
         'Full-lifecycle delivery with the SAP Activate framework — architecture authority, testing strategy, cutover planning, go-live execution, and hypercare — on multi-country, multi-site programs.',
-    },
-    {
-      icon: Network,
-      title: 'Integration & Supply Chain',
-      tags: ['CPI / PI / PO', 'API Mgmt', 'IBP', 'EWM & TM'],
-      description:
-        'Hybrid integration on SAP CPI / PI / PO with APIs, EDI, and real-time replication — plus end-to-end supply chain execution across IBP, EWM, TM, and Global Trade Services.',
-    },
-    {
-      icon: DollarSign,
-      title: 'Vistex & Plex Manufacturing',
-      tags: ['Vistex Pricing', 'Rebates', 'Plex ERP', 'MES'],
-      description:
-        'Complex pricing, rebate, and incentive management on SAP Vistex — plus Plex ERP, MES, and quality (APQP, PPAP, SPC) for discrete and process manufacturing with SAP integration.',
     },
   ];
 
@@ -63,7 +63,7 @@ export function Capabilities() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Full-spectrum SAP, AI, and specialty consulting — from strategy and implementation to managed services and expert talent.
+            AI-first consulting. Expert talent. Deep enterprise foundations. The capabilities we lead with — and the ones you can count on behind them.
           </p>
         </motion.div>
       </section>
@@ -170,10 +170,10 @@ export function Capabilities() {
           className="border-t border-gray-200 pt-12 text-center"
         >
           <h3 className="text-2xl font-light text-gray-900 mb-3">
-            Discuss your requirements
+            Discuss your AI roadmap
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Schedule a consultation to explore how our capabilities align with your enterprise objectives.
+            Share the problem you want to move on — AI, talent, SAP, or healthcare — and we'll scope a path forward.
           </p>
           <Link
             to="/contact"
