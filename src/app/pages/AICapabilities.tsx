@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp, Mic, FileText, Activity, ShieldCheck } from 'lucide-react';
+import { HeroImage } from '@/app/components/HeroImage';
 
 export function AICapabilities() {
   // Mixed order: healthcare and enterprise AI interleaved so SAP is not first
@@ -213,6 +214,13 @@ export function AICapabilities() {
               Enterprise-grade AI across SAP, operations, and healthcare. From generative AI and autonomous agents to clinical dictation and medical anomaly detection — precision-engineered AI systems designed for enterprise scale, security, and governance, including HIPAA-ready healthcare workflows, delivered with measurable outcomes.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Hero graphic */}
+      <section className="px-6 mb-24">
+        <div className="max-w-7xl mx-auto">
+          <HeroImage variant="ai" />
         </div>
       </section>
 
