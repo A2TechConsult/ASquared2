@@ -1,10 +1,12 @@
 /**
- * HeroBackground â ambient Apple-esque motion for the homepage hero.
- * Themes: AI, healthcare, automation, data science. Monochrome,
- * low-opacity, unhurried. Pointer-events disabled.
+ * HeroBackground v2 â ambient Apple-esque motion for the homepage hero.
+ * Themes: AI, healthcare, automation, data science.
+ * New: prominent scrolling pulse with a traveling bright node, and a
+ * single shooting star that streaks diagonally across every ~22s.
+ * Monochrome (black / grey), low opacity, unhurried.
  */
 export function HeroBackground() {
-  // Floating orbs â drift slowly on gentle diagonals.
+  // Floating soft orbs â drift slowly on gentle diagonals.
   const orbs = [
     { x: 180, y: 180, r: 90, dx: 60, dy: -40, dur: 42, delay: 0 },
     { x: 420, y: 460, r: 60, dx: -50, dy: 50, dur: 38, delay: 3 },
@@ -13,13 +15,13 @@ export function HeroBackground() {
     { x: 1420, y: 220, r: 70, dx: -40, dy: 50, dur: 40, delay: 2 },
   ];
 
-  // Rotating orbital rings (AI/ML motif) around 2 anchor points.
+  // Rotating orbital rings â AI/ML motif.
   const orbits = [
     { cx: 420, cy: 320, r: 260, dur: 90, dir: 1 },
     { cx: 1200, cy: 380, r: 220, dur: 110, dir: -1 },
   ];
 
-  // Drifting data-point constellation â slow translate, no destination.
+  // Drifting data-point constellation â data science motif.
   const dots: { x: number; y: number; r: number; dx: number; dy: number; dur: number; delay: number; op: number }[] = [];
   for (let i = 0; i < 36; i++) {
     const x = 60 + ((i * 173) % 1500);
@@ -33,9 +35,37 @@ export function HeroBackground() {
     dots.push({ x, y, r, dx, dy, dur, delay, op });
   }
 
-  // ECG-like heartbeat line slowly pulsing (healthcare motif).
-  const ecgPath =
-    'M 0 820 L 300 820 L 320 810 L 335 830 L 345 760 L 360 880 L 375 800 L 395 820 L 1600 820';
+  // ECG pulse â single continuous path positioned at y=560, long enough to
+  // tile seamlessly. One segment = 400px. We'll scroll by one segment.
+  const seg = 400;
+  const makeSegment = (x0: number) =>
+    `L ${x0 + 110} 560 ` +
+    `L ${x0 + 130} 540 ` +
+    `L ${x0 + 150} 580 ` +
+    `L ${x0 + 165} 440 ` +
+    `L ${x0 + 185} 700 ` +
+    `L ${x0 + 205} 520 ` +
+    `L ${x0 + 225} 580 ` +
+    `L ${x0 + 245} 560 ` +
+    `L ${x0 + seg} 560`;
+  let ecgPath = 'M -400 560 ';
+  for (let i = 0; i < 7; i++) {
+    ecgPath += makeSegment(-400 + i * seg) + ' ';
+  }
+
+  // A shorter traveling path for the "pulse head" â just the first segment,
+  // which repeats via animateMotion's cycling behaviour.
+  const pulseHeadPath =
+    `M 0 560 ` +
+    `L 110 560 ` +
+    `L 130 540 ` +
+    `L 150 580 ` +
+    `L 165 440 ` +
+    `L 185 700 ` +
+    `L 205 520 ` +
+    `L 225 580 ` +
+    `L 245 560 ` +
+    `L 400 560`;
 
   return (
     <svg
@@ -54,6 +84,17 @@ export function HeroBackground() {
           <stop offset="0" stopColor="#000" stopOpacity="0.9" />
           <stop offset="1" stopColor="#000" stopOpacity="0" />
         </radialGradient>
+        <radialGradient id="pulseHead" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#000" stopOpacity="1" />
+          <stop offset="0.3" stopColor="#000" stopOpacity="0.5" />
+          <stop offset="1" stopColor="#000" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="starHead" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#000" stopOpacity="1" />
+          <stop offset="0.4" stopColor="#000" stopOpacity="0.6" />
+          <stop offset="1" stopColor="#000" stopOpacity="0" />
+        </radialGradient>
+        <path id="pulseHeadPath" d={pulseHeadPath} />
       </defs>
 
       {/* Floating soft orbs */}
@@ -85,30 +126,13 @@ export function HeroBackground() {
         </g>
       ))}
 
-      {/* Rotating orbital rings with a travelling node â AI/ML motif */}
+      {/* Rotating orbital rings â AI/ML motif */}
       {orbits.map((o, i) => {
         const to = o.dir === 1 ? 360 : -360;
         return (
           <g key={`orbit-${i}`}>
-            <circle
-              cx={o.cx}
-              cy={o.cy}
-              r={o.r}
-              fill="none"
-              stroke="#000"
-              strokeWidth="0.6"
-              opacity="0.08"
-              strokeDasharray="2 6"
-            />
-            <circle
-              cx={o.cx}
-              cy={o.cy}
-              r={o.r * 0.72}
-              fill="none"
-              stroke="#000"
-              strokeWidth="0.6"
-              opacity="0.06"
-            />
+            <circle cx={o.cx} cy={o.cy} r={o.r} fill="none" stroke="#000" strokeWidth="0.6" opacity="0.08" strokeDasharray="2 6" />
+            <circle cx={o.cx} cy={o.cy} r={o.r * 0.72} fill="none" stroke="#000" strokeWidth="0.6" opacity="0.06" />
             <g>
               <animateTransform
                 attributeName="transform"
@@ -130,46 +154,12 @@ export function HeroBackground() {
       {/* Breathing concentric rings â healthcare pulse motif */}
       <g fill="none" stroke="#000" strokeWidth="0.8">
         <circle cx="820" cy="450" r="200" opacity="0.05">
-          <animate
-            attributeName="r"
-            values="180;260;180"
-            dur="18s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-          <animate
-            attributeName="opacity"
-            values="0.03;0.09;0.03"
-            dur="18s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
+          <animate attributeName="r" values="180;260;180" dur="18s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
+          <animate attributeName="opacity" values="0.03;0.09;0.03" dur="18s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
         </circle>
         <circle cx="820" cy="450" r="320" opacity="0.04">
-          <animate
-            attributeName="r"
-            values="290;380;290"
-            dur="22s"
-            begin="2s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
-          <animate
-            attributeName="opacity"
-            values="0.02;0.07;0.02"
-            dur="22s"
-            begin="2s"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-            keyTimes="0;0.5;1"
-          />
+          <animate attributeName="r" values="290;380;290" dur="22s" begin="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
+          <animate attributeName="opacity" values="0.02;0.07;0.02" dur="22s" begin="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
         </circle>
       </g>
 
@@ -200,19 +190,71 @@ export function HeroBackground() {
         </circle>
       ))}
 
-      {/* Slow heartbeat line â healthcare motif, bottom edge */}
-      <path d={ecgPath} fill="none" stroke="#000" strokeWidth="1" opacity="0.06" />
-      <path d={ecgPath} fill="none" stroke="#000" strokeWidth="0.5" opacity="0.1">
-        <animate
-          attributeName="opacity"
-          values="0.04;0.14;0.04"
+      {/* ECG pulse line â scrolls one segment every 9s, loops seamlessly.
+          Represents healthcare heartbeat + AI signal processing. */}
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          from="0 0"
+          to="-400 0"
           dur="9s"
           repeatCount="indefinite"
-          calcMode="spline"
-          keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-          keyTimes="0;0.5;1"
         />
-      </path>
+        {/* soft wide underglow */}
+        <path d={ecgPath} fill="none" stroke="#000" strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" opacity="0.05" />
+        {/* main stroke â visible but subtle */}
+        <path d={ecgPath} fill="none" stroke="#000" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" opacity="0.22" />
+      </g>
+
+      {/* Pulse head â bright node travelling along the ECG rhythm.
+          Uses animateMotion along one segment that repeats seamlessly. */}
+      <g>
+        <circle r="20" fill="url(#pulseHead)" opacity="0.55">
+          <animateMotion dur="9s" repeatCount="indefinite" rotate="0">
+            <mpath href="#pulseHeadPath" />
+          </animateMotion>
+        </circle>
+        <circle r="3.5" fill="#000">
+          <animateMotion dur="9s" repeatCount="indefinite" rotate="0">
+            <mpath href="#pulseHeadPath" />
+          </animateMotion>
+          <animate attributeName="r" values="3;4.5;3" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
+        </circle>
+      </g>
+
+      {/* Shooting star â streaks diagonally across every ~22s.
+          Visible for ~4s of each cycle, parked off-screen the rest.
+          Trail is a cascade of small circles with decreasing opacity. */}
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          values="-220 60 ; 1820 620 ; 1820 620"
+          keyTimes="0 ; 0.18 ; 1"
+          dur="22s"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keySplines="0.25 0.1 0.25 1 ; 0 0 1 1"
+        />
+        <g opacity="0.9">
+          <animate attributeName="opacity" values="0 ; 0.9 ; 0.9 ; 0 ; 0" keyTimes="0 ; 0.02 ; 0.17 ; 0.2 ; 1" dur="22s" repeatCount="indefinite" />
+          {/* Tail â descending opacity circles pointing back along the diagonal */}
+          <circle cx="-150" cy="-37" r="0.8" fill="#000" opacity="0.08" />
+          <circle cx="-130" cy="-32" r="1" fill="#000" opacity="0.12" />
+          <circle cx="-110" cy="-27" r="1.2" fill="#000" opacity="0.18" />
+          <circle cx="-90" cy="-22" r="1.4" fill="#000" opacity="0.25" />
+          <circle cx="-70" cy="-17" r="1.6" fill="#000" opacity="0.33" />
+          <circle cx="-55" cy="-13" r="1.8" fill="#000" opacity="0.42" />
+          <circle cx="-40" cy="-10" r="2" fill="#000" opacity="0.52" />
+          <circle cx="-28" cy="-7" r="2.2" fill="#000" opacity="0.65" />
+          <circle cx="-16" cy="-4" r="2.4" fill="#000" opacity="0.78" />
+          <circle cx="-6" cy="-1.5" r="2.6" fill="#000" opacity="0.88" />
+          {/* Bright head */}
+          <circle cx="0" cy="0" r="14" fill="url(#starHead)" opacity="0.55" />
+          <circle cx="0" cy="0" r="3.2" fill="#000" />
+        </g>
+      </g>
     </svg>
   );
 }
