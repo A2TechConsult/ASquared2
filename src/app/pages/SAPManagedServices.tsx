@@ -1,151 +1,261 @@
+import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+import {
+  Layers,
+  Server,
+  Cloud,
+  Activity,
+  Shield,
+  Rocket,
+  Target,
+  Globe,
+  Gauge,
+  Sparkles,
+} from 'lucide-react';
 import sapImage from '../../assets/sap-managed-services.jpg';
 
 export default function SAPManagedServices() {
+  const whyAsquared = [
+    {
+      icon: Target,
+      title: 'Precision First',
+      body: 'We engineer stability â not just tickets. Architecture-led operations.',
+    },
+    {
+      icon: Globe,
+      title: 'Global Delivery',
+      body: 'US leadership with cost-optimized India execution. 24Ã7 coverage.',
+    },
+    {
+      icon: Gauge,
+      title: 'Outcome SLAs',
+      body: '99.9% uptime, incident-rate reduction, measurable ROI quarterly.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Future-Proof',
+      body: 'RISE, GROW, BTP, Joule copilot and AI-ready architecture.',
+    },
+  ];
+
+  const services = [
+    { icon: Layers, title: 'Application Management', body: 'FI / CO, SD, MM, PP, HCM â functional + technical.' },
+    { icon: Server, title: 'Basis & Technical Ops', body: 'Monitoring, patching, HANA DBA, performance tuning.' },
+    { icon: Cloud, title: 'Cloud & Migration', body: 'RISE / GROW moves on AWS, Azure and GCP.' },
+    { icon: Activity, title: 'Proactive Monitoring', body: 'AIOps alerts, predictive maintenance, automation.' },
+    { icon: Shield, title: 'Security & Compliance', body: 'SAP GRC, audit readiness, cyber posture reviews.' },
+    { icon: Rocket, title: 'Upgrades & Innovation', body: 'S/4HANA upgrades, Clean Core, BTP extensions.' },
+  ];
+
+  const engagement = [
+    { phase: 'Discovery', body: 'Free 2-week landscape assessment.' },
+    { phase: 'Transition', body: 'Zero-downtime handover from incumbent.' },
+    { phase: 'Operations', body: '24Ã7 command centre with SLA dashboards.' },
+    { phase: 'Continuous', body: 'Quarterly optimization and roadmap review.' },
+  ];
+
   return (
-    <main className="bg-white">
-
+    <main className="pt-8 pb-16 bg-white">
       {/* HERO */}
-      <section className="max-w-6xl mx-auto px-6 pt-28 pb-20 text-center">
-        <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900">
-          SAP Managed Services.
-          <br />
-          Without the noise.
-        </h1>
-
-        <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
-          Enterprise-grade SAP support delivered with precision. From ECC to S/4HANA,
-          we run your landscape so you don’t have to.
-        </p>
-      </section>
-
-      {/* IMAGE + INTRO */}
-      <section className="max-w-6xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-16 items-center">
-
-        <img
-          src={sapImage}
-          alt="SAP Services"
-          className="w-full max-w-[520px] mx-auto rounded-xl shadow-md object-contain"
-        />
-
-        <div>
-          <h2 className="text-3xl font-light text-gray-900 mb-4">
-            Built for stability. Designed for scale.
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            At ASquared Technologies, SAP isn’t just a system — it’s your business backbone.
-            Our Managed Services ensure predictable performance, reduced costs, and zero surprises.
+      <section className="max-w-6xl mx-auto px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 mb-6">
+            SAP Managed Services. Without the noise.
+          </h1>
+          <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            Enterprise-grade SAP support delivered with precision. From ECC to S/4HANA â we run your
+            landscape so your team doesn't have to.
           </p>
+        </motion.div>
+      </section>
 
-          <p className="text-gray-600 mt-4 leading-relaxed">
-            With delivery teams across Hyderabad and San Francisco, we combine global scale
-            with local accountability.
+      {/* INTRO + WHY ASQUARED â single two-column block */}
+      <section className="max-w-7xl mx-auto px-6 mb-20">
+        <div className="grid lg:grid-cols-5 gap-10 items-start">
+          {/* LEFT: image + intro â 2/5 */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2"
+          >
+            <img
+              src={sapImage}
+              alt="SAP managed services"
+              className="w-full rounded-lg border border-gray-200 object-cover mb-6"
+            />
+            <h2 className="text-2xl font-light text-gray-900 mb-3 tracking-tight">
+              Built for stability. Designed for scale.
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              SAP isn't just a system â it's your business backbone. Our Managed Services deliver
+              predictable performance, reduced run-cost, and zero surprises, with delivery teams
+              across Hyderabad and San Francisco.
+            </p>
+          </motion.div>
+
+          {/* RIGHT: Why ASquared â 3/5, 2x2 grid of cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3"
+          >
+            <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
+              Why ASquared
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {whyAsquared.map((w, i) => {
+                const Icon = w.icon;
+                return (
+                  <div
+                    key={w.title}
+                    className="group bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 p-6"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center flex-shrink-0">
+                        <Icon className="size-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base font-medium text-gray-900 tracking-tight mb-1">
+                          {w.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">{w.body}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVICES â 3-column grid, compact tiles */}
+      <section className="max-w-7xl mx-auto px-6 mb-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-3">
+            Service Portfolio
+          </h2>
+          <p className="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">
+            End-to-end SAP operations
           </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                className="group bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 p-6"
+              >
+                <div className="w-10 h-10 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center mb-4">
+                  <Icon className="size-5 text-white" />
+                </div>
+                <h3 className="text-lg font-light text-gray-900 tracking-tight mb-1">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.body}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
-      {/* WHY ASQUARED */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-light text-gray-900 mb-10 text-center">
-          Why ASquared
-        </h2>
-
-        <div className="space-y-5 text-gray-600">
-          <p><strong className="text-gray-900">Precision First</strong> — We engineer stability, not just manage systems.</p>
-          <p><strong className="text-gray-900">Global Delivery</strong> — US leadership with cost-optimized India execution.</p>
-          <p><strong className="text-gray-900">Outcome-Driven SLAs</strong> — 99.9% uptime with measurable ROI.</p>
-          <p><strong className="text-gray-900">Future-Proof</strong> — RISE, GROW, BTP, and AI-ready architecture.</p>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-light text-gray-900 text-center mb-16">
-          Our SAP Managed Services Portfolio
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-12 text-gray-600">
-
-          <div>
-            <h3 className="text-lg text-gray-900 mb-2">Application Management (AMS)</h3>
-            <p>End-to-end support across FI/CO, SD, MM, PP, HCM.</p>
+      {/* ENGAGEMENT + RESULTS â compact two-column strip */}
+      <section className="max-w-7xl mx-auto px-6 mb-20">
+        <div className="grid lg:grid-cols-5 gap-10">
+          {/* Engagement â 3/5 as 4-step horizontal strip */}
+          <div className="lg:col-span-3">
+            <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
+              Engagement Model
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {engagement.map((e, i) => (
+                <motion.div
+                  key={e.phase}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  viewport={{ once: true }}
+                  className="bg-white border border-gray-200 p-5"
+                >
+                  <div className="text-3xl font-light text-gray-200 mb-2">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="text-sm font-medium text-gray-900 mb-1">{e.phase}</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">{e.body}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <h3 className="text-lg text-gray-900 mb-2">SAP Basis & Technical Ops</h3>
-            <p>Monitoring, patching, performance tuning, HANA administration.</p>
-          </div>
-
-          <div>
-            <h3 className="text-lg text-gray-900 mb-2">Cloud & Migration</h3>
-            <p>RISE/GROW implementations, AWS/Azure/GCP support.</p>
-          </div>
-
-          <div>
-            <h3 className="text-lg text-gray-900 mb-2">Proactive Monitoring</h3>
-            <p>AIOps alerts, predictive maintenance, automation.</p>
-          </div>
-
-          <div>
-            <h3 className="text-lg text-gray-900 mb-2">Security & Compliance</h3>
-            <p>SAP GRC, audit readiness, cybersecurity posture.</p>
-          </div>
-
-          <div>
-            <h3 className="text-lg text-gray-900 mb-2">Upgrades & Innovation</h3>
-            <p>S/4HANA upgrades, Clean Core, BTP extensions.</p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ENGAGEMENT + RESULTS SIDE BY SIDE */}
-      <section className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16">
-
-        {/* Engagement Model */}
-        <div>
-          <h2 className="text-2xl font-light text-gray-900 mb-6">
-            Engagement Model
-          </h2>
-
-          <div className="space-y-4 text-gray-600">
-            <p><strong className="text-gray-900">Discovery</strong> — Free 2-week assessment</p>
-            <p><strong className="text-gray-900">Transition</strong> — Zero downtime handover</p>
-            <p><strong className="text-gray-900">Operations</strong> — 24×7 command center</p>
-            <p><strong className="text-gray-900">Continuous Improvement</strong> — Quarterly optimization</p>
+          {/* Proven Results â 2/5 as quote cards */}
+          <div className="lg:col-span-2">
+            <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
+              Proven Results
+            </h2>
+            <div className="space-y-3">
+              <blockquote className="bg-gray-50 border-l-2 border-gray-900 pl-5 py-3">
+                <p className="text-sm text-gray-900 leading-relaxed">
+                  "Reduced SAP incidents by 62% in 90 days."
+                </p>
+              </blockquote>
+              <blockquote className="bg-gray-50 border-l-2 border-gray-900 pl-5 py-3">
+                <p className="text-sm text-gray-900 leading-relaxed">
+                  "RISE migration completed with zero disruption."
+                </p>
+              </blockquote>
+              <blockquote className="bg-gray-50 border-l-2 border-gray-900 pl-5 py-3">
+                <p className="text-sm text-gray-900 leading-relaxed">
+                  "99.95% uptime sustained across three fiscal years."
+                </p>
+              </blockquote>
+            </div>
           </div>
         </div>
-
-        {/* Proven Results */}
-        <div>
-          <h2 className="text-2xl font-light text-gray-900 mb-6">
-            Proven Results
-          </h2>
-
-          <div className="space-y-4 text-gray-600">
-            <p>“Reduced SAP incidents by 62% in 90 days.”</p>
-            <p>“RISE migration completed with zero disruption.”</p>
-          </div>
-        </div>
-
       </section>
 
       {/* CTA */}
-      <section className="text-center py-24 px-6 bg-gray-50">
-        <h2 className="text-3xl font-light text-gray-900 mb-6">
-          Ready to take the noise out of your SAP operations?
-        </h2>
-
-        <p className="text-gray-600 mb-6">
-          Let’s build a predictable, high-performance SAP environment.
-        </p>
-
-        <div className="space-y-2 text-gray-700">
-          <p>admin@a2techconsult.com</p>
-          <p>+1 (408) 499-3596</p>
-        </div>
+      <section className="max-w-5xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-200 pt-12 text-center"
+        >
+          <h2 className="text-3xl font-light text-gray-900 mb-4 tracking-tight">
+            Take the noise out of your SAP operations
+          </h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Let's build a predictable, high-performance SAP environment â starting with a free
+            2-week assessment of your landscape.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-block px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors text-sm font-medium"
+          >
+            Start a conversation
+          </Link>
+        </motion.div>
       </section>
-
     </main>
   );
 }
