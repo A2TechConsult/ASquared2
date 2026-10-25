@@ -218,7 +218,7 @@ export function StaffAugmentation() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, and specialty talent for critical enterprise initiatives.
+              Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and specialty talent for critical enterprise initiatives.
             </p>
           </motion.div>
         </div>
