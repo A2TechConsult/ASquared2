@@ -223,6 +223,106 @@ export function HeroBackground() {
         </circle>
       </g>
 
+
+      {/* ===== ERP / SAP motif: rotating automation gear ===== */}
+      <g transform="translate(1360 180)" opacity="0.5">
+        <g>
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 0 0"
+            to="360 0 0"
+            dur="60s"
+            repeatCount="indefinite"
+          />
+          {/* teeth — 12 radial lines */}
+          {Array.from({ length: 12 }).map((_, i) => {
+            const a = (i / 12) * Math.PI * 2;
+            const r1 = 42;
+            const r2 = 52;
+            return (
+              <line
+                key={i}
+                x1={Math.cos(a) * r1}
+                y1={Math.sin(a) * r1}
+                x2={Math.cos(a) * r2}
+                y2={Math.sin(a) * r2}
+                stroke="#000"
+                strokeWidth="1.2"
+                opacity="0.35"
+                strokeLinecap="round"
+              />
+            );
+          })}
+          {/* outer ring */}
+          <circle cx="0" cy="0" r="42" fill="none" stroke="#000" strokeWidth="0.8" opacity="0.3" />
+          {/* inner hub */}
+          <circle cx="0" cy="0" r="18" fill="none" stroke="#000" strokeWidth="0.8" opacity="0.4" />
+          <circle cx="0" cy="0" r="4" fill="#000" opacity="0.5" />
+        </g>
+      </g>
+
+      {/* ===== ERP / SAP motif: module pipeline with data packet ===== */}
+      <g transform="translate(80 740)" opacity="0.55">
+        {/* connecting line */}
+        <line x1="18" y1="18" x2="402" y2="18" stroke="#000" strokeWidth="0.8" opacity="0.3" strokeDasharray="3 4" />
+        {/* 5 module tiles — small rounded squares */}
+        {[0, 1, 2, 3, 4].map((i) => (
+          <g key={i} transform={`translate(${i * 96} 0)`}>
+            <rect x="0" y="0" width="36" height="36" rx="4" fill="#fff" stroke="#000" strokeWidth="1" opacity="0.55" />
+            <rect x="6" y="6" width="24" height="4" fill="#000" opacity="0.3" />
+            <rect x="6" y="14" width="18" height="3" fill="#000" opacity="0.22" />
+            <rect x="6" y="21" width="22" height="3" fill="#000" opacity="0.22" />
+            <rect x="6" y="28" width="14" height="3" fill="#000" opacity="0.22" />
+            {/* module activity pulse */}
+            <circle cx="30" cy="6" r="1.5" fill="#000" opacity="0.4">
+              <animate
+                attributeName="opacity"
+                values="0.15;0.85;0.15"
+                dur="4s"
+                begin={`${i * 0.6}s`}
+                repeatCount="indefinite"
+                calcMode="spline"
+                keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                keyTimes="0;0.5;1"
+              />
+            </circle>
+          </g>
+        ))}
+        {/* data packet travelling module → module along the pipeline */}
+        <g>
+          <circle r="4" fill="#000" opacity="0.75">
+            <animate
+              attributeName="cx"
+              values="36 ; 96 ; 132 ; 192 ; 228 ; 288 ; 324 ; 384 ; 384 ; 36"
+              keyTimes="0 ; 0.1 ; 0.22 ; 0.32 ; 0.44 ; 0.54 ; 0.66 ; 0.76 ; 0.95 ; 1"
+              dur="12s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 1 0 1 0"
+            />
+            <animate
+              attributeName="cy"
+              values="18"
+              dur="12s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle r="10" fill="url(#pulseHead)" opacity="0.4">
+            <animate
+              attributeName="cx"
+              values="36 ; 96 ; 132 ; 192 ; 228 ; 288 ; 324 ; 384 ; 384 ; 36"
+              keyTimes="0 ; 0.1 ; 0.22 ; 0.32 ; 0.44 ; 0.54 ; 0.66 ; 0.76 ; 0.95 ; 1"
+              dur="12s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 1 0 1 0"
+            />
+            <animate attributeName="cy" values="18" dur="12s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </g>
+
       {/* Shooting star â streaks diagonally across every ~22s.
           Visible for ~4s of each cycle, parked off-screen the rest.
           Trail is a cascade of small circles with decreasing opacity. */}
