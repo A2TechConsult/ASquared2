@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
+import { HeroBackground } from '@/app/components/HeroBackground';
 import { ClientLogo } from '@/app/components/ClientLogo';
 import { Database, DollarSign, Factory, Network, Brain, Rocket, Users, Stethoscope } from 'lucide-react';
 import { Settings } from 'lucide-react';
@@ -32,12 +33,13 @@ export function Overview() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pt-32 pb-24 hero-gradient-bg">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-24 hero-gradient-bg overflow-hidden">
+        <HeroBackground />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="max-w-5xl text-center"
+          className="relative z-10 max-w-5xl text-center"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
             AI-first consulting. Enterprise-ready.
