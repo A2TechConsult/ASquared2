@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Users, Award, Target, Briefcase, Code, Shield, Brain, Stethoscope, Check, ArrowRight } from 'lucide-react';
+import { Users, Award, Target, Briefcase, Code, Shield, Brain, Stethoscope, Server, GitBranch, Check, ArrowRight } from 'lucide-react';
 import { HeroImage } from '@/app/components/HeroImage';
 
 export function StaffAugmentation() {
@@ -111,6 +111,36 @@ export function StaffAugmentation() {
       ],
     },
     {
+      icon: Server,
+      title: '.NET Development',
+      subtitle: 'Enterprise .NET & Product Engineering',
+      roles: [
+        '.NET Solution Architects (.NET 8, C#, F#)',
+        'ASP.NET Core & Web API Developers',
+        'Blazor & MAUI Full-Stack Engineers',
+        'Microservices Architects (Clean Architecture, DDD)',
+        'Azure .NET Cloud Developers (App Service, Functions)',
+        'SQL Server / Entity Framework Specialists',
+        'SharePoint & Dynamics 365 Developers',
+        'Product Engineering Teams (greenfield to GA)',
+      ],
+    },
+    {
+      icon: GitBranch,
+      title: 'DevOps & Cloud Infrastructure',
+      subtitle: 'CI/CD, SRE & Platform Engineering',
+      roles: [
+        'DevOps Engineers (Azure DevOps, GitHub Actions, GitLab CI)',
+        'Kubernetes & Container Platform Architects (AKS, EKS, GKE)',
+        'Infrastructure as Code Specialists (Terraform, Bicep, Pulumi)',
+        'Site Reliability Engineers (SLOs, observability, incident response)',
+        'Cloud Architects (Azure, AWS, GCP, hybrid)',
+        'SAP BTP & Cloud ALM DevOps Specialists',
+        'Security DevSecOps Engineers (SAST, DAST, policy as code)',
+        'Platform Engineers (internal developer platforms, Backstage)',
+      ],
+    },
+        {
       icon: Award,
       title: 'Vistex Specialists',
       subtitle: 'Pricing & Incentive Management',
