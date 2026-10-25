@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Brain, Users, Stethoscope, Database, Rocket, Network } from 'lucide-react';
+import { Brain, Users, Stethoscope, Database, Rocket, Network, Server, GitBranch } from 'lucide-react';
 
 export function Capabilities() {
   const groups = [
@@ -40,6 +40,20 @@ export function Capabilities() {
         'Hybrid integration on SAP CPI / PI / PO, complex pricing and rebate management on Vistex, Plex ERP and MES for manufacturing (APQP, PPAP, SPC), and end-to-end supply chain execution across IBP, EWM, TM, and GTS.',
     },
     {
+      icon: Server,
+      title: '.NET Development & Product Engineering',
+      tags: ['.NET 8', 'ASP.NET Core', 'Azure .NET', 'Dynamics 365'],
+      description:
+        'Enterprise .NET talent and full product engineering teams — ASP.NET Core, Blazor, MAUI, microservices on Clean Architecture, Azure App Service and Functions, SQL Server, SharePoint and Dynamics 365. Greenfield products through GA.',
+    },
+    {
+      icon: GitBranch,
+      title: 'DevOps, Cloud & SRE',
+      tags: ['Azure / AWS / GCP', 'Kubernetes', 'Terraform', 'Observability'],
+      description:
+        'CI / CD pipelines, Kubernetes platforms, infrastructure as code (Terraform, Bicep), SRE practices, and DevSecOps across Azure, AWS and GCP — including SAP BTP and Cloud ALM pipelines for enterprise release discipline.',
+    },
+        {
       icon: Rocket,
       title: 'Program & Project Delivery',
       tags: ['SAP Activate', 'Global Rollouts', 'Agile / Hybrid', 'Go-Live'],
