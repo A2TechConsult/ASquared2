@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
 import { HeroBackground } from '@/app/components/HeroBackground';
+import { DomainSlider } from '@/app/components/DomainSlider';
 import { ClientLogo } from '@/app/components/ClientLogo';
 import { Database, DollarSign, Factory, Network, Brain, Rocket, Users, Stethoscope } from 'lucide-react';
 import { Settings } from 'lucide-react';
@@ -78,7 +79,7 @@ export function Overview() {
               AI-forward. Enterprise-grounded.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-              We build AI that reaches production — generative AI, RAG, and agentic systems — and we back it with the staff augmentation core, SAP depth, and healthcare specialization that keep enterprise programs on track. Fortune 500 clients across manufacturing, life sciences, industrial, and healthcare.
+              We build AI that reaches production — generative AI, RAG, and agentic systems — backed by deep SAP foundations, healthcare specialization, and the expert talent to execute. Fortune 500 clients across manufacturing, life sciences, industrial, and healthcare.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-16 text-left">
               <div>
@@ -98,7 +99,10 @@ export function Overview() {
         </div>
       </section>
 
-      {/* Clients Section */}
+      {/* Domain slider — SAP, AI, Healthcare */}
+      <DomainSlider />
+
+            {/* Clients Section */}
       <section className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
