@@ -16,7 +16,7 @@ export function Capabilities() {
       title: 'Expert Talent & Staff Augmentation',
       tags: ['AI / ML Engineers', 'Data Scientists', 'SAP Architects', 'Dedicated Teams'],
       description:
-        'Our core business — platinum-level technologists integrated into your teams: AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, Fiori developers. Current, reliable, ready to execute from day one.',
+        'Platinum-level technologists integrated into your teams — AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, .NET developers, DevOps engineers and Fiori developers. Current, reliable, ready to execute from day one.',
     },
     {
       icon: Stethoscope,
