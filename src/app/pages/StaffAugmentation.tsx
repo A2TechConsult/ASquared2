@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Users, Award, Target, Briefcase, Code, Shield, Brain, Stethoscope, Server, GitBranch, Check, ArrowRight } from 'lucide-react';
-import { HeroImage } from '@/app/components/HeroImage';
 
 export function StaffAugmentation() {
   const expertiseAreas = [
@@ -204,9 +203,9 @@ export function StaffAugmentation() {
   ];
 
   return (
-    <main className="pt-8 pb-24">
+    <main className="pt-4 pb-16">
       {/* Hero */}
-      <section className="px-6 mb-24">
+      <section className="px-6 mb-14">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -223,16 +222,8 @@ export function StaffAugmentation() {
           </motion.div>
         </div>
       </section>
-
-      {/* Hero graphic */}
-      <section className="px-6 mb-20">
-        <div className="max-w-7xl mx-auto">
-          <HeroImage variant="expertise" />
-        </div>
-      </section>
-
       {/* Expertise Areas — two columns */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
             {expertiseAreas.map((area, index) => {
@@ -273,7 +264,7 @@ export function StaffAugmentation() {
       </section>
 
       {/* Engagement Models */}
-      <section className="px-6 mb-32 bg-gray-50 py-32">
+      <section className="px-6 mb-20 bg-gray-50 py-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -334,7 +325,7 @@ export function StaffAugmentation() {
       </section>
 
       {/* Quality Standards */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -384,7 +375,7 @@ export function StaffAugmentation() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white to-gray-50">
+      <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0 }}
