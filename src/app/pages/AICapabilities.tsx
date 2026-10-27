@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp, Mic, FileText, Activity, ShieldCheck } from 'lucide-react';
-import { HeroImage } from '@/app/components/HeroImage';
 
 export function AICapabilities() {
   // Mixed order: healthcare and enterprise AI interleaved so SAP is not first
@@ -190,9 +189,9 @@ export function AICapabilities() {
   ];
 
   return (
-    <main className="pt-8 pb-24">
+    <main className="pt-4 pb-16">
       {/* Hero Section */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-16">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -216,16 +215,8 @@ export function AICapabilities() {
           </motion.div>
         </div>
       </section>
-
-      {/* Hero graphic */}
-      <section className="px-6 mb-24">
-        <div className="max-w-7xl mx-auto">
-          <HeroImage variant="ai" />
-        </div>
-      </section>
-
       {/* Capabilities - Two-column grid */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
             {capabilities.map((capability, index) => {
@@ -269,7 +260,7 @@ export function AICapabilities() {
       </section>
 
       {/* Delivery Approach - Premium Timeline */}
-      <section className="px-6 mb-32 bg-gradient-to-b from-white via-gray-50 to-white py-32">
+      <section className="px-6 mb-20 bg-gradient-to-b from-white via-gray-50 to-white py-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -320,7 +311,7 @@ export function AICapabilities() {
       </section>
 
       {/* Representative Projects - Two-column grid */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -387,7 +378,7 @@ export function AICapabilities() {
       </section>
 
       {/* Compliance Badges */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -420,7 +411,7 @@ export function AICapabilities() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white to-gray-50">
+      <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0 }}
