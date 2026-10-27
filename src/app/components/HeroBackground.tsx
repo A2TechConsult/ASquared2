@@ -231,21 +231,20 @@ export function HeroBackground() {
           <circle cx="0" cy="0" r="4" fill="#000" opacity="0.5" />
         </g>
       </g>
-
-      {/* ===== Shooting star ===== */}
+      {/* ===== Shooting star 1 — upper-left → lower-right ===== */}
       <g>
         <animateTransform
           attributeName="transform"
           type="translate"
           values="-220 60 ; 1820 620 ; 1820 620"
-          keyTimes="0 ; 0.18 ; 1"
-          dur="22s"
+          keyTimes="0 ; 0.25 ; 1"
+          dur="12s"
           repeatCount="indefinite"
           calcMode="spline"
           keySplines="0.25 0.1 0.25 1 ; 0 0 1 1"
         />
         <g opacity="0.9">
-          <animate attributeName="opacity" values="0 ; 0.9 ; 0.9 ; 0 ; 0" keyTimes="0 ; 0.02 ; 0.17 ; 0.2 ; 1" dur="22s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0 ; 0.9 ; 0.9 ; 0 ; 0" keyTimes="0 ; 0.03 ; 0.22 ; 0.26 ; 1" dur="12s" repeatCount="indefinite" />
           <circle cx="-150" cy="-37" r="0.8" fill="#000" opacity="0.08" />
           <circle cx="-130" cy="-32" r="1" fill="#000" opacity="0.12" />
           <circle cx="-110" cy="-27" r="1.2" fill="#000" opacity="0.18" />
@@ -256,6 +255,37 @@ export function HeroBackground() {
           <circle cx="-28" cy="-7" r="2.2" fill="#000" opacity="0.65" />
           <circle cx="-16" cy="-4" r="2.4" fill="#000" opacity="0.78" />
           <circle cx="-6" cy="-1.5" r="2.6" fill="#000" opacity="0.88" />
+          <circle cx="0" cy="0" r="14" fill="url(#starHead)" opacity="0.55" />
+          <circle cx="0" cy="0" r="3.2" fill="#000" />
+        </g>
+      </g>
+
+      {/* ===== Shooting star 2 — upper-right → lower-left (mirror, offset by half-cycle) ===== */}
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          values="1820 60 ; -220 620 ; -220 620"
+          keyTimes="0 ; 0.25 ; 1"
+          dur="12s"
+          begin="6s"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keySplines="0.25 0.1 0.25 1 ; 0 0 1 1"
+        />
+        <g opacity="0.9">
+          <animate attributeName="opacity" values="0 ; 0.9 ; 0.9 ; 0 ; 0" keyTimes="0 ; 0.03 ; 0.22 ; 0.26 ; 1" dur="12s" begin="6s" repeatCount="indefinite" />
+          {/* Tail mirrored on x — points back toward upper-right */}
+          <circle cx="150" cy="-37" r="0.8" fill="#000" opacity="0.08" />
+          <circle cx="130" cy="-32" r="1" fill="#000" opacity="0.12" />
+          <circle cx="110" cy="-27" r="1.2" fill="#000" opacity="0.18" />
+          <circle cx="90" cy="-22" r="1.4" fill="#000" opacity="0.25" />
+          <circle cx="70" cy="-17" r="1.6" fill="#000" opacity="0.33" />
+          <circle cx="55" cy="-13" r="1.8" fill="#000" opacity="0.42" />
+          <circle cx="40" cy="-10" r="2" fill="#000" opacity="0.52" />
+          <circle cx="28" cy="-7" r="2.2" fill="#000" opacity="0.65" />
+          <circle cx="16" cy="-4" r="2.4" fill="#000" opacity="0.78" />
+          <circle cx="6" cy="-1.5" r="2.6" fill="#000" opacity="0.88" />
           <circle cx="0" cy="0" r="14" fill="url(#starHead)" opacity="0.55" />
           <circle cx="0" cy="0" r="3.2" fill="#000" />
         </g>
