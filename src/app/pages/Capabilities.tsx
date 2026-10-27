@@ -63,9 +63,9 @@ export function Capabilities() {
   ];
 
   return (
-    <main className="pt-8 pb-24 px-6">
+    <main className="pt-4 pb-16 px-6">
       {/* Hero */}
-      <section className="max-w-6xl mx-auto mb-16">
+      <section className="max-w-6xl mx-auto mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export function Capabilities() {
       </section>
 
       {/* Grouped tiles — 2 columns */}
-      <section className="max-w-6xl mx-auto mb-24">
+      <section className="max-w-6xl mx-auto mb-16">
         <div className="grid md:grid-cols-2 gap-6">
           {groups.map((group, index) => {
             const Icon = group.icon;
@@ -128,7 +128,7 @@ export function Capabilities() {
       </section>
 
       {/* Delivery Excellence */}
-      <section className="max-w-6xl mx-auto mb-24">
+      <section className="max-w-6xl mx-auto mb-16">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
