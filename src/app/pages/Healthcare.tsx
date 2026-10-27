@@ -10,7 +10,6 @@ import {
   TrendingUp,
   ArrowRight,
 } from 'lucide-react';
-import { HeroImage } from '@/app/components/HeroImage';
 
 export function Healthcare() {
   const capabilities = [
@@ -155,9 +154,9 @@ export function Healthcare() {
   ];
 
   return (
-    <main className="pt-8 pb-24">
+    <main className="pt-4 pb-16">
       {/* Hero */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-16">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -174,16 +173,8 @@ export function Healthcare() {
           </motion.div>
         </div>
       </section>
-
-      {/* Hero graphic */}
-      <section className="px-6 mb-24">
-        <div className="max-w-7xl mx-auto">
-          <HeroImage variant="healthcare" />
-        </div>
-      </section>
-
       {/* Capabilities */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-1">
             {capabilities.map((capability, index) => {
@@ -241,7 +232,7 @@ export function Healthcare() {
       </section>
 
       {/* Delivery */}
-      <section className="px-6 mb-32 bg-gradient-to-b from-white via-gray-50 to-white py-32">
+      <section className="px-6 mb-20 bg-gradient-to-b from-white via-gray-50 to-white py-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -291,7 +282,7 @@ export function Healthcare() {
       </section>
 
       {/* Projects */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -370,7 +361,7 @@ export function Healthcare() {
       </section>
 
       {/* Compliance */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-20">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -402,7 +393,7 @@ export function Healthcare() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white to-gray-50">
+      <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0 }}
