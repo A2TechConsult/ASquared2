@@ -1,9 +1,16 @@
 /**
- * HeroBackground v2 â ambient Apple-esque motion for the homepage hero.
- * Themes: AI, healthcare, automation, data science.
- * New: prominent scrolling pulse with a traveling bright node, and a
- * single shooting star that streaks diagonally across every ~22s.
- * Monochrome (black / grey), low opacity, unhurried.
+ * HeroBackground v3 â ambient Apple-esque motion for the homepage hero.
+ * Themes: AI, healthcare, ERP (SAP Fiori launchpad), data science.
+ *
+ * v3 changes:
+ *  - Pulse head now rides the actual ECG waveform (both are the same path,
+ *    the head traverses the path via animateMotion). The waveform itself
+ *    no longer scrolls â the pulse travels across it, left to right.
+ *  - ERP motif replaced with a SAP Fiori launchpad-style module grid:
+ *    FI, CO, MM, SD, PP, HR, QM, PS tiles with pulsing notification
+ *    badges and dashed interconnects â unmistakably ERP.
+ *
+ * Monochrome (black / grey), low opacity, unhurried throughout.
  */
 export function HeroBackground() {
   // Floating soft orbs â drift slowly on gentle diagonals.
@@ -35,10 +42,9 @@ export function HeroBackground() {
     dots.push({ x, y, r, dx, dy, dur, delay, op });
   }
 
-  // ECG pulse â single continuous path positioned at y=560, long enough to
-  // tile seamlessly. One segment = 400px. We'll scroll by one segment.
-  const seg = 400;
-  const makeSegment = (x0: number) =>
+  // ECG trace â single static path spanning the full viewBox, three beats.
+  // The pulse head animateMotion rides THIS exact path, so they're in sync.
+  const beat = (x0: number) =>
     `L ${x0 + 110} 560 ` +
     `L ${x0 + 130} 540 ` +
     `L ${x0 + 150} 580 ` +
@@ -46,26 +52,35 @@ export function HeroBackground() {
     `L ${x0 + 185} 700 ` +
     `L ${x0 + 205} 520 ` +
     `L ${x0 + 225} 580 ` +
-    `L ${x0 + 245} 560 ` +
-    `L ${x0 + seg} 560`;
-  let ecgPath = 'M -400 560 ';
-  for (let i = 0; i < 7; i++) {
-    ecgPath += makeSegment(-400 + i * seg) + ' ';
+    `L ${x0 + 245} 560 `;
+  const BEAT_WIDTH = 500;
+  const BEAT_COUNT = 3;
+  // Full trace covers viewBox + a bit of head/tail runway for a clean loop.
+  let ecgTrace = 'M -40 560 ';
+  for (let i = 0; i < BEAT_COUNT; i++) {
+    ecgTrace += beat(-40 + i * BEAT_WIDTH);
+    ecgTrace += `L ${-40 + i * BEAT_WIDTH + BEAT_WIDTH} 560 `;
   }
+  ecgTrace += 'L 1640 560';
 
-  // A shorter traveling path for the "pulse head" â just the first segment,
-  // which repeats via animateMotion's cycling behaviour.
-  const pulseHeadPath =
-    `M 0 560 ` +
-    `L 110 560 ` +
-    `L 130 540 ` +
-    `L 150 580 ` +
-    `L 165 440 ` +
-    `L 185 700 ` +
-    `L 205 520 ` +
-    `L 225 580 ` +
-    `L 245 560 ` +
-    `L 400 560`;
+  // SAP Fiori launchpad-style grid of ERP modules.
+  // 4 columns Ã 2 rows of app tiles with canonical SAP module codes.
+  const modules = [
+    { code: 'FI', name: 'Financial Accounting', badge: 2 },
+    { code: 'CO', name: 'Controlling' },
+    { code: 'MM', name: 'Materials Mgmt', badge: 5 },
+    { code: 'SD', name: 'Sales & Distribution' },
+    { code: 'PP', name: 'Production Planning', badge: 1 },
+    { code: 'HR', name: 'Human Resources' },
+    { code: 'QM', name: 'Quality Mgmt' },
+    { code: 'PS', name: 'Project Systems' },
+  ];
+  const TILE = 44;
+  const GAP = 10;
+  const COLS = 4;
+  // Position (anchor top-left of the whole grid group in viewBox space)
+  const GRID_X = 60;
+  const GRID_Y = 700;
 
   return (
     <svg
@@ -94,7 +109,12 @@ export function HeroBackground() {
           <stop offset="0.4" stopColor="#000" stopOpacity="0.6" />
           <stop offset="1" stopColor="#000" stopOpacity="0" />
         </radialGradient>
-        <path id="pulseHeadPath" d={pulseHeadPath} />
+        <radialGradient id="badgeGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#000" stopOpacity="0.8" />
+          <stop offset="1" stopColor="#000" stopOpacity="0" />
+        </radialGradient>
+        {/* The exact path the pulse head rides */}
+        <path id="pulseTracePath" d={ecgTrace} />
       </defs>
 
       {/* Floating soft orbs */}
@@ -190,41 +210,30 @@ export function HeroBackground() {
         </circle>
       ))}
 
-      {/* ECG pulse line â scrolls one segment every 9s, loops seamlessly.
-          Represents healthcare heartbeat + AI signal processing. */}
+      {/* ===== ECG waveform â STATIC, drawn once across the viewBox ===== */}
       <g>
-        <animateTransform
-          attributeName="transform"
-          type="translate"
-          from="0 0"
-          to="-400 0"
-          dur="9s"
-          repeatCount="indefinite"
-        />
         {/* soft wide underglow */}
-        <path d={ecgPath} fill="none" stroke="#000" strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" opacity="0.05" />
-        {/* main stroke â visible but subtle */}
-        <path d={ecgPath} fill="none" stroke="#000" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" opacity="0.22" />
+        <use href="#pulseTracePath" fill="none" stroke="#000" strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" opacity="0.05" />
+        {/* main stroke */}
+        <use href="#pulseTracePath" fill="none" stroke="#000" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" opacity="0.22" />
       </g>
 
-      {/* Pulse head â bright node travelling along the ECG rhythm.
-          Uses animateMotion along one segment that repeats seamlessly. */}
+      {/* ===== Pulse head â RIDES the same ECG path, perfectly in sync ===== */}
       <g>
-        <circle r="20" fill="url(#pulseHead)" opacity="0.55">
-          <animateMotion dur="9s" repeatCount="indefinite" rotate="0">
-            <mpath href="#pulseHeadPath" />
+        <circle r="22" fill="url(#pulseHead)" opacity="0.6">
+          <animateMotion dur="15s" repeatCount="indefinite" rotate="0">
+            <mpath href="#pulseTracePath" />
           </animateMotion>
         </circle>
-        <circle r="3.5" fill="#000">
-          <animateMotion dur="9s" repeatCount="indefinite" rotate="0">
-            <mpath href="#pulseHeadPath" />
+        <circle r="3.8" fill="#000">
+          <animateMotion dur="15s" repeatCount="indefinite" rotate="0">
+            <mpath href="#pulseTracePath" />
           </animateMotion>
-          <animate attributeName="r" values="3;4.5;3" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
+          <animate attributeName="r" values="3;5;3" dur="15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
         </circle>
       </g>
 
-
-      {/* ===== ERP / SAP motif: rotating automation gear ===== */}
+      {/* ===== AUTOMATION gear (upper-right) ===== */}
       <g transform="translate(1360 180)" opacity="0.5">
         <g>
           <animateTransform
@@ -235,7 +244,6 @@ export function HeroBackground() {
             dur="60s"
             repeatCount="indefinite"
           />
-          {/* teeth — 12 radial lines */}
           {Array.from({ length: 12 }).map((_, i) => {
             const a = (i / 12) * Math.PI * 2;
             const r1 = 42;
@@ -254,78 +262,213 @@ export function HeroBackground() {
               />
             );
           })}
-          {/* outer ring */}
           <circle cx="0" cy="0" r="42" fill="none" stroke="#000" strokeWidth="0.8" opacity="0.3" />
-          {/* inner hub */}
           <circle cx="0" cy="0" r="18" fill="none" stroke="#000" strokeWidth="0.8" opacity="0.4" />
           <circle cx="0" cy="0" r="4" fill="#000" opacity="0.5" />
         </g>
       </g>
 
-      {/* ===== ERP / SAP motif: module pipeline with data packet ===== */}
-      <g transform="translate(80 740)" opacity="0.55">
-        {/* connecting line */}
-        <line x1="18" y1="18" x2="402" y2="18" stroke="#000" strokeWidth="0.8" opacity="0.3" strokeDasharray="3 4" />
-        {/* 5 module tiles — small rounded squares */}
-        {[0, 1, 2, 3, 4].map((i) => (
-          <g key={i} transform={`translate(${i * 96} 0)`}>
-            <rect x="0" y="0" width="36" height="36" rx="4" fill="#fff" stroke="#000" strokeWidth="1" opacity="0.55" />
-            <rect x="6" y="6" width="24" height="4" fill="#000" opacity="0.3" />
-            <rect x="6" y="14" width="18" height="3" fill="#000" opacity="0.22" />
-            <rect x="6" y="21" width="22" height="3" fill="#000" opacity="0.22" />
-            <rect x="6" y="28" width="14" height="3" fill="#000" opacity="0.22" />
-            {/* module activity pulse */}
-            <circle cx="30" cy="6" r="1.5" fill="#000" opacity="0.4">
-              <animate
-                attributeName="opacity"
-                values="0.15;0.85;0.15"
-                dur="4s"
-                begin={`${i * 0.6}s`}
-                repeatCount="indefinite"
-                calcMode="spline"
-                keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
-                keyTimes="0;0.5;1"
+      {/* ========================================================= */}
+      {/*  SAP ERP motif â Fiori launchpad-style module grid         */}
+      {/*  4 cols Ã 2 rows of module tiles with notification badges  */}
+      {/* ========================================================= */}
+      <g transform={`translate(${GRID_X} ${GRID_Y})`} opacity="0.72">
+        {/* Faint eyebrow label above the grid */}
+        <text
+          x="0"
+          y="-14"
+          fill="#000"
+          fillOpacity="0.5"
+          fontFamily="Calibri, Helvetica, Arial, sans-serif"
+          fontSize="10"
+          letterSpacing="3"
+          fontWeight="600"
+        >
+          ERP Â· SAP LANDSCAPE
+        </text>
+
+        {/* Dashed horizontal connector lines between rows */}
+        <line
+          x1={-6}
+          y1={TILE + GAP / 2}
+          x2={COLS * TILE + (COLS - 1) * GAP + 6}
+          y2={TILE + GAP / 2}
+          stroke="#000"
+          strokeOpacity="0.18"
+          strokeWidth="0.6"
+          strokeDasharray="2 4"
+        />
+
+        {/* Dashed vertical connectors between tile columns */}
+        {Array.from({ length: COLS - 1 }).map((_, c) => {
+          const x = (c + 1) * TILE + c * GAP + GAP / 2;
+          return (
+            <line
+              key={`vconn-${c}`}
+              x1={x}
+              y1={-6}
+              x2={x}
+              y2={2 * TILE + GAP + 6}
+              stroke="#000"
+              strokeOpacity="0.14"
+              strokeWidth="0.6"
+              strokeDasharray="2 4"
+            />
+          );
+        })}
+
+        {/* Module tiles */}
+        {modules.map((m, i) => {
+          const col = i % COLS;
+          const row = Math.floor(i / COLS);
+          const x = col * (TILE + GAP);
+          const y = row * (TILE + GAP);
+          const delay = (col * 0.9 + row * 1.4) % 5;
+          const activityDur = 7 + (i % 4);
+          return (
+            <g key={m.code} transform={`translate(${x} ${y})`}>
+              {/* Tile background */}
+              <rect
+                x={0}
+                y={0}
+                width={TILE}
+                height={TILE}
+                rx={4}
+                ry={4}
+                fill="#fff"
+                stroke="#000"
+                strokeOpacity="0.55"
+                strokeWidth="0.9"
               />
-            </circle>
-          </g>
-        ))}
-        {/* data packet travelling module → module along the pipeline */}
+              {/* Subtle inner gradient panel at top (icon area) */}
+              <rect
+                x={2}
+                y={2}
+                width={TILE - 4}
+                height={TILE / 2 - 2}
+                rx={3}
+                ry={3}
+                fill="#000"
+                fillOpacity="0.04"
+              />
+              {/* Icon area â mini bars for a stylised "app icon" */}
+              <g transform={`translate(${TILE / 2 - 7} ${TILE / 4 - 3})`}>
+                <rect x={0} y={4} width={3} height={6} fill="#000" fillOpacity="0.35" />
+                <rect x={5} y={1} width={3} height={9} fill="#000" fillOpacity="0.5" />
+                <rect x={10} y={3} width={3} height={7} fill="#000" fillOpacity="0.4" />
+              </g>
+              {/* Module code label */}
+              <text
+                x={TILE / 2}
+                y={TILE - 7}
+                textAnchor="middle"
+                fill="#000"
+                fillOpacity="0.85"
+                fontFamily="Cambria, Georgia, serif"
+                fontSize="12"
+                fontWeight="600"
+                letterSpacing="0.5"
+              >
+                {m.code}
+              </text>
+
+              {/* Notification badge (only on some tiles) */}
+              {m.badge !== undefined && (
+                <g>
+                  <circle
+                    cx={TILE - 7}
+                    cy={7}
+                    r={6}
+                    fill="url(#badgeGlow)"
+                    opacity="0.5"
+                  >
+                    <animate
+                      attributeName="opacity"
+                      values="0.2;0.7;0.2"
+                      dur={`${activityDur}s`}
+                      begin={`${delay}s`}
+                      repeatCount="indefinite"
+                      calcMode="spline"
+                      keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                      keyTimes="0;0.5;1"
+                    />
+                  </circle>
+                  <circle
+                    cx={TILE - 7}
+                    cy={7}
+                    r={3}
+                    fill="#000"
+                    opacity="0.85"
+                  >
+                    <animate
+                      attributeName="r"
+                      values="2.5;3.5;2.5"
+                      dur={`${activityDur}s`}
+                      begin={`${delay}s`}
+                      repeatCount="indefinite"
+                      calcMode="spline"
+                      keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1"
+                      keyTimes="0;0.5;1"
+                    />
+                  </circle>
+                  <text
+                    x={TILE - 7}
+                    y={10}
+                    textAnchor="middle"
+                    fill="#fff"
+                    fontFamily="Calibri, Helvetica, Arial, sans-serif"
+                    fontSize="7"
+                    fontWeight="700"
+                  >
+                    {m.badge}
+                  </text>
+                </g>
+              )}
+            </g>
+          );
+        })}
+
+        {/* Occasional data-flow line pulse between two tiles */}
         <g>
-          <circle r="4" fill="#000" opacity="0.75">
+          <line
+            x1={TILE / 2}
+            y1={TILE / 2}
+            x2={TILE / 2 + (TILE + GAP) * 2}
+            y2={TILE / 2}
+            stroke="#000"
+            strokeWidth="0.8"
+            strokeOpacity="0"
+          >
             <animate
-              attributeName="cx"
-              values="36 ; 96 ; 132 ; 192 ; 228 ; 288 ; 324 ; 384 ; 384 ; 36"
-              keyTimes="0 ; 0.1 ; 0.22 ; 0.32 ; 0.44 ; 0.54 ; 0.66 ; 0.76 ; 0.95 ; 1"
+              attributeName="stroke-opacity"
+              values="0;0.5;0;0;0"
+              keyTimes="0;0.1;0.25;0.5;1"
               dur="12s"
               repeatCount="indefinite"
-              calcMode="spline"
-              keySplines="0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 1 0 1 0"
             />
+          </line>
+          <line
+            x1={TILE / 2 + (TILE + GAP)}
+            y1={TILE / 2}
+            x2={TILE / 2 + (TILE + GAP)}
+            y2={TILE / 2 + (TILE + GAP)}
+            stroke="#000"
+            strokeWidth="0.8"
+            strokeOpacity="0"
+          >
             <animate
-              attributeName="cy"
-              values="18"
+              attributeName="stroke-opacity"
+              values="0;0;0.5;0;0"
+              keyTimes="0;0.4;0.6;0.8;1"
               dur="12s"
+              begin="4s"
               repeatCount="indefinite"
             />
-          </circle>
-          <circle r="10" fill="url(#pulseHead)" opacity="0.4">
-            <animate
-              attributeName="cx"
-              values="36 ; 96 ; 132 ; 192 ; 228 ; 288 ; 324 ; 384 ; 384 ; 36"
-              keyTimes="0 ; 0.1 ; 0.22 ; 0.32 ; 0.44 ; 0.54 ; 0.66 ; 0.76 ; 0.95 ; 1"
-              dur="12s"
-              repeatCount="indefinite"
-              calcMode="spline"
-              keySplines="0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 0.4 0 0.2 1 ; 0 0 1 1 ; 1 0 1 0"
-            />
-            <animate attributeName="cy" values="18" dur="12s" repeatCount="indefinite" />
-          </circle>
+          </line>
         </g>
       </g>
 
-      {/* Shooting star â streaks diagonally across every ~22s.
-          Visible for ~4s of each cycle, parked off-screen the rest.
-          Trail is a cascade of small circles with decreasing opacity. */}
+      {/* ===== Shooting star ===== */}
       <g>
         <animateTransform
           attributeName="transform"
@@ -339,7 +482,6 @@ export function HeroBackground() {
         />
         <g opacity="0.9">
           <animate attributeName="opacity" values="0 ; 0.9 ; 0.9 ; 0 ; 0" keyTimes="0 ; 0.02 ; 0.17 ; 0.2 ; 1" dur="22s" repeatCount="indefinite" />
-          {/* Tail â descending opacity circles pointing back along the diagonal */}
           <circle cx="-150" cy="-37" r="0.8" fill="#000" opacity="0.08" />
           <circle cx="-130" cy="-32" r="1" fill="#000" opacity="0.12" />
           <circle cx="-110" cy="-27" r="1.2" fill="#000" opacity="0.18" />
@@ -350,7 +492,6 @@ export function HeroBackground() {
           <circle cx="-28" cy="-7" r="2.2" fill="#000" opacity="0.65" />
           <circle cx="-16" cy="-4" r="2.4" fill="#000" opacity="0.78" />
           <circle cx="-6" cy="-1.5" r="2.6" fill="#000" opacity="0.88" />
-          {/* Bright head */}
           <circle cx="0" cy="0" r="14" fill="url(#starHead)" opacity="0.55" />
           <circle cx="0" cy="0" r="3.2" fill="#000" />
         </g>
