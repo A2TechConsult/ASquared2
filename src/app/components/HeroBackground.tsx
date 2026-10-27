@@ -1,16 +1,8 @@
 /**
- * HeroBackground v3 â ambient Apple-esque motion for the homepage hero.
- * Themes: AI, healthcare, ERP (SAP Fiori launchpad), data science.
- *
- * v3 changes:
- *  - Pulse head now rides the actual ECG waveform (both are the same path,
- *    the head traverses the path via animateMotion). The waveform itself
- *    no longer scrolls â the pulse travels across it, left to right.
- *  - ERP motif replaced with a SAP Fiori launchpad-style module grid:
- *    FI, CO, MM, SD, PP, HR, QM, PS tiles with pulsing notification
- *    badges and dashed interconnects â unmistakably ERP.
- *
- * Monochrome (black / grey), low opacity, unhurried throughout.
+ * HeroBackground â ambient Apple-esque motion for the homepage hero.
+ * Themes: AI, healthcare, data science.
+ * Pulse head rides the ECG waveform (both share one path). Monochrome,
+ * low opacity, unhurried throughout.
  */
 export function HeroBackground() {
   // Floating soft orbs â drift slowly on gentle diagonals.
@@ -43,7 +35,6 @@ export function HeroBackground() {
   }
 
   // ECG trace â single static path spanning the full viewBox, three beats.
-  // The pulse head animateMotion rides THIS exact path, so they're in sync.
   const beat = (x0: number) =>
     `L ${x0 + 110} 560 ` +
     `L ${x0 + 130} 540 ` +
@@ -55,32 +46,12 @@ export function HeroBackground() {
     `L ${x0 + 245} 560 `;
   const BEAT_WIDTH = 500;
   const BEAT_COUNT = 3;
-  // Full trace covers viewBox + a bit of head/tail runway for a clean loop.
   let ecgTrace = 'M -40 560 ';
   for (let i = 0; i < BEAT_COUNT; i++) {
     ecgTrace += beat(-40 + i * BEAT_WIDTH);
     ecgTrace += `L ${-40 + i * BEAT_WIDTH + BEAT_WIDTH} 560 `;
   }
   ecgTrace += 'L 1640 560';
-
-  // SAP Fiori launchpad-style grid of ERP modules.
-  // 4 columns Ã 2 rows of app tiles with canonical SAP module codes.
-  const modules = [
-    { code: 'FI', name: 'Financial Accounting', badge: 2 },
-    { code: 'CO', name: 'Controlling' },
-    { code: 'MM', name: 'Materials Mgmt', badge: 5 },
-    { code: 'SD', name: 'Sales & Distribution' },
-    { code: 'PP', name: 'Production Planning', badge: 1 },
-    { code: 'HR', name: 'Human Resources' },
-    { code: 'QM', name: 'Quality Mgmt' },
-    { code: 'PS', name: 'Project Systems' },
-  ];
-  const TILE = 44;
-  const GAP = 10;
-  const COLS = 4;
-  // Position (anchor top-left of the whole grid group in viewBox space)
-  const GRID_X = 60;
-  const GRID_Y = 700;
 
   return (
     <svg
@@ -109,11 +80,6 @@ export function HeroBackground() {
           <stop offset="0.4" stopColor="#000" stopOpacity="0.6" />
           <stop offset="1" stopColor="#000" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="badgeGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stopColor="#000" stopOpacity="0.8" />
-          <stop offset="1" stopColor="#000" stopOpacity="0" />
-        </radialGradient>
-        {/* The exact path the pulse head rides */}
         <path id="pulseTracePath" d={ecgTrace} />
       </defs>
 
@@ -212,9 +178,7 @@ export function HeroBackground() {
 
       {/* ===== ECG waveform â STATIC, drawn once across the viewBox ===== */}
       <g>
-        {/* soft wide underglow */}
         <use href="#pulseTracePath" fill="none" stroke="#000" strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" opacity="0.05" />
-        {/* main stroke */}
         <use href="#pulseTracePath" fill="none" stroke="#000" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" opacity="0.22" />
       </g>
 
@@ -267,96 +231,6 @@ export function HeroBackground() {
           <circle cx="0" cy="0" r="4" fill="#000" opacity="0.5" />
         </g>
       </g>
-
-      {/* ========================================================= */}
-      {/*  SAP ERP motif â Fiori launchpad-style module grid         */}
-      {/*  4 cols Ã 2 rows of module tiles with notification badges  */}
-      {/* ========================================================= */}
-      <g transform={`translate(${GRID_X} ${GRID_Y})`} opacity="0.72">
-        {/* Faint eyebrow label above the grid */}
-        <text
-          x="0"
-          y="-14"
-          fill="#000"
-          fillOpacity="0.5"
-          fontFamily="Calibri, Helvetica, Arial, sans-serif"
-          fontSize="10"
-          letterSpacing="3"
-          fontWeight="600"
-        >
-          ERP Â· SAP LANDSCAPE
-        </text>
-
-        {/* Dashed horizontal connector lines between rows */}
-        <line
-          x1={-6}
-          y1={TILE + GAP / 2}
-          x2={COLS * TILE + (COLS - 1) * GAP + 6}
-          y2={TILE + GAP / 2}
-          stroke="#000"
-          strokeOpacity="0.18"
-          strokeWidth="0.6"
-          strokeDasharray="2 4"
-        />
-
-        {/* Dashed vertical connectors between tile columns */}
-        {Array.from({ length: COLS - 1 }).map((_, c) => {
-          const x = (c + 1) * TILE + c * GAP + GAP / 2;
-          return (
-            <line
-              key={`vconn-${c}`}
-              x1={x}
-              y1={-6}
-              x2={x}
-              y2={2 * TILE + GAP + 6}
-              stroke="#000"
-              strokeOpacity="0.14"
-              strokeWidth="0.6"
-              strokeDasharray="2 4"
-            />
-          );
-        })}
-
-        {/* Module tiles */}
-        {modules.map((m, i) => {
-          const col = i % COLS;
-          const row = Math.floor(i / COLS);
-          const x = col * (TILE + GAP);
-          const y = row * (TILE + GAP);
-          const delay = (col * 0.9 + row * 1.4) % 5;
-          const activityDur = 7 + (i % 4);
-          return (
-            <g key={m.code} transform={`translate(${x} ${y})`}>
-              {/* Tile background */}
-              <rect
-                x={0}
-                y={0}
-                width={TILE}
-                height={TILE}
-                rx={4}
-                ry={4}
-                fill="#fff"
-                stroke="#000"
-                strokeOpacity="0.55"
-                strokeWidth="0.9"
-              />
-              {/* Subtle inner gradient panel at top (icon area) */}
-              <rect
-                x={2}
-                y={2}
-                width={TILE - 4}
-                height={TILE / 2 - 2}
-                rx={3}
-                ry={3}
-                fill="#000"
-                fillOpacity="0.04"
-              />
-              {/* Icon area â mini bars for a stylised "app icon" */}
-              <g transform={`translate(${TILE / 2 - 7} ${TILE / 4 - 3})`}>
-                <rect x={0} y={4} width={3} height={6} fill="#000" fillOpacity="0.35" />
-                <rect x={5} y={1} width={3} height={9} fill="#000" fillOpacity="0.5" />
-                <rect x={10} y={3} width={3} height={7} fill="#000" fillOpacity="0.4" />
-              </g>
 
       {/* ===== Shooting star ===== */}
       <g>
