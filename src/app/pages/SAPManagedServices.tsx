@@ -12,7 +12,6 @@ import {
   Gauge,
   Sparkles,
 } from 'lucide-react';
-import sapImage from '../../assets/sap-managed-services.jpg';
 
 export default function SAPManagedServices() {
   const whyAsquared = [
@@ -55,7 +54,7 @@ export default function SAPManagedServices() {
   ];
 
   return (
-    <main className="pt-8 pb-16 bg-white">
+    <main className="pt-4 pb-16 bg-white">
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-6 mb-16">
         <motion.div
@@ -74,67 +73,61 @@ export default function SAPManagedServices() {
         </motion.div>
       </section>
 
-      {/* INTRO + WHY ASQUARED â single two-column block */}
-      <section className="max-w-7xl mx-auto px-6 mb-20">
-        <div className="grid lg:grid-cols-5 gap-10 items-start">
-          {/* LEFT: image + intro â 2/5 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <img
-              src={sapImage}
-              alt="SAP managed services"
-              className="w-full rounded-lg border border-gray-200 object-cover mb-6"
-            />
-            <h2 className="text-2xl font-light text-gray-900 mb-3 tracking-tight">
-              Built for stability. Designed for scale.
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              SAP isn't just a system â it's your business backbone. Our Managed Services deliver
-              predictable performance, reduced run-cost, and zero surprises, with delivery teams
-              across Hyderabad and San Francisco.
-            </p>
-          </motion.div>
+      {/* INTRO */}
+      <section className="max-w-5xl mx-auto px-6 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 tracking-tight">
+            Built for stability. Designed for scale.
+          </h2>
+          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            SAP isn’t just a system — it’s your business backbone. Our Managed Services deliver
+            predictable performance, reduced run-cost, and zero surprises, with delivery teams
+            across Hyderabad and San Francisco.
+          </p>
+        </motion.div>
+      </section>
 
-          {/* RIGHT: Why ASquared â 3/5, 2x2 grid of cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="lg:col-span-3"
-          >
-            <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
-              Why ASquared
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {whyAsquared.map((w, i) => {
-                const Icon = w.icon;
-                return (
-                  <div
-                    key={w.title}
-                    className="group bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 p-6"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center flex-shrink-0">
-                        <Icon className="size-5 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-medium text-gray-900 tracking-tight mb-1">
-                          {w.title}
-                        </h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">{w.body}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </motion.div>
+      {/* WHY ASQUARED — full-width 4-column grid */}
+      <section className="max-w-7xl mx-auto px-6 mb-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-8"
+        >
+          <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500">
+            Why ASquared
+          </h2>
+        </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {whyAsquared.map((w, i) => {
+            const Icon = w.icon;
+            return (
+              <motion.div
+                key={w.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                className="group bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 p-6"
+              >
+                <div className="w-10 h-10 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center mb-4">
+                  <Icon className="size-5 text-white" />
+                </div>
+                <h3 className="text-base font-medium text-gray-900 tracking-tight mb-2">
+                  {w.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{w.body}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
