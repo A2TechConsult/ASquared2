@@ -41,10 +41,10 @@ const slides: Slide[] = [
     id: 'healthcare',
     eyebrow: 'Healthcare & Clinical Workflows',
     icon: Stethoscope,
-    title: 'HIPAA-ready clinical AI.',
+    title: 'CGM intelligence, inside Epic.',
     description:
-      'Ambient dictation into Epic and Cerner, PDF-to-HL7 lab pipelines, continuous glucose monitoring intelligence, and streaming anomaly detection on ICU vitals. Built around the clinician workflow.',
-    highlights: ['Ambient dictation + EHR', 'HL7 / FHIR pipelines', 'CGM intelligence'],
+      'AI on continuous glucose monitor streams — Dexcom, FreeStyle Libre, Medtronic Guardian — fused with nutrition, insulin and activity context. Delivered inside the Epic workflow via HL7 and FHIR, under a HIPAA perimeter.',
+    highlights: ['CGM streaming + glycemic risk', 'Epic in-basket integration', 'HL7 v2 and FHIR R4'],
     ctaLabel: 'Explore Healthcare',
     ctaTo: '/healthcare',
   },
