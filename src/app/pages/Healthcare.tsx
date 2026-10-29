@@ -1,10 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
-  Mic,
-  FileText,
-  Activity,
-  Workflow,
   Droplets,
   ShieldCheck,
   TrendingUp,
@@ -14,73 +10,17 @@ import {
 export function Healthcare() {
   const capabilities = [
     {
-      icon: Mic,
-      title: 'Clinical Dictation',
-      subtitle: 'Ambient Scribe',
-      description:
-        "Clinician speaks naturally during the encounter. Azure Speech transcribes with medical lexicons; a structured SOAP note lands in Epic or Cerner as a FHIR DocumentReference — billing-ready, so cases move straight into the revenue cycle without end-of-day documentation debt.",
-      features: [
-        'Streaming ASR with medical lexicons',
-        'Speaker diarization — clinician, patient, family',
-        'ICD-10, CPT, SNOMED, RxNorm code suggestion',
-        'PHI de-identification on edge before cloud',
-        'FHIR DocumentReference + Observation output',
-      ],
-    },
-    {
-      icon: FileText,
-      title: 'Lab Results & Clinical Documents',
-      subtitle: 'PDF → HL7 → FHIR',
-      description:
-        'Reference labs still send PDFs. We ingest them through Azure Document Intelligence, map every analyte to LOINC via a semantic matcher, and emit clean HL7 v2 ORU messages or FHIR R4 Observation / DiagnosticReport.',
-      features: [
-        'LOINC-mapped analyte extraction',
-        'HL7 v2 ORU^R01 or FHIR R4 output',
-        'Confidence-sized clinician review queue',
-        '94.3% straight-through on multi-vendor PDFs',
-        'BAA-covered end to end',
-      ],
-    },
-    {
-      icon: Workflow,
-      title: 'Cross-EHR Case Mapping',
-      subtitle: 'Longitudinal Patient View',
-      description:
-        'Patient records fractured across Epic, Cerner, Meditech, labs, imaging centers, specialty clinics. We build the longitudinal case view — probabilistic identity resolution, FHIR Patient $everything, SNOMED-hierarchy problem-list reconciliation.',
-      features: [
-        'Probabilistic patient identity matching',
-        'FHIR Patient $everything orchestration',
-        'SNOMED-hierarchy problem-list reconciliation',
-        'RxNorm-based medication deduplication',
-        'Workflow-surfaced in clinician EHR',
-      ],
-    },
-    {
-      icon: Activity,
-      title: 'Medical Anomaly Detection',
-      subtitle: 'Labs & Vitals Intelligence',
-      description:
-        'Streaming anomaly detection on lab panels and ICU vitals. Ensemble of isolation forests, LSTM autoencoders, and clinically-authored rules flags sepsis-risk signatures, AKI progression, electrolyte derangements. Routed as a non-blocking FHIR CommunicationRequest.',
-      features: [
-        'Early-sepsis signatures on vitals',
-        'KDIGO-staged AKI progression monitoring',
-        'Confidence-scored alerts with rationale',
-        'Non-blocking FHIR CommunicationRequest',
-        'Per-unit false-alert budget tracking',
-      ],
-    },
-    {
       icon: Droplets,
       title: 'CGM Intelligence & Glycemic Risk',
-      subtitle: 'Continuous Glucose Monitoring AI',
+      subtitle: 'Continuous Glucose Monitoring AI, inside Epic',
       description:
-        'AI on continuous glucose monitor streams (Dexcom, FreeStyle Libre, Medtronic) fused with nutrition, insulin, and activity context. Early flags for hypo and hyper events, pattern coaching, and clinician dashboards — tuned per patient and surfaced inside the clinical workflow.',
+        "AI on continuous glucose monitor streams â Dexcom, FreeStyle Libre, Medtronic Guardian â fused with nutrition, insulin, and activity context. Early flags for hypo and hyper events, pattern coaching and clinician dashboards, surfaced inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.",
       features: [
-        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
+        'Streaming CGM ingestion â Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
         'Hypo / hyper early-warning scoring with personalized thresholds',
         'Nutrition, insulin, and activity context fusion',
         'TIR, TBR, GMI dashboards for endocrinology teams',
-        'FHIR Observation output with per-patient escalation paths',
+        'Epic in-basket integration via HL7 v2 and FHIR R4',
       ],
     },
   ];
@@ -89,52 +29,34 @@ export function Healthcare() {
     {
       phase: 'Clinical Discovery',
       description:
-        'Workshops with clinicians, informatics, and compliance to map the real workflow, surface pain points, and align on measurable outcomes.',
+        'Workshops with endocrinology, informatics and compliance to map the real workflow, surface pain points and align on measurable outcomes.',
     },
     {
       phase: 'Proof of Concept',
       description:
-        'Edge-deployable pilot with de-identified real data. HIPAA perimeter respected throughout. Weekly clinician review loops to tune extraction accuracy and workflow fit.',
+        'Edge-deployable pilot with de-identified real data. HIPAA perimeter respected throughout. Weekly clinician review loops to tune thresholds and workflow fit.',
     },
     {
       phase: 'Production Deployment',
       description:
-        'Full EHR integration — Epic, Oracle Health, Meditech. BAA with every sub-processor. EU AI Act conformance documentation. Audit log retention per policy.',
+        'Full Epic integration via HL7 and FHIR. BAA with every sub-processor. EU AI Act conformance documentation. Audit log retention per policy.',
     },
     {
       phase: 'Clinical Monitoring',
       description:
-        'Model drift monitoring per unit, false-alert budget tracking, confidence calibration (ECE), and continuous clinician feedback integrated into the review queue.',
+        'Model drift monitoring per unit, false-alert budget tracking, confidence calibration and continuous clinician feedback integrated into the review queue.',
     },
   ];
 
   const projects = [
     {
-      title: 'Ambient Dictation — 7-Hospital System',
+      title: 'CGM Glycemic Intelligence â Endocrinology Group',
       challenge:
-        '400 clinicians spending 90+ minutes per day on after-hours charting',
+        'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix',
       solution:
-        'Edge-first ambient scribe with Azure Speech + gpt-4o, structured SOAP generation, Epic sidebar review',
+        'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, nutrition / insulin context fusion and Epic in-basket integration via HL7 and FHIR',
       impact:
-        '42% faster note authoring, clinician NPS from +12 to +48, zero PHI incidents in year 1',
-    },
-    {
-      title: 'PDF-to-HL7 Lab Pipeline — MedTech ISV',
-      challenge:
-        'Reference-lab integration layer processing messy multi-vendor PDFs with manual review burden',
-      solution:
-        'LOINC-mapped extractor on Azure Document Intelligence with confidence-sized review queue',
-      impact:
-        '94.3% straight-through processing, 11× reduction in clinician review queue',
-    },
-    {
-      title: 'ICU Anomaly Detection — Early Sepsis',
-      challenge:
-        'ICU team overwhelmed by SIRS/qSOFA alert fatigue; genuine sepsis signatures lost in noise',
-      solution:
-        'Ensemble (LSTM-AE + XGBoost + clinical rules) with per-unit false-alert budget and plain-English rationale',
-      impact:
-        'Alert precision up 3.4×, mean lead time on confirmed sepsis +2.1 hours vs standard scoring',
+        'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1',
     },
   ];
 
@@ -168,11 +90,12 @@ export function Healthcare() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Clinical AI that respects the clinician's workflow and the HIPAA perimeter. From ambient dictation to HL7 interoperability to continuous glucose monitoring — for hospitals, health systems, and ambulatory surgery centers.
+              Clinical AI focused on continuous glucose monitoring intelligence â delivered inside the Epic workflow via HL7 and FHIR, under a HIPAA perimeter.
             </p>
           </motion.div>
         </div>
       </section>
+
       {/* Capabilities */}
       <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
@@ -292,10 +215,10 @@ export function Healthcare() {
             className="mb-20 text-center"
           >
             <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
-              Representative Projects
+              Representative Project
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Clinical workflows improved with measurable outcomes.
+              Clinical workflow improved with a measurable outcome.
             </p>
           </motion.div>
 
@@ -405,7 +328,7 @@ export function Healthcare() {
               Talk to a Health Architect
             </h3>
             <p className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-              30 minutes with the practice lead. Bring the workflow you want to improve, the EHR you run, and the metric you want to move.
+              30 minutes with the practice lead. Bring the CGM workflow you want to improve, the EHR you run, and the metric you want to move.
             </p>
             <Link
               to="/contact"
