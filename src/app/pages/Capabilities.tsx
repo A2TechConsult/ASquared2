@@ -21,9 +21,9 @@ export function Capabilities() {
     {
       icon: Stethoscope,
       title: 'Healthcare AI & Clinical Workflows',
-      tags: ['Ambient Dictation', 'HL7 / FHIR', 'CGM AI', 'HIPAA'],
+      tags: ['CGM AI', 'Epic Integration', 'HL7 / FHIR', 'HIPAA'],
       description:
-        'HIPAA-ready clinical AI — ambient dictation into Epic and Cerner, PDF-to-HL7 lab pipelines, continuous glucose monitoring intelligence, and streaming anomaly detection on ICU vitals. Built around the clinician workflow.',
+        'HIPAA-ready CGM intelligence — streaming ingestion from Dexcom, FreeStyle Libre and Medtronic Guardian, delivered inside the Epic workflow via HL7 and FHIR, with glycemic risk, time-in-range dashboards and clinician-tuned thresholds.',
     },
     {
       icon: Database,
