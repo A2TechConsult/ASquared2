@@ -6,16 +6,16 @@ export function AICapabilities() {
   // Mixed order: healthcare and enterprise AI interleaved so SAP is not first
   const capabilities = [
     {
-      icon: Mic,
-      title: 'Clinical AI & Ambient Dictation',
-      subtitle: 'Healthcare — Speech & Documentation',
-      description: 'HIPAA-ready ambient dictation and clinical scribing that captures the physician-patient encounter and produces structured notes, orders, and codes.',
+      icon: Activity,
+      title: 'CGM Intelligence & Glycemic Risk',
+      subtitle: 'Healthcare — Continuous Glucose Monitoring AI, inside Epic',
+      description: 'AI on continuous glucose monitor streams fused with nutrition, insulin and activity context. Early flags for hypo and hyper events, pattern coaching and endocrinology dashboards — delivered inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.',
       features: [
-        'Azure Speech + medical ASR with specialty vocabularies',
-        'Structured SOAP note generation',
-        'ICD-10 / CPT coding assistance',
-        'EHR write-back (Epic, Cerner, Meditech)',
-        'Clinician review and sign-off workflows',
+        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
+        'Hypo / hyper early-warning scoring with personalized thresholds',
+        'TIR, TBR, GMI dashboards for endocrinology teams',
+        'Epic in-basket integration via HL7 v2 and FHIR R4',
+        'HIPAA-aligned PHI handling with BAA coverage end to end',
       ],
     },
     {
@@ -32,19 +32,6 @@ export function AICapabilities() {
       ],
     },
     {
-      icon: Activity,
-      title: 'Medical Anomaly Detection',
-      subtitle: 'Healthcare — Real-Time Signals',
-      description: 'Real-time anomaly detection across vitals, imaging, and surgical / triage video to surface early sepsis, deterioration, and procedural risks.',
-      features: [
-        'ICU vitals streaming and early-warning scoring',
-        'Surgical and triage video analysis',
-        'Imaging triage with radiologist workflow',
-        'Alerting that respects clinical escalation paths',
-        'Model monitoring and bias mitigation',
-      ],
-    },
-    {
       icon: Zap,
       title: 'Agentic AI Systems',
       subtitle: 'Autonomous Intelligence',
@@ -55,19 +42,6 @@ export function AICapabilities() {
         'Tool-using AI with API integration',
         'Self-correcting execution loops',
         'Human-in-the-loop oversight mechanisms',
-      ],
-    },
-    {
-      icon: FileText,
-      title: 'Lab Documents & Cross-EHR Mapping',
-      subtitle: 'Healthcare — Interoperability',
-      description: 'Automated conversion of lab PDFs, scanned reports, and legacy formats into HL7 v2 and FHIR R4/R5, with cross-EHR case mapping for continuity of care.',
-      features: [
-        'PDF / image to HL7 v2 and FHIR conversion',
-        'USCDI v4 and payer data model alignment',
-        'Cross-EHR patient and case reconciliation',
-        'Document AI with specialty validators',
-        'Audit trails for 21 CFR Part 11',
       ],
     },
     {
@@ -146,10 +120,10 @@ export function AICapabilities() {
   // Mixed order: healthcare and enterprise projects interleaved
   const projects = [
     {
-      title: 'Ambient Dictation — 7-Hospital System',
-      challenge: 'Regional health system needed to reduce clinician documentation burden across 7 hospitals',
-      solution: 'Deployed ambient dictation with Azure Speech, specialty vocabularies, and Epic write-back',
-      impact: '62% reduction in after-hours charting, higher clinician satisfaction scores',
+      title: 'CGM Glycemic Intelligence — Endocrinology Group',
+      challenge: 'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix',
+      solution: 'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, context fusion and Epic in-basket integration via HL7 and FHIR',
+      impact: 'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1',
     },
     {
       title: 'Manufacturing Intelligence',
@@ -158,22 +132,10 @@ export function AICapabilities() {
       impact: '23% reduction in scrap costs, 15% improvement in first-pass yield',
     },
     {
-      title: 'ICU Anomaly Detection — Early Sepsis',
-      challenge: 'Academic medical center wanted earlier detection of sepsis in ICU populations',
-      solution: 'Streaming anomaly detection on vitals and labs with clinician-tuned escalation paths',
-      impact: 'Alerts 4–6 hours earlier than standard scoring, with reduced alert fatigue',
-    },
-    {
       title: 'Procurement Copilot',
       challenge: 'Fortune 500 client required intelligent procurement assistant for 5,000+ users',
       solution: 'Built RAG system on SAP Master Data with GPT-4, integrated into SAP Fiori',
       impact: '40% faster vendor selection, 60% reduction in manual data lookup',
-    },
-    {
-      title: 'PDF-to-HL7 Lab Pipeline — MedTech ISV',
-      challenge: 'MedTech ISV needed to ingest lab PDFs from 300+ facilities into a FHIR-based platform',
-      solution: 'Document AI pipeline converting PDFs to HL7 v2 and FHIR R4 with specialty validators',
-      impact: '94% straight-through processing, days-to-minutes turnaround for new facilities',
     },
     {
       title: 'Sales Forecasting',
@@ -210,7 +172,7 @@ export function AICapabilities() {
             </h1>
 
             <p className="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed">
-              Enterprise-grade AI across SAP, operations, and healthcare. From generative AI and autonomous agents to clinical dictation and medical anomaly detection — precision-engineered AI systems designed for enterprise scale, security, and governance, including HIPAA-ready healthcare workflows, delivered with measurable outcomes.
+              Enterprise-grade AI across SAP and operations — and continuous glucose monitoring intelligence for healthcare. Precision-engineered AI designed for enterprise scale, security and governance, with HIPAA-ready delivery into the Epic workflow via HL7 and FHIR.
             </p>
           </motion.div>
         </div>
