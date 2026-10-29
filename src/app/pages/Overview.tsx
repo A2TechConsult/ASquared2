@@ -219,7 +219,7 @@ export function Overview() {
               { icon: Database, title: 'SAP S/4HANA Transformation', description: 'Brownfield conversions, greenfield builds, and selective data transition from ECC to S/4HANA.' },
               { icon: Brain, title: 'Enterprise AI & Intelligent Automation', description: 'Generative AI, RAG, agentic systems, and SAP Joule across your landscape.' },
               { icon: Users, title: 'Staff Augmentation', description: 'Platinum-level AI/ML, SAP, Vistex, and Plex specialists integrated into your teams.' },
-              { icon: Stethoscope, title: 'Healthcare & Clinical Workflows', description: 'HIPAA-ready clinical AI — ambient dictation, HL7 / FHIR pipelines, CGM intelligence.' },
+              { icon: Stethoscope, title: 'Healthcare & Clinical Workflows', description: 'HIPAA-ready CGM intelligence delivered inside the Epic workflow via HL7 and FHIR.' },
               { icon: Settings, title: 'SAP Managed Services', description: '24×7 monitoring, L2 / L3 support, and continuous optimization on Solution Manager / Cloud ALM.' },
               { icon: Factory, title: 'Manufacturing Systems', description: 'Plex ERP and MES for discrete and process manufacturing, integrated with SAP.' },
               { icon: Network, title: 'Integration & Middleware', description: 'SAP CPI, PI / PO, API management, and real-time data replication across the enterprise.' },
