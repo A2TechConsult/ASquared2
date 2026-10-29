@@ -39,7 +39,7 @@ export function StaffAugmentation() {
       title: 'Healthcare Experts',
       subtitle: 'Clinical & Life Sciences Specialists',
       roles: [
-        'Clinical AI Specialists (ambient dictation, clinical documentation)',
+        'CGM & Glycemic Risk AI Specialists (Epic in-basket integration)',
         'HL7 / FHIR Integration Engineers',
         'Epic & Cerner EHR Consultants',
         'HIPAA Compliance & Security Specialists',
@@ -217,7 +217,7 @@ export function StaffAugmentation() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and specialty talent for critical enterprise initiatives.
+              Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and healthcare CGM specialty talent for critical enterprise initiatives.
             </p>
           </motion.div>
         </div>
