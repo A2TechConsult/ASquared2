@@ -6,8 +6,8 @@ export function AICapabilities() {
   // Mixed order: healthcare and enterprise AI interleaved so SAP is not first
   const capabilities = [
     {
-      icon: Activity, title: 'CGM Intelligence & Glycemic Risk', subtitle: 'Healthcare — Continuous Glucose Monitoring AI, inside Epic', description: 'AI on continuous glucose monitor streams fused with nutrition, insulin and activity context. Early flags for hypo and hyper events, pattern coaching and endocrinology dashboards — delivered inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.', features: [
-        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian', 'Hypo / hyper early-warning scoring with personalized thresholds', 'TIR, TBR, GMI dashboards for endocrinology teams', 'Epic in-basket integration via HL7 v2 and FHIR R4', 'HIPAA-aligned PHI handling with BAA coverage end to end', ], }, {
+      icon: Activity, title: 'CGM Intelligence & Glycemic Risk', subtitle: 'Healthcare, Continuous Glucose Monitoring AI, inside Epic', description: 'AI on continuous glucose monitor streams fused with nutrition, insulin and activity context. Early flags for hypo and hyper events, pattern coaching and endocrinology dashboards, delivered inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.', features: [
+        'Streaming CGM ingestion, Dexcom G7, FreeStyle Libre 3, Medtronic Guardian', 'Hypo / hyper early-warning scoring with personalized thresholds', 'TIR, TBR, GMI dashboards for endocrinology teams', 'Epic in-basket integration via HL7 v2 and FHIR R4', 'HIPAA-aligned PHI handling with BAA coverage end to end', ], }, {
       icon: Brain, title: 'Retrieval-Augmented Generation', subtitle: 'Enterprise RAG Systems', description: 'Custom RAG architectures that combine your proprietary data with large language models, delivering contextually accurate responses grounded in your business knowledge.', features: [
         'Vector database design and optimization', 'Semantic search and document retrieval', 'Multi-modal data integration', 'Fine-tuned embedding models', 'Real-time knowledge graph updates', ], }, {
       icon: Zap, title: 'Agentic AI Systems', subtitle: 'Autonomous Intelligence', description: 'Self-directed AI agents that reason, plan, and execute complex workflows across your enterprise systems with minimal human intervention.', features: [
@@ -31,7 +31,7 @@ export function AICapabilities() {
   // Mixed order: healthcare and enterprise projects interleaved
   const projects = [
     {
-      title: 'CGM Glycemic Intelligence — Endocrinology Group', challenge: 'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix', solution: 'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, context fusion and Epic in-basket integration via HL7 and FHIR', impact: 'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1', }, {
+      title: 'CGM Glycemic Intelligence, Endocrinology Group', challenge: 'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix', solution: 'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, context fusion and Epic in-basket integration via HL7 and FHIR', impact: 'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1', }, {
       title: 'Manufacturing Intelligence', challenge: 'Global manufacturer needed real-time quality prediction across 40+ production lines', solution: 'Deployed Databricks lakehouse with MLflow-managed models, achieving 94% defect prediction accuracy', impact: '23% reduction in scrap costs, 15% improvement in first-pass yield', }, {
       title: 'Procurement Copilot', challenge: 'Fortune 500 client required intelligent procurement assistant for 5,000+ users', solution: 'Built RAG system on SAP Master Data with GPT-4, integrated into SAP Fiori', impact: '40% faster vendor selection, 60% reduction in manual data lookup', }, {
       title: 'Sales Forecasting', challenge: 'Distribution company needed accurate demand prediction across 200,000 SKUs', solution: 'Salesforce Einstein Discovery with external data enrichment and custom algorithms', impact: '18% forecast accuracy improvement, $12M inventory optimization', }, ];
@@ -61,7 +61,7 @@ export function AICapabilities() {
             </h1>
 
             <p className="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed">
-              Enterprise-grade AI across SAP and operations — and continuous glucose monitoring intelligence for healthcare. Precision-engineered AI designed for enterprise scale, security and governance, with HIPAA-ready delivery into the Epic workflow via HL7 and FHIR.
+              Enterprise-grade AI across SAP and operations, and continuous glucose monitoring intelligence for healthcare. Precision-engineered AI designed for enterprise scale, security and governance, with HIPAA-ready delivery into the Epic workflow via HL7 and FHIR.
             </p>
           </motion.div>
         </div>
@@ -175,7 +175,7 @@ export function AICapabilities() {
               Representative Projects
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Real implementations delivering measurable business value — across enterprise AI and healthcare.
+              Real implementations delivering measurable business value, across enterprise AI and healthcare.
             </p>
           </motion.div>
 
