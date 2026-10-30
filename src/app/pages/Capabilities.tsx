@@ -12,13 +12,6 @@ export function Capabilities() {
         'An AI development partner at our core, generative AI and LLM applications, RAG on your proprietary data, autonomous agents (LangGraph / AutoGen), MLOps on Databricks and Vertex, and governance frameworks for responsible, production-grade AI.',
     },
     {
-      icon: Users,
-      title: 'Expert Talent & Staff Augmentation',
-      tags: ['AI / ML Engineers', 'Data Scientists', 'SAP Architects', 'Dedicated Teams'],
-      description:
-        'Platinum-level technologists integrated into your teams, AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, .NET developers, DevOps engineers and Fiori developers. Current, reliable, ready to execute from day one.',
-    },
-    {
       icon: Stethoscope,
       title: 'Healthcare AI & Clinical Workflows',
       tags: ['CGM AI', 'Epic Integration', 'HL7 / FHIR', 'HIPAA'],
@@ -59,6 +52,13 @@ export function Capabilities() {
       tags: ['SAP Activate', 'Global Rollouts', 'Agile / Hybrid', 'Go-Live'],
       description:
         'Full-lifecycle delivery with the SAP Activate framework, architecture authority, testing strategy, cutover planning, go-live execution, and hypercare, on multi-country, multi-site programs.',
+    },
+    {
+      icon: Users,
+      title: 'Expert Talent & Staff Augmentation',
+      tags: ['AI / ML Engineers', 'Data Scientists', 'SAP Architects', 'Dedicated Teams'],
+      description:
+        'Platinum-level technologists integrated into your teams, AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, .NET developers, DevOps engineers and Fiori developers. Current, reliable, ready to execute from day one.',
     },
   ];
 
