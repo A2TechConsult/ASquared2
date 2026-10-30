@@ -46,7 +46,7 @@ export function Overview() {
             AI-first consulting. Enterprise-ready.
           </h1>
           <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-            An AI development partner at our core — with expert talent, deep SAP foundations, and the discipline to make AI real in production. Without the noise.
+            An AI development partner at our core, with expert talent, deep SAP foundations, and the discipline to make AI real in production. Without the noise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -79,7 +79,7 @@ export function Overview() {
               AI-forward. Enterprise-grounded.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-              We build AI that reaches production — generative AI, RAG, and agentic systems — backed by deep SAP foundations, healthcare specialization, and the expert talent to execute. Fortune 500 clients across manufacturing, life sciences, industrial, and healthcare.
+              We build AI that reaches production, generative AI, RAG, and agentic systems, backed by deep SAP foundations, healthcare specialization, and the expert talent to execute. Fortune 500 clients across manufacturing, life sciences, industrial, and healthcare.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-16 text-left">
               <div>
@@ -99,7 +99,7 @@ export function Overview() {
         </div>
       </section>
 
-      {/* Domain slider — SAP, AI, Healthcare */}
+      {/* Domain slider, SAP, AI, Healthcare */}
       <DomainSlider />
 
             {/* Clients Section */}
@@ -220,7 +220,7 @@ export function Overview() {
               { icon: Brain, title: 'Enterprise AI & Intelligent Automation', description: 'Generative AI, RAG, agentic systems, and SAP Joule across your landscape.' },
               { icon: Users, title: 'Staff Augmentation', description: 'Platinum-level AI/ML, SAP, Vistex, and Plex specialists integrated into your teams.' },
               { icon: Stethoscope, title: 'Healthcare & Clinical Workflows', description: 'HIPAA-ready CGM intelligence delivered inside the Epic workflow via HL7 and FHIR.' },
-              { icon: Settings, title: 'SAP Managed Services', description: '24×7 monitoring, L2 / L3 support, and continuous optimization on Solution Manager / Cloud ALM.' },
+              { icon: Settings, title: 'SAP Managed Services', description: '24/7 monitoring, L2 / L3 support, and continuous optimization on Solution Manager / Cloud ALM.' },
               { icon: Factory, title: 'Manufacturing Systems', description: 'Plex ERP and MES for discrete and process manufacturing, integrated with SAP.' },
               { icon: Network, title: 'Integration & Middleware', description: 'SAP CPI, PI / PO, API management, and real-time data replication across the enterprise.' },
               { icon: Rocket, title: 'End-to-End Project Delivery', description: 'SAP Activate program management from discovery through hypercare for global rollouts.' },
