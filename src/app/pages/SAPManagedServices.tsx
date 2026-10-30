@@ -18,7 +18,7 @@ export default function SAPManagedServices() {
     {
       icon: Target,
       title: 'Precision First',
-      body: 'We engineer stability â not just tickets. Architecture-led operations.',
+      body: 'We engineer stability — not just tickets. Architecture-led operations.',
     },
     {
       icon: Globe,
@@ -38,7 +38,7 @@ export default function SAPManagedServices() {
   ];
 
   const services = [
-    { icon: Layers, title: 'Application Management', body: 'FI / CO, SD, MM, PP, HCM â functional + technical.' },
+    { icon: Layers, title: 'Application Management', body: 'FI / CO, SD, MM, PP, HCM — functional + technical.' },
     { icon: Server, title: 'Basis & Technical Ops', body: 'Monitoring, patching, HANA DBA, performance tuning.' },
     { icon: Cloud, title: 'Cloud & Migration', body: 'RISE / GROW moves on AWS, Azure and GCP.' },
     { icon: Activity, title: 'Proactive Monitoring', body: 'AIOps alerts, predictive maintenance, automation.' },
@@ -67,7 +67,7 @@ export default function SAPManagedServices() {
             SAP Managed Services. Without the noise.
           </h1>
           <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Enterprise-grade SAP support delivered with precision. From ECC to S/4HANA â we run your
+            Enterprise-grade SAP support delivered with precision. From ECC to S/4HANA — we run your
             landscape so your team doesn't have to.
           </p>
         </motion.div>
@@ -131,7 +131,7 @@ export default function SAPManagedServices() {
         </div>
       </section>
 
-      {/* SERVICES â 3-column grid, compact tiles */}
+      {/* SERVICES — 3-column grid, compact tiles */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <motion.div
           initial={{ opacity: 0 }}
@@ -171,10 +171,10 @@ export default function SAPManagedServices() {
         </div>
       </section>
 
-      {/* ENGAGEMENT + RESULTS â compact two-column strip */}
+      {/* ENGAGEMENT + RESULTS — compact two-column strip */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <div className="grid lg:grid-cols-5 gap-10">
-          {/* Engagement â 3/5 as 4-step horizontal strip */}
+          {/* Engagement — 3/5 as 4-step horizontal strip */}
           <div className="lg:col-span-3">
             <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
               Engagement Model
@@ -199,7 +199,7 @@ export default function SAPManagedServices() {
             </div>
           </div>
 
-          {/* Proven Results â 2/5 as quote cards */}
+          {/* Proven Results — 2/5 as quote cards */}
           <div className="lg:col-span-2">
             <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
               Proven Results
@@ -238,7 +238,7 @@ export default function SAPManagedServices() {
             Take the noise out of your SAP operations
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's build a predictable, high-performance SAP environment â starting with a free
+            Let's build a predictable, high-performance SAP environment — starting with a free
             2-week assessment of your landscape.
           </p>
           <Link
