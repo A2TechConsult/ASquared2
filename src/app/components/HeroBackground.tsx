@@ -1,11 +1,11 @@
 /**
- * HeroBackground â ambient Apple-esque motion for the homepage hero.
+ * HeroBackground — ambient Apple-esque motion for the homepage hero.
  * Themes: AI, healthcare, data science.
  * Pulse head rides the ECG waveform (both share one path). Monochrome,
  * low opacity, unhurried throughout.
  */
 export function HeroBackground() {
-  // Floating soft orbs â drift slowly on gentle diagonals.
+  // Floating soft orbs — drift slowly on gentle diagonals.
   const orbs = [
     { x: 180, y: 180, r: 90, dx: 60, dy: -40, dur: 42, delay: 0 },
     { x: 420, y: 460, r: 60, dx: -50, dy: 50, dur: 38, delay: 3 },
@@ -14,13 +14,13 @@ export function HeroBackground() {
     { x: 1420, y: 220, r: 70, dx: -40, dy: 50, dur: 40, delay: 2 },
   ];
 
-  // Rotating orbital rings â AI/ML motif.
+  // Rotating orbital rings — AI/ML motif.
   const orbits = [
     { cx: 420, cy: 320, r: 260, dur: 90, dir: 1 },
     { cx: 1200, cy: 380, r: 220, dur: 110, dir: -1 },
   ];
 
-  // Drifting data-point constellation â data science motif.
+  // Drifting data-point constellation — data science motif.
   const dots: { x: number; y: number; r: number; dx: number; dy: number; dur: number; delay: number; op: number }[] = [];
   for (let i = 0; i < 36; i++) {
     const x = 60 + ((i * 173) % 1500);
@@ -34,7 +34,7 @@ export function HeroBackground() {
     dots.push({ x, y, r, dx, dy, dur, delay, op });
   }
 
-  // ECG trace â single static path spanning the full viewBox, three beats.
+  // ECG trace — single static path spanning the full viewBox, three beats.
   const beat = (x0: number) =>
     `L ${x0 + 110} 560 ` +
     `L ${x0 + 130} 540 ` +
@@ -112,7 +112,7 @@ export function HeroBackground() {
         </g>
       ))}
 
-      {/* Rotating orbital rings â AI/ML motif */}
+      {/* Rotating orbital rings — AI/ML motif */}
       {orbits.map((o, i) => {
         const to = o.dir === 1 ? 360 : -360;
         return (
@@ -137,7 +137,7 @@ export function HeroBackground() {
         );
       })}
 
-      {/* Breathing concentric rings â healthcare pulse motif */}
+      {/* Breathing concentric rings — healthcare pulse motif */}
       <g fill="none" stroke="#000" strokeWidth="0.8">
         <circle cx="820" cy="450" r="200" opacity="0.05">
           <animate attributeName="r" values="180;260;180" dur="18s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1 ; 0.4 0 0.2 1" keyTimes="0;0.5;1" />
@@ -149,7 +149,7 @@ export function HeroBackground() {
         </circle>
       </g>
 
-      {/* Drifting data-point constellation â data science motif */}
+      {/* Drifting data-point constellation — data science motif */}
       {dots.map((d, i) => (
         <circle key={`dot-${i}`} cx={d.x} cy={d.y} r={d.r} fill="#000" opacity={d.op}>
           <animateTransform
@@ -176,13 +176,13 @@ export function HeroBackground() {
         </circle>
       ))}
 
-      {/* ===== ECG waveform â STATIC, drawn once across the viewBox ===== */}
+      {/* ===== ECG waveform — STATIC, drawn once across the viewBox ===== */}
       <g>
         <use href="#pulseTracePath" fill="none" stroke="#000" strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" opacity="0.05" />
         <use href="#pulseTracePath" fill="none" stroke="#000" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" opacity="0.22" />
       </g>
 
-      {/* ===== Pulse head â RIDES the same ECG path, perfectly in sync ===== */}
+      {/* ===== Pulse head — RIDES the same ECG path, perfectly in sync ===== */}
       <g>
         <circle r="22" fill="url(#pulseHead)" opacity="0.6">
           <animateMotion dur="15s" repeatCount="indefinite" rotate="0">
