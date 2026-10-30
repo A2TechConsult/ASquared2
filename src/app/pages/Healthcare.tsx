@@ -8,8 +8,8 @@ export function Healthcare() {
   const capabilities = [
     {
       icon: Droplets, title: 'CGM Intelligence & Glycemic Risk', subtitle: 'Continuous Glucose Monitoring AI, inside Epic', description:
-        "AI on continuous glucose monitor streams — Dexcom, FreeStyle Libre, Medtronic Guardian — fused with nutrition, insulin, and activity context. Early flags for hypo and hyper events, pattern coaching and clinician dashboards, surfaced inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.", features: [
-        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian', 'Hypo / hyper early-warning scoring with personalized thresholds', 'Nutrition, insulin, and activity context fusion', 'TIR, TBR, GMI dashboards for endocrinology teams', 'Epic in-basket integration via HL7 v2 and FHIR R4', ], }, ];
+        "AI on continuous glucose monitor streams, Dexcom, FreeStyle Libre, Medtronic Guardian, fused with nutrition, insulin, and activity context. Early flags for hypo and hyper events, pattern coaching and clinician dashboards, surfaced inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.", features: [
+        'Streaming CGM ingestion, Dexcom G7, FreeStyle Libre 3, Medtronic Guardian', 'Hypo / hyper early-warning scoring with personalized thresholds', 'Nutrition, insulin, and activity context fusion', 'TIR, TBR, GMI dashboards for endocrinology teams', 'Epic in-basket integration via HL7 v2 and FHIR R4', ], }, ];
 
   const deliveryApproach = [
     {
@@ -24,7 +24,7 @@ export function Healthcare() {
 
   const projects = [
     {
-      title: 'CGM Glycemic Intelligence — Endocrinology Group', challenge:
+      title: 'CGM Glycemic Intelligence, Endocrinology Group', challenge:
         'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix', solution:
         'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, nutrition / insulin context fusion and Epic in-basket integration via HL7 and FHIR', impact:
         'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1', }, ];
@@ -47,7 +47,7 @@ export function Healthcare() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Clinical AI focused on continuous glucose monitoring intelligence — delivered inside the Epic workflow via HL7 and FHIR, under a HIPAA perimeter.
+              Clinical AI focused on continuous glucose monitoring intelligence, delivered inside the Epic workflow via HL7 and FHIR, under a HIPAA perimeter.
             </p>
           </motion.div>
         </div>
