@@ -5,202 +5,40 @@ import { Users, Award, Target, Briefcase, Code, Shield, Brain, Stethoscope, Serv
 export function StaffAugmentation() {
   const expertiseAreas = [
     {
-      icon: Code,
-      title: 'SAP Expertise',
-      subtitle: 'End-to-End SAP Professionals',
-      roles: [
-        'SAP S/4HANA Solution Architects',
-        'ABAP / ABAP OO Developers (Fiori, RAP, CDS)',
-        'SAP BTP Integration Specialists',
-        'SAP Basis & HANA Database Administrators',
-        'Functional Consultants (FI/CO, MM/SD, PP/QM)',
-        'SAP Security & GRC Consultants',
-        'SAP Analytics Cloud (SAC) Specialists',
-        'SAP MDG & MDM Experts',
-      ],
-    },
-    {
-      icon: Brain,
-      title: 'AI, ML & Data Science',
-      subtitle: 'Modern Intelligence Engineering',
-      roles: [
-        'Generative AI & LLM Engineers (OpenAI, Azure OpenAI, Anthropic)',
-        'Agentic AI Architects (LangGraph, AutoGen, CrewAI)',
-        'RAG & Vector Search Engineers (pgvector, Pinecone, Weaviate)',
-        'MLOps Engineers (MLflow, Databricks, Vertex AI, SageMaker)',
-        'Data Scientists (forecasting, NLP, computer vision)',
-        'Data Engineers (Databricks, Snowflake, Delta Lake, dbt)',
-        'Clinical / Healthcare AI Specialists (FHIR, HL7, HIPAA)',
-        'Responsible AI, Evaluation & Red-Team Engineers',
-      ],
-    },
-    {
-      icon: Stethoscope,
-      title: 'Healthcare Experts',
-      subtitle: 'Clinical & Life Sciences Specialists',
-      roles: [
-        'CGM & Glycemic Risk AI Specialists (Epic in-basket integration)',
-        'HL7 / FHIR Integration Engineers',
-        'Epic & Cerner EHR Consultants',
-        'HIPAA Compliance & Security Specialists',
-        'Healthcare Data Scientists (claims, clinical, CGM)',
-        'Medical Device & Wearables Integration Engineers',
-        'Pharma / Life Sciences SAP Consultants',
-        'Clinical Workflow & Revenue Cycle Analysts',
-      ],
-    },
-    {
-      icon: Target,
-      title: 'Project Execution Specialists',
-      subtitle: 'Leadership & Delivery',
-      roles: [
-        'SAP Program Managers (PMP, SAFe certified)',
-        'Solution Architects (multi-system landscapes)',
-        'PMO Leads & Project Coordinators',
-        'Change Management & Training Specialists',
-        'Business Analysts (requirements, process design)',
-        'Scrum Masters & Agile Coaches',
-        'Cutover & Go-Live Managers',
-        'Post-Production Support Leads',
-      ],
-    },
-    {
-      icon: Users,
-      title: 'Proof of Concept Delivery',
-      subtitle: 'Rapid Innovation',
-      roles: [
-        'PoC Solution Architects',
-        'Rapid Prototyping Developers',
-        'SAP Innovation Consultants (BTP, AI/ML)',
-        'Demo Environment Specialists',
-        'Technical Feasibility Analysts',
-        'PoC-to-Production Transition Managers',
-        'SAP Fiori UX / UI Designers',
-        'Integration PoC Specialists (APIs, Middleware)',
-      ],
-    },
-    {
-      icon: Shield,
-      title: 'Testing & Quality Assurance',
-      subtitle: 'Enterprise QA Excellence',
-      roles: [
-        'SAP Test Managers & Test Leads',
-        'Automated Testing Engineers (Tricentis Tosca, SAP TAO)',
-        'Performance Testing Specialists (LoadRunner, JMeter)',
-        'SAP Security Testing Consultants',
-        'Regression & UAT Coordinators',
-        'Test Data Management Experts',
-        'SAP Solution Manager Testing Architects',
-        'Continuous Testing DevOps Engineers',
-      ],
-    },
-    {
-      icon: Briefcase,
-      title: 'Plex / Rockwell Automation',
-      subtitle: 'Manufacturing Cloud Solutions',
-      roles: [
-        'Plex ERP Implementation Consultants',
-        'Plex MES (Manufacturing Execution) Specialists',
-        'Plex Quality Management Experts (APQP, PPAP, SPC)',
-        'Plex Supply Chain Consultants',
-        'Rockwell Automation Integration Architects',
-        'Plex–SAP Integration Developers',
-        'Plex Production Monitoring Analysts',
-        'Automotive Industry Plex Specialists',
-      ],
-    },
-    {
-      icon: Server,
-      title: '.NET Development',
-      subtitle: 'Enterprise .NET & Product Engineering',
-      roles: [
-        '.NET Solution Architects (.NET 8, C#, F#)',
-        'ASP.NET Core & Web API Developers',
-        'Blazor & MAUI Full-Stack Engineers',
-        'Microservices Architects (Clean Architecture, DDD)',
-        'Azure .NET Cloud Developers (App Service, Functions)',
-        'SQL Server / Entity Framework Specialists',
-        'SharePoint & Dynamics 365 Developers',
-        'Product Engineering Teams (greenfield to GA)',
-      ],
-    },
-    {
-      icon: GitBranch,
-      title: 'DevOps & Cloud Infrastructure',
-      subtitle: 'CI/CD, SRE & Platform Engineering',
-      roles: [
-        'DevOps Engineers (Azure DevOps, GitHub Actions, GitLab CI)',
-        'Kubernetes & Container Platform Architects (AKS, EKS, GKE)',
-        'Infrastructure as Code Specialists (Terraform, Bicep, Pulumi)',
-        'Site Reliability Engineers (SLOs, observability, incident response)',
-        'Cloud Architects (Azure, AWS, GCP, hybrid)',
-        'SAP BTP & Cloud ALM DevOps Specialists',
-        'Security DevSecOps Engineers (SAST, DAST, policy as code)',
-        'Platform Engineers (internal developer platforms, Backstage)',
-      ],
-    },
-        {
-      icon: Award,
-      title: 'Vistex Specialists',
-      subtitle: 'Pricing & Incentive Management',
-      roles: [
-        'Vistex Solution Architects',
-        'Vistex Functional Consultants (Rebates, Chargebacks)',
-        'Vistex Technical Developers (ABAP, Workflow)',
-        'Channel Incentive Management Experts',
-        'Vistex Integration Specialists (SAP SD / FI)',
-        'Trade Promotion Management Consultants',
-        'Vistex Upgrade & Migration Specialists',
-        'Royalty & Licensing Management Experts',
-      ],
-    },
-  ];
+      icon: Code, title: 'SAP Expertise', subtitle: 'End-to-End SAP Professionals', roles: [
+        'SAP S/4HANA Solution Architects', 'ABAP / ABAP OO Developers (Fiori, RAP, CDS)', 'SAP BTP Integration Specialists', 'SAP Basis & HANA Database Administrators', 'Functional Consultants (FI/CO, MM/SD, PP/QM)', 'SAP Security & GRC Consultants', 'SAP Analytics Cloud (SAC) Specialists', 'SAP MDG & MDM Experts', ], }, {
+      icon: Brain, title: 'AI, ML & Data Science', subtitle: 'Modern Intelligence Engineering', roles: [
+        'Generative AI & LLM Engineers (OpenAI, Azure OpenAI, Anthropic)', 'Agentic AI Architects (LangGraph, AutoGen, CrewAI)', 'RAG & Vector Search Engineers (pgvector, Pinecone, Weaviate)', 'MLOps Engineers (MLflow, Databricks, Vertex AI, SageMaker)', 'Data Scientists (forecasting, NLP, computer vision)', 'Data Engineers (Databricks, Snowflake, Delta Lake, dbt)', 'Clinical / Healthcare AI Specialists (FHIR, HL7, HIPAA)', 'Responsible AI, Evaluation & Red-Team Engineers', ], }, {
+      icon: Stethoscope, title: 'Healthcare Experts', subtitle: 'Clinical & Life Sciences Specialists', roles: [
+        'CGM & Glycemic Risk AI Specialists (Epic in-basket integration)', 'HL7 / FHIR Integration Engineers', 'Epic & Cerner EHR Consultants', 'HIPAA Compliance & Security Specialists', 'Healthcare Data Scientists (claims, clinical, CGM)', 'Medical Device & Wearables Integration Engineers', 'Pharma / Life Sciences SAP Consultants', 'Clinical Workflow & Revenue Cycle Analysts', ], }, {
+      icon: Target, title: 'Project Execution Specialists', subtitle: 'Leadership & Delivery', roles: [
+        'SAP Program Managers (PMP, SAFe certified)', 'Solution Architects (multi-system landscapes)', 'PMO Leads & Project Coordinators', 'Change Management & Training Specialists', 'Business Analysts (requirements, process design)', 'Scrum Masters & Agile Coaches', 'Cutover & Go-Live Managers', 'Post-Production Support Leads', ], }, {
+      icon: Users, title: 'Proof of Concept Delivery', subtitle: 'Rapid Innovation', roles: [
+        'PoC Solution Architects', 'Rapid Prototyping Developers', 'SAP Innovation Consultants (BTP, AI/ML)', 'Demo Environment Specialists', 'Technical Feasibility Analysts', 'PoC-to-Production Transition Managers', 'SAP Fiori UX / UI Designers', 'Integration PoC Specialists (APIs, Middleware)', ], }, {
+      icon: Shield, title: 'Testing & Quality Assurance', subtitle: 'Enterprise QA Excellence', roles: [
+        'SAP Test Managers & Test Leads', 'Automated Testing Engineers (Tricentis Tosca, SAP TAO)', 'Performance Testing Specialists (LoadRunner, JMeter)', 'SAP Security Testing Consultants', 'Regression & UAT Coordinators', 'Test Data Management Experts', 'SAP Solution Manager Testing Architects', 'Continuous Testing DevOps Engineers', ], }, {
+      icon: Briefcase, title: 'Plex / Rockwell Automation', subtitle: 'Manufacturing Cloud Solutions', roles: [
+        'Plex ERP Implementation Consultants', 'Plex MES (Manufacturing Execution) Specialists', 'Plex Quality Management Experts (APQP, PPAP, SPC)', 'Plex Supply Chain Consultants', 'Rockwell Automation Integration Architects', 'Plex–SAP Integration Developers', 'Plex Production Monitoring Analysts', 'Automotive Industry Plex Specialists', ], }, {
+      icon: Server, title: '.NET Development', subtitle: 'Enterprise .NET & Product Engineering', roles: [
+        '.NET Solution Architects (.NET 8, C#, F#)', 'ASP.NET Core & Web API Developers', 'Blazor & MAUI Full-Stack Engineers', 'Microservices Architects (Clean Architecture, DDD)', 'Azure .NET Cloud Developers (App Service, Functions)', 'SQL Server / Entity Framework Specialists', 'SharePoint & Dynamics 365 Developers', 'Product Engineering Teams (greenfield to GA)', ], }, {
+      icon: GitBranch, title: 'DevOps & Cloud Infrastructure', subtitle: 'CI/CD, SRE & Platform Engineering', roles: [
+        'DevOps Engineers (Azure DevOps, GitHub Actions, GitLab CI)', 'Kubernetes & Container Platform Architects (AKS, EKS, GKE)', 'Infrastructure as Code Specialists (Terraform, Bicep, Pulumi)', 'Site Reliability Engineers (SLOs, observability, incident response)', 'Cloud Architects (Azure, AWS, GCP, hybrid)', 'SAP BTP & Cloud ALM DevOps Specialists', 'Security DevSecOps Engineers (SAST, DAST, policy as code)', 'Platform Engineers (internal developer platforms, Backstage)', ], }, {
+      icon: Award, title: 'Vistex Specialists', subtitle: 'Pricing & Incentive Management', roles: [
+        'Vistex Solution Architects', 'Vistex Functional Consultants (Rebates, Chargebacks)', 'Vistex Technical Developers (ABAP, Workflow)', 'Channel Incentive Management Experts', 'Vistex Integration Specialists (SAP SD / FI)', 'Trade Promotion Management Consultants', 'Vistex Upgrade & Migration Specialists', 'Royalty & Licensing Management Experts', ], }, ];
 
   const engagementModels = [
     {
-      model: 'Dedicated Resources',
-      description: 'Full-time allocation of specialists exclusively to your project. Long-term stability with deep domain knowledge transfer.',
-      ideal: 'Multi-year SAP transformations, ongoing support, strategic initiatives',
-      duration: '6–36 months',
-    },
-    {
-      model: 'Project-Based Teams',
-      description: 'Assembled teams for specific deliverables with defined scope and timeline. End-to-end ownership with accountability.',
-      ideal: 'S/4HANA migrations, module implementations, system upgrades',
-      duration: '3–18 months',
-    },
-    {
-      model: 'On-Demand Expertise',
-      description: 'Flexible access to specialists for targeted activities. Rapid mobilization with minimal overhead.',
-      ideal: 'Technical spikes, architecture reviews, crisis resolution',
-      duration: '2 weeks – 6 months',
-    },
-    {
-      model: 'Hybrid Onshore–Offshore',
-      description: 'Optimized blend of onsite presence and offshore delivery. Cost efficiency without compromising quality.',
-      ideal: 'Large-scale implementations, development-heavy projects',
-      duration: 'Flexible, project-dependent',
-    },
-  ];
+      model: 'Dedicated Resources', description: 'Full-time allocation of specialists exclusively to your project. Long-term stability with deep domain knowledge transfer.', ideal: 'Multi-year SAP transformations, ongoing support, strategic initiatives', duration: '6–36 months', }, {
+      model: 'Project-Based Teams', description: 'Assembled teams for specific deliverables with defined scope and timeline. End-to-end ownership with accountability.', ideal: 'S/4HANA migrations, module implementations, system upgrades', duration: '3–18 months', }, {
+      model: 'On-Demand Expertise', description: 'Flexible access to specialists for targeted activities. Rapid mobilization with minimal overhead.', ideal: 'Technical spikes, architecture reviews, crisis resolution', duration: '2 weeks – 6 months', }, {
+      model: 'Hybrid Onshore–Offshore', description: 'Optimized blend of onsite presence and offshore delivery. Cost efficiency without compromising quality.', ideal: 'Large-scale implementations, development-heavy projects', duration: 'Flexible, project-dependent', }, ];
 
   const qualityStandards = [
     {
-      standard: 'Platinum-Level Certification',
-      description: 'All consultants hold current SAP, Vistex, Plex, or cloud/AI certifications with proven project portfolios. Minimum 5 years enterprise experience required.',
-    },
-    {
-      standard: 'Pre-Vetted Talent Pool',
-      description: 'Rigorous technical assessments, client reference checks, and cultural fit evaluation. Only top 10% of candidates join our network.',
-    },
-    {
-      standard: 'Continuous Skill Development',
-      description: 'Mandatory quarterly training on latest releases, emerging technologies, and industry best practices. Investment in consultant excellence.',
-    },
-    {
-      standard: 'Performance Accountability',
-      description: 'Regular performance reviews, client feedback integration, and KPI tracking. Replacement guarantee if expectations are not met.',
-    },
-  ];
+      standard: 'Platinum-Level Certification', description: 'All consultants hold current SAP, Vistex, Plex, or cloud/AI certifications with proven project portfolios. Minimum 5 years enterprise experience required.', }, {
+      standard: 'Pre-Vetted Talent Pool', description: 'Rigorous technical assessments, client reference checks, and cultural fit evaluation. Only top 10% of candidates join our network.', }, {
+      standard: 'Continuous Skill Development', description: 'Mandatory quarterly training on latest releases, emerging technologies, and industry best practices. Investment in consultant excellence.', }, {
+      standard: 'Performance Accountability', description: 'Regular performance reviews, client feedback integration, and KPI tracking. Replacement guarantee if expectations are not met.', }, ];
 
   return (
     <main className="pt-4 pb-16">
@@ -217,12 +55,12 @@ export function StaffAugmentation() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Platinum-level technologists integrated into your teams. Skilled, current, reliable, and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and healthcare CGM specialty talent for critical enterprise initiatives.
+              Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and healthcare CGM specialty talent for critical enterprise initiatives.
             </p>
           </motion.div>
         </div>
       </section>
-      {/* Expertise Areas, two columns */}
+      {/* Expertise Areas — two columns */}
       <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
