@@ -1,9 +1,23 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp } from 'lucide-react';
+import { Sparkles, Database, Cpu, Brain, Zap, Network, ArrowRight, TrendingUp, Mic, FileText, Activity, ShieldCheck } from 'lucide-react';
 
 export function AICapabilities() {
+  // Mixed order: healthcare and enterprise AI interleaved so SAP is not first
   const capabilities = [
+    {
+      icon: Activity,
+      title: 'CGM Intelligence & Glycemic Risk',
+      subtitle: 'Healthcare — Continuous Glucose Monitoring AI, inside Epic',
+      description: 'AI on continuous glucose monitor streams fused with nutrition, insulin and activity context. Early flags for hypo and hyper events, pattern coaching and endocrinology dashboards — delivered inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.',
+      features: [
+        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
+        'Hypo / hyper early-warning scoring with personalized thresholds',
+        'TIR, TBR, GMI dashboards for endocrinology teams',
+        'Epic in-basket integration via HL7 v2 and FHIR R4',
+        'HIPAA-aligned PHI handling with BAA coverage end to end',
+      ],
+    },
     {
       icon: Brain,
       title: 'Retrieval-Augmented Generation',
@@ -44,19 +58,6 @@ export function AICapabilities() {
       ],
     },
     {
-      icon: Network,
-      title: 'Salesforce Einstein AI',
-      subtitle: 'Intelligent CRM',
-      description: 'Advanced Einstein implementations that predict customer behavior, automate sales workflows, and deliver personalized engagement at scale.',
-      features: [
-        'Einstein GPT for personalized content generation',
-        'Predictive lead scoring and opportunity insights',
-        'Einstein Bots for intelligent customer service',
-        'Einstein Discovery for automated analytics',
-        'Custom Einstein model training and deployment',
-      ],
-    },
-    {
       icon: Database,
       title: 'Databricks & Data Lakes',
       subtitle: 'Unified Analytics Platform',
@@ -67,6 +68,19 @@ export function AICapabilities() {
         'Real-time streaming analytics pipelines',
         'Unity Catalog for data governance',
         'Databricks SQL for business intelligence',
+      ],
+    },
+    {
+      icon: Network,
+      title: 'Salesforce Einstein AI',
+      subtitle: 'Intelligent CRM',
+      description: 'Advanced Einstein implementations that predict customer behavior, automate sales workflows, and deliver personalized engagement at scale.',
+      features: [
+        'Einstein GPT for personalized content generation',
+        'Predictive lead scoring and opportunity insights',
+        'Einstein Bots for intelligent customer service',
+        'Einstein Discovery for automated analytics',
+        'Custom Einstein model training and deployment',
       ],
     },
     {
@@ -103,7 +117,14 @@ export function AICapabilities() {
     },
   ];
 
+  // Mixed order: healthcare and enterprise projects interleaved
   const projects = [
+    {
+      title: 'CGM Glycemic Intelligence — Endocrinology Group',
+      challenge: 'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix',
+      solution: 'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, context fusion and Epic in-basket integration via HL7 and FHIR',
+      impact: 'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1',
+    },
     {
       title: 'Manufacturing Intelligence',
       challenge: 'Global manufacturer needed real-time quality prediction across 40+ production lines',
@@ -124,10 +145,15 @@ export function AICapabilities() {
     },
   ];
 
+  const compliance = [
+    'HIPAA', 'HITRUST', 'SOC 2 Type II', 'ISO 27001', 'ISO 27701',
+    'HL7 v2', 'FHIR R4/R5', 'USCDI v4', '21 CFR Part 11', 'EU GDPR', 'EU AI Act', 'BAA-ready',
+  ];
+
   return (
-    <main className="pt-32 pb-24">
+    <main className="pt-4 pb-16">
       {/* Hero Section */}
-      <section className="px-6 mb-32">
+      <section className="px-6 mb-16">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -137,40 +163,24 @@ export function AICapabilities() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 mb-8">
               <Sparkles className="size-4 text-gray-600" />
               <span className="text-xs font-medium uppercase tracking-widest text-gray-600">
-                Artificial Intelligence
+                AI & Healthcare
               </span>
             </div>
-            
+
             <h1 className="text-6xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight">
               AI Capabilities
             </h1>
-            
-            <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Enterprise-grade AI solutions that transform data into decisive advantage. From generative AI to autonomous agents, we deliver measurable outcomes.
+
+            <p className="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed">
+              Enterprise-grade AI across SAP and operations — and continuous glucose monitoring intelligence for healthcare. Precision-engineered AI designed for enterprise scale, security and governance, with HIPAA-ready delivery into the Epic workflow via HL7 and FHIR.
             </p>
           </motion.div>
         </div>
       </section>
-
-      {/* Capabilities - Premium Borderless List */}
-      <section className="px-6 mb-32">
+      {/* Capabilities - Two-column grid */}
+      <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center"
-          >
-            <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
-              Our Expertise
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Precision-engineered AI systems designed for enterprise scale, security, and governance.
-            </p>
-          </motion.div>
-
-          <div className="space-y-1">
+          <div className="grid md:grid-cols-2 gap-6">
             {capabilities.map((capability, index) => {
               const Icon = capability.icon;
               return (
@@ -180,47 +190,30 @@ export function AICapabilities() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="group"
+                  className="group bg-white border border-gray-100 p-10 hover:bg-gray-50 hover:border-gray-200 transition-all duration-300"
                 >
-                  <motion.div
-                    className="bg-white hover:bg-gray-50 transition-all duration-300"
-                    whileHover={{ x: 8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="px-12 py-10 border-b border-gray-100">
-                      <div className="flex items-start gap-8 mb-8">
-                        {/* Icon */}
-                        <div className="flex-shrink-0 pt-1">
-                          <div className="w-16 h-16 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center">
-                            <Icon className="size-8 text-white" />
-                          </div>
-                        </div>
+                  <div className="w-14 h-14 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center mb-6">
+                    <Icon className="size-7 text-white" />
+                  </div>
 
-                        {/* Header & Description */}
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-3xl font-light text-gray-900 tracking-tight mb-2">
-                            {capability.title}
-                          </h3>
-                          <p className="text-sm text-gray-500 uppercase tracking-wider mb-6">
-                            {capability.subtitle}
-                          </p>
-                          <p className="text-gray-600 leading-relaxed max-w-3xl">
-                            {capability.description}
-                          </p>
-                        </div>
-                      </div>
+                  <h3 className="text-2xl font-light text-gray-900 tracking-tight mb-2">
+                    {capability.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-5">
+                    {capability.subtitle}
+                  </p>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                    {capability.description}
+                  </p>
 
-                      {/* Features Grid */}
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 pl-[96px]">
-                        {capability.features.map((feature, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <ArrowRight className="size-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
-                          </div>
-                        ))}
+                  <div className="space-y-2">
+                    {capability.features.map((feature, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <ArrowRight className="size-3.5 text-gray-400 flex-shrink-0 mt-1" />
+                        <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
                       </div>
-                    </div>
-                  </motion.div>
+                    ))}
+                  </div>
                 </motion.div>
               );
             })}
@@ -229,7 +222,7 @@ export function AICapabilities() {
       </section>
 
       {/* Delivery Approach - Premium Timeline */}
-      <section className="px-6 mb-32 bg-gradient-to-b from-white via-gray-50 to-white py-32">
+      <section className="px-6 mb-20 bg-gradient-to-b from-white via-gray-50 to-white py-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -260,7 +253,6 @@ export function AICapabilities() {
                   viewport={{ once: true }}
                   className="relative text-center"
                 >
-                  {/* Circle Badge */}
                   <div className="relative z-10 w-24 h-24 bg-white border-2 border-gray-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <div className="text-3xl font-light text-gray-900">
                       {String(index + 1).padStart(2, '0')}
@@ -280,25 +272,25 @@ export function AICapabilities() {
         </div>
       </section>
 
-      {/* Representative Projects - Premium Card Layout */}
-      <section className="px-6 mb-32">
-        <div className="max-w-6xl mx-auto">
+      {/* Representative Projects - Two-column grid */}
+      <section className="px-6 mb-20">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-20 text-center"
+            className="mb-16 text-center"
           >
             <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
               Representative Projects
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Real implementations delivering measurable business value.
+              Real implementations delivering measurable business value — across enterprise AI and healthcare.
             </p>
           </motion.div>
 
-          <div className="space-y-1">
+          <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -306,66 +298,82 @@ export function AICapabilities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
+                className="group bg-white border border-gray-100 p-10 hover:bg-gray-50 hover:border-gray-200 transition-all duration-300"
               >
-                <motion.div
-                  className="bg-white hover:bg-gray-50 transition-all duration-300"
-                  whileHover={{ x: 8 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {/* Header */}
-                  <div className="px-12 py-6 border-b border-gray-100">
-                    <h3 className="text-3xl font-light text-gray-900 tracking-tight">
-                      {project.title}
-                    </h3>
+                <h3 className="text-2xl font-light text-gray-900 tracking-tight mb-6">
+                  {project.title}
+                </h3>
+
+                <div className="mb-5">
+                  <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-2">
+                    Challenge
                   </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {project.challenge}
+                  </p>
+                </div>
 
-                  {/* Content Grid */}
-                  <div className="px-12 py-10">
-                    <div className="grid md:grid-cols-3 gap-10">
-                      {/* Challenge */}
-                      <div>
-                        <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-3">
-                          Challenge
-                        </div>
-                        <p className="text-gray-600 leading-relaxed">
-                          {project.challenge}
-                        </p>
-                      </div>
+                <div className="mb-5">
+                  <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-2">
+                    Solution
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {project.solution}
+                  </p>
+                </div>
 
-                      {/* Solution */}
-                      <div>
-                        <div className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-3">
-                          Solution
-                        </div>
-                        <p className="text-gray-600 leading-relaxed">
-                          {project.solution}
-                        </p>
-                      </div>
-
-                      {/* Impact */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <TrendingUp className="size-4 text-gray-900" />
-                          <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                            Impact
-                          </div>
-                        </div>
-                        <p className="text-gray-900 font-medium leading-relaxed">
-                          {project.impact}
-                        </p>
-                      </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="size-4 text-gray-900" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Impact
                     </div>
                   </div>
-                </motion.div>
+                  <p className="text-sm text-gray-900 font-medium leading-relaxed">
+                    {project.impact}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Compliance Badges */}
+      <section className="px-6 mb-20">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 mb-6">
+              <ShieldCheck className="size-5 text-gray-700" />
+              <span className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                Security & Compliance
+              </span>
+            </div>
+            <h2 className="text-3xl font-light text-gray-900 mb-10 tracking-tight">
+              Built for regulated environments
+            </h2>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {compliance.map((item) => (
+                <span
+                  key={item}
+                  className="text-xs uppercase tracking-wider text-gray-600 bg-gray-50 border border-gray-200 px-3 py-1.5"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white to-gray-50">
+      <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0 }}

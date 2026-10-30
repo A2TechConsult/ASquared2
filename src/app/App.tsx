@@ -13,6 +13,7 @@ import { AICapabilities } from '@/app/pages/AICapabilities';
 import { StaffAugmentation } from '@/app/pages/StaffAugmentation';
 import { GDPRRequest } from '@/app/pages/GDPRRequest';
 import SAPManagedServices from '@/app/pages/SAPManagedServices';
+import { Healthcare } from '@/app/pages/Healthcare';
 
 import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
@@ -26,10 +27,10 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <div className="bg-white text-gray-900 font-sans antialiased">
-        
+
         <Navigation />
 
-        {/* ð THIS FIXES YOUR ENTIRE ISSUE */}
+        {/* Offset for fixed navigation */}
         <main className="pt-[110px] min-h-screen">
           <Routes>
             <Route path="/" element={<Overview />} />
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/outcomes" element={<ClientOutcomes />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/ai-capabilities" element={<AICapabilities />} />
+            <Route path="/healthcare" element={<Healthcare />} />
             <Route path="/staff-augmentation" element={<StaffAugmentation />} />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />

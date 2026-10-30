@@ -13,8 +13,9 @@ export function Navigation() {
     { label: 'Overview', path: '/' },
     { label: 'Capabilities', path: '/capabilities' },
     { label: 'SAP Managed Services', path: '/sap-managed-services' },
-    { label: 'Our Approach', path: '/approach' },
-    { label: 'Client Outcomes', path: '/outcomes' },
+    { label: 'AI', path: '/ai-capabilities' },
+    { label: 'Healthcare', path: '/healthcare' },
+    { label: 'Expertise', path: '/staff-augmentation' },
     { label: 'Contact', path: '/contact' },
   ];
 

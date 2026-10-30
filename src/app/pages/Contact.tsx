@@ -84,8 +84,7 @@ export function Contact() {
       ...prev,
       [name]: value,
     }));
-    
-    // Clear error when user starts typing
+
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({
         ...prev,
@@ -94,9 +93,12 @@ export function Contact() {
     }
   };
 
+  const inputBase =
+    'w-full px-4 py-3 bg-white border rounded-md text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900/10 transition-colors';
+
   if (isSubmitted) {
     return (
-      <main className="min-h-screen pt-32 pb-24 px-6 flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
+      <main className="min-h-screen pt-8 pb-24 px-6 flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -106,7 +108,7 @@ export function Contact() {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
+            transition={{ duration: 0.5, delay: 0.2, type: 'spring' }}
             className="mb-8 inline-block"
           >
             <div className="w-24 h-24 bg-gray-900 rounded-full flex items-center justify-center">
@@ -123,47 +125,47 @@ export function Contact() {
   }
 
   return (
-    <main className="pt-32 pb-24">
-      {/* Hero Header */}
-      <section className="px-6 mb-32">
+    <main className="pt-8 pb-24">
+      {/* Hero */}
+      <section className="px-6 mb-16">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight">
-              Let's discuss your<br />requirements.
+            <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+              Let's discuss your requirements.
             </h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Share your SAP challenge. We'll respond within one business day with relevant expertise and availability.
+            <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+              Share your SAP, AI, or healthcare challenge. We'll respond within one business day with relevant expertise and availability.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Form Section - Premium Layout */}
-      <section className="px-6 mb-32">
-        <div className="max-w-4xl mx-auto">
-          <motion.form		
-		name="contact"
-  		method="POST"
-  		data-netlify="true"
-  		netlify-honeypot="bot-field"
+      {/* Form */}
+      <section className="px-6 mb-24">
+        <div className="max-w-3xl mx-auto">
+          <motion.form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             onSubmit={handleSubmit}
-            className="bg-white border border-gray-200 p-12 md:p-16"
+            className="bg-white border border-gray-200 rounded-lg p-8 md:p-12 shadow-sm"
           >
-<input type="hidden" name="form-name" value="contact" />
-  <input type="hidden" name="bot-field" />
-            <div className="space-y-10">
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
+            <div className="space-y-8">
               {/* Email Field */}
-              <div className="group">
+              <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs font-medium uppercase tracking-widest text-gray-500 mb-4"
+                  className="block text-xs font-medium uppercase tracking-widest text-gray-600 mb-2"
                 >
                   Work email
                 </label>
@@ -173,16 +175,16 @@ export function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-0 py-4 border-0 border-b-2 ${
-                    errors.email ? 'border-red-500' : 'border-gray-200'
-                  } focus:outline-none focus:border-gray-900 transition-colors text-lg font-light bg-transparent placeholder:text-gray-400`}
+                  className={`${inputBase} ${
+                    errors.email ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gray-900'
+                  }`}
                   placeholder="your.name@company.com"
                 />
                 {errors.email && (
                   <motion.p
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-3 text-sm text-red-600"
+                    className="mt-2 text-sm text-red-600"
                   >
                     {errors.email}
                   </motion.p>
@@ -190,10 +192,10 @@ export function Contact() {
               </div>
 
               {/* Company Field */}
-              <div className="group">
+              <div>
                 <label
                   htmlFor="company"
-                  className="block text-xs font-medium uppercase tracking-widest text-gray-500 mb-4"
+                  className="block text-xs font-medium uppercase tracking-widest text-gray-600 mb-2"
                 >
                   Company name
                 </label>
@@ -203,16 +205,16 @@ export function Contact() {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className={`w-full px-0 py-4 border-0 border-b-2 ${
-                    errors.company ? 'border-red-500' : 'border-gray-200'
-                  } focus:outline-none focus:border-gray-900 transition-colors text-lg font-light bg-transparent placeholder:text-gray-400`}
+                  className={`${inputBase} ${
+                    errors.company ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gray-900'
+                  }`}
                   placeholder="Your organization"
                 />
                 {errors.company && (
                   <motion.p
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-3 text-sm text-red-600"
+                    className="mt-2 text-sm text-red-600"
                   >
                     {errors.company}
                   </motion.p>
@@ -220,10 +222,10 @@ export function Contact() {
               </div>
 
               {/* Context Field */}
-              <div className="group">
+              <div>
                 <label
                   htmlFor="context"
-                  className="block text-xs font-medium uppercase tracking-widest text-gray-500 mb-4"
+                  className="block text-xs font-medium uppercase tracking-widest text-gray-600 mb-2"
                 >
                   Brief context <span className="text-gray-400 font-normal lowercase">(optional)</span>
                 </label>
@@ -232,24 +234,24 @@ export function Contact() {
                   name="context"
                   value={formData.context}
                   onChange={handleChange}
-                  rows={6}
-                  className="w-full px-0 py-4 border-0 border-b-2 border-gray-200 focus:outline-none focus:border-gray-900 transition-colors resize-none text-lg font-light bg-transparent placeholder:text-gray-400 leading-relaxed"
+                  rows={5}
+                  className={`${inputBase} border-gray-300 focus:border-gray-900 resize-none leading-relaxed`}
                   placeholder="Tell us about your requirements"
                 />
               </div>
 
-              {/* Submit Button */}
-              <div className="pt-6">
+              {/* Submit */}
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full md:w-auto px-12 py-5 bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 text-sm font-medium tracking-wide hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full md:w-auto px-10 py-4 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-all duration-300 text-sm font-medium tracking-wide hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sendingâ¦' : 'Send request'}
+                  {isSubmitting ? 'Sending…' : 'Send request'}
                 </button>
                 {submitError && (
                   <motion.p
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 text-sm text-red-600"
                   >
@@ -262,145 +264,135 @@ export function Contact() {
         </div>
       </section>
 
-      {/* Office Locations - Modern Card Grid */}
-      <section className="px-6 mb-32 bg-gray-50 py-32">
+      {/* Locations */}
+      <section className="px-6 mb-24 bg-gray-50 py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-16 text-center"
+            className="mb-12 text-center"
           >
-            <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">Our locations</h2>
+            <h2 className="text-4xl font-light text-gray-900 mb-3 tracking-tight">Our locations</h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
               Global presence with local expertise.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Hyderabad Office */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Hyderabad */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="group"
+              className="group bg-white border border-gray-200 hover:border-gray-300 rounded-lg p-10 h-full transition-all duration-300 hover:shadow-lg"
             >
-              <div className="bg-white border border-gray-200 hover:border-gray-300 p-10 h-full transition-all duration-300 hover:shadow-lg">
-                <div className="flex items-center gap-3 mb-8">
-                  <Building2 className="size-8 text-gray-900" />
-                  <h3 className="text-2xl font-light text-gray-900 tracking-tight">Hyderabad</h3>
+              <div className="flex items-center gap-3 mb-8">
+                <Building2 className="size-7 text-gray-900" />
+                <h3 className="text-2xl font-light text-gray-900 tracking-tight">Hyderabad</h3>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="size-4 text-gray-400" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Address
+                    </div>
+                  </div>
+                  <div className="text-sm text-gray-600 leading-relaxed pl-6">
+                    ASQUARED TECHNOLOGIES (INDIA) PRIVATE LIMITED<br />
+                    Plot No 226, Mythri Nagar, Tirumalagiri<br />
+                    Hyderabad, Telangana - 500049
+                  </div>
                 </div>
 
-                <div className="space-y-6">
-                  {/* Address */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <MapPin className="size-4 text-gray-400" />
-                      <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                        Address
-                      </div>
-                    </div>
-                    <div className="text-gray-600 leading-relaxed pl-6">
-                      ASQUARED TECHNOLOGIES (INDIA) PRIVATE LIMITED<br />
-                      Plot No 226, Mythri Nagar, Tirumalagiri<br />
-                      Hyderabad, Telangana - 500049
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Mail className="size-4 text-gray-400" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Email
                     </div>
                   </div>
+                  <a
+                    href="mailto:admin@a2techconsult.com"
+                    className="text-sm text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
+                  >
+                    admin@a2techconsult.com
+                  </a>
+                </div>
 
-                  {/* Email */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Mail className="size-4 text-gray-400" />
-                      <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                        Email
-                      </div>
-                    </div>
-                    <a 
-                      href="mailto:admin@a2techconsult.com" 
-                      className="text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
-                    >
-                      admin@a2techconsult.com
-                    </a>
+                <div className="pt-6 border-t border-gray-200 space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">CIN</span>
+                    <span className="text-gray-900 font-medium">U62091TS2025PTC194597</span>
                   </div>
-
-                  {/* Company Details */}
-                  <div className="pt-6 border-t border-gray-200 space-y-3">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">CIN</span>
-                      <span className="text-gray-900 font-medium">U62091TS2025PTC194597</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">GST No</span>
-                      <span className="text-gray-900 font-medium">36ABCCA3060C1Z9</span>
-                    </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">GST No</span>
+                    <span className="text-gray-900 font-medium">36ABCCA3060C1Z9</span>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* USA Office */}
+            {/* USA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="group"
+              className="group bg-white border border-gray-200 hover:border-gray-300 rounded-lg p-10 h-full transition-all duration-300 hover:shadow-lg"
             >
-              <div className="bg-white border border-gray-200 hover:border-gray-300 p-10 h-full transition-all duration-300 hover:shadow-lg">
-                <div className="flex items-center gap-3 mb-8">
-                  <Building2 className="size-8 text-gray-900" />
-                  <h3 className="text-2xl font-light text-gray-900 tracking-tight">USA</h3>
+              <div className="flex items-center gap-3 mb-8">
+                <Building2 className="size-7 text-gray-900" />
+                <h3 className="text-2xl font-light text-gray-900 tracking-tight">USA</h3>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="size-4 text-gray-400" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Address
+                    </div>
+                  </div>
+                  <div className="text-sm text-gray-600 leading-relaxed pl-6">
+                    1631 N Terracina Dr<br />
+                    Dublin, CA 94568<br />
+                    United States
+                  </div>
                 </div>
 
-                <div className="space-y-6">
-                  {/* Address */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <MapPin className="size-4 text-gray-400" />
-                      <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                        Address
-                      </div>
-                    </div>
-                    <div className="text-gray-600 leading-relaxed pl-6">
-                      1631 N Terracina Dr<br />
-                      Dublin, CA 94568<br />
-                      United States
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Mail className="size-4 text-gray-400" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Email
                     </div>
                   </div>
+                  <a
+                    href="mailto:admin@a2techconsult.com"
+                    className="text-sm text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
+                  >
+                    admin@a2techconsult.com
+                  </a>
+                </div>
 
-                  {/* Email */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Mail className="size-4 text-gray-400" />
-                      <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                        Email
-                      </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Phone className="size-4 text-gray-400" />
+                    <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
+                      Phone
                     </div>
-                    <a 
-                      href="mailto:admin@a2techconsult.com" 
-                      className="text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
-                    >
-                      admin@a2techconsult.com
-                    </a>
                   </div>
-
-                  {/* Phone */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Phone className="size-4 text-gray-400" />
-                      <div className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                        Phone
-                      </div>
-                    </div>
-                    <a 
-                      href="tel:+14084993596" 
-                      className="text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
-                    >
-                      +1 (408) 499-3596
-                    </a>
-                  </div>
+                  <a
+                    href="tel:+14084993596"
+                    className="text-sm text-gray-600 hover:text-gray-900 transition-colors pl-6 inline-block"
+                  >
+                    +1 (408) 499-3596
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -408,7 +400,7 @@ export function Contact() {
         </div>
       </section>
 
-      {/* Response Time Notice */}
+      {/* Response Time */}
       <section className="px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -416,7 +408,7 @@ export function Contact() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="py-12 border-t border-gray-200"
+            className="py-10 border-t border-gray-200"
           >
             <p className="text-sm text-gray-500 uppercase tracking-widest">
               We typically respond to inquiries within one business day

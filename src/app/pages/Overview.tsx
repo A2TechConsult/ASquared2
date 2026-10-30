@@ -1,8 +1,10 @@
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
+import { HeroBackground } from '@/app/components/HeroBackground';
+import { DomainSlider } from '@/app/components/DomainSlider';
 import { ClientLogo } from '@/app/components/ClientLogo';
-import { Database, DollarSign, Factory, Network, Brain, Rocket, Users } from 'lucide-react';
+import { Database, DollarSign, Factory, Network, Brain, Rocket, Users, Stethoscope } from 'lucide-react';
 import { Settings } from 'lucide-react';
 
 // Import client logos - Batch 1
@@ -32,20 +34,19 @@ export function Overview() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pt-32 pb-24 hero-gradient-bg">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-24 hero-gradient-bg overflow-hidden">
+        <HeroBackground />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="max-w-5xl text-center"
+          className="relative z-10 max-w-5xl text-center"
         >
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-gray-900 mb-8">
-            SAP consulting.
-            <br />
-            Without the noise.
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+            AI-first consulting. Enterprise-ready.
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Enterprise-grade SAP solutions delivered with precision. From S/4HANA migrations to complex integrations.
+          <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+            An AI development partner at our core — with expert talent, deep SAP foundations, and the discipline to make AI real in production. Without the noise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -75,10 +76,10 @@ export function Overview() {
             className="text-center"
           >
             <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-8">
-              Focused on SAP. Built for the enterprise.
+              AI-forward. Enterprise-grounded.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-              We help Fortune 500 companies and global enterprises implement, optimize, and maintain mission-critical SAP systems. Our expertise spans ECC to S/4HANA migrations, complex integrations with Vistex and Plex platforms, and enterprise-wide rollouts across manufacturing, pharmaceutical, and industrial sectors.
+              We build AI that reaches production — generative AI, RAG, and agentic systems — backed by deep SAP foundations, healthcare specialization, and the expert talent to execute. Fortune 500 clients across manufacturing, life sciences, industrial, and healthcare.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-16 text-left">
               <div>
@@ -98,7 +99,10 @@ export function Overview() {
         </div>
       </section>
 
-      {/* Clients Section */}
+      {/* Domain slider — SAP, AI, Healthcare */}
+      <DomainSlider />
+
+            {/* Clients Section */}
       <section className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -182,11 +186,11 @@ export function Overview() {
               url="https://www.esselpropack.com"
             />
 
-	    {/* Johnson Controls */}
-	    <ClientLogo
-  	      src={jcLogo}
-  	      alt="Johnson Controls"
-  	      url="https://www.johnsoncontrols.com"
+            {/* Johnson Controls */}
+            <ClientLogo
+              src={jcLogo}
+              alt="Johnson Controls"
+              url="https://www.johnsoncontrols.com"
             />
 
           </motion.div>
@@ -206,60 +210,20 @@ export function Overview() {
           >
             <h2 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">Core competencies</h2>
             <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-              Deep technical expertise in SAP ecosystem platforms. From greenfield implementations to large-scale transformations.
+              AI-first expertise, built on deep enterprise foundations across SAP, cloud, and healthcare systems.
             </p>
           </motion.div>
 
-          <div className="space-y-1">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
-              {
-                icon: Database,
-                title: 'SAP S/4HANA Transformation',
-                description: 'End-to-end migration from ECC to S/4HANA. System conversion, selective data transition, and greenfield implementations.',
-                areas: ['Brownfield & Greenfield', 'Finance & Logistics', 'Manufacturing & PP', 'Custom Code Remediation'],
-              },
-              {
-                icon: DollarSign,
-                title: 'Revenue & Pricing Solutions',
-                description: 'Complex pricing, rebate management, and incentive compensation using SAP Vistex platform.',
-                areas: ['Vistex Implementation', 'Channel Incentives', 'Rebate Processing', 'Trade Promotions'],
-              },
-              {
-                icon: Factory,
-                title: 'Manufacturing Systems',
-                description: 'Plant-level ERP and MES implementations. Plex systems for discrete and process manufacturing.',
-                areas: ['Plex ERP & MES', 'Shop Floor Control', 'Quality Management', 'Production Monitoring'],
-              },
-              {
-                icon: Network,
-                title: 'Integration & Middleware',
-                description: 'SAP PI/PO, CPI, and custom integration frameworks. Real-time data synchronization across enterprise systems.',
-                areas: ['SAP CPI/PI', 'API Management', 'EDI & B2B', 'Master Data Sync'],
-              },
-              {
-                icon: Brain,
-                title: 'Enterprise AI & Intelligent Automation',
-                description: 'AI-powered solutions across SAP landscapes. SAP Joule, Einstein AI, Databricks, RAG systems, and agentic AI implementations.',
-                areas: ['AI in ERP', 'SAP AI Services', 'Predictive Analytics', 'Intelligent RPA'],
-              },
-              {
-                icon: Rocket,
-                title: 'End-to-End Project Delivery',
-                description: 'Full lifecycle program management across SAP, Vistex, and Plex platforms. From discovery through hypercare support.',
-                areas: ['Global Rollouts', 'SAP Activate', 'Program Management', 'Go-Live Execution'],
-              },
-              {
-                icon: Users,
-                title: 'Staff Augmentation',
-                description: 'Platinum-level certified consultants with deep expertise. SAP architects, Vistex specialists, Plex experts, and integration developers.',
-                areas: ['Certified Experts', '15+ Years Experience', 'On-Demand Resources', 'Dedicated Teams'],
-              },
-	      {
-  		icon: Settings,
-  		title: 'SAP Managed Services',
-  		description: 'End-to-end ownership of your SAP landscape — from Basis to business processes. 24×7 monitoring, proactive issue resolution, and continuous optimization.',
-  		areas: ['AMS Support', '24×7 Monitoring', 'S/4HANA Ops', 'Cloud Management', 'AIOps'],
-	      },
+              { icon: Database, title: 'SAP S/4HANA Transformation', description: 'Brownfield conversions, greenfield builds, and selective data transition from ECC to S/4HANA.' },
+              { icon: Brain, title: 'Enterprise AI & Intelligent Automation', description: 'Generative AI, RAG, agentic systems, and SAP Joule across your landscape.' },
+              { icon: Users, title: 'Staff Augmentation', description: 'Platinum-level AI/ML, SAP, Vistex, and Plex specialists integrated into your teams.' },
+              { icon: Stethoscope, title: 'Healthcare & Clinical Workflows', description: 'HIPAA-ready CGM intelligence delivered inside the Epic workflow via HL7 and FHIR.' },
+              { icon: Settings, title: 'SAP Managed Services', description: '24×7 monitoring, L2 / L3 support, and continuous optimization on Solution Manager / Cloud ALM.' },
+              { icon: Factory, title: 'Manufacturing Systems', description: 'Plex ERP and MES for discrete and process manufacturing, integrated with SAP.' },
+              { icon: Network, title: 'Integration & Middleware', description: 'SAP CPI, PI / PO, API management, and real-time data replication across the enterprise.' },
+              { icon: Rocket, title: 'End-to-End Project Delivery', description: 'SAP Activate program management from discovery through hypercare for global rollouts.' },
             ].map((area, index) => {
               const Icon = area.icon;
               return (
@@ -269,44 +233,23 @@ export function Overview() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="group"
+                  className="group bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 p-8"
                 >
-                  <motion.div
-                    className="px-12 py-10 bg-white hover:bg-gray-50 transition-all duration-300 cursor-default"
-                    whileHover={{ x: 8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="flex items-start gap-8">
-                      {/* Icon */}
-                      <div className="flex-shrink-0 pt-1">
-                        <div className="w-12 h-12 flex items-center justify-center">
-                          <Icon className="size-7 text-gray-900 group-hover:scale-110 transition-transform duration-300" />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-2xl font-light text-gray-900 tracking-tight mb-3">
-                          {area.title}
-                        </h3>
-                        <p className="text-gray-600 mb-6 leading-relaxed">
-                          {area.description}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {area.areas.map((item, i) => (
-                            <span 
-                              key={i} 
-                              className="text-xs uppercase tracking-wider text-gray-500 bg-gray-50 group-hover:bg-white px-3 py-1.5 transition-colors duration-200"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
+                  <div className="flex items-start gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center">
+                        <Icon className="size-6 text-white" />
                       </div>
                     </div>
-                  </motion.div>
+                    <div className="flex-1 min-w-0 pt-1">
+                      <h3 className="text-xl font-light text-gray-900 tracking-tight mb-2">
+                        {area.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {area.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -335,49 +278,49 @@ export function Overview() {
             viewport={{ once: true }}
             className="flex flex-wrap items-center justify-center gap-16 md:gap-20"
           >
-            <a 
-              href="https://www.sap.com" 
-              target="_blank" 
+            <a
+              href="https://www.sap.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={sapLogo}
                 alt="SAP"
                 className="h-16 w-auto object-contain"
               />
             </a>
-            <a 
-              href="https://www.vistex.com" 
-              target="_blank" 
+            <a
+              href="https://www.vistex.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={vistexLogo}
                 alt="Vistex"
                 className="h-12 w-auto object-contain"
               />
             </a>
-            <a 
-              href="https://www.rockwellautomation.com/en-us/products/software/plex.html" 
-              target="_blank" 
+            <a
+              href="https://www.rockwellautomation.com/en-us/products/software/plex.html"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 bg-gray-900 px-8 py-4 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={plexLogo}
                 alt="Plex"
                 className="h-10 w-auto object-contain"
               />
             </a>
-            <a 
-              href="https://www.oracle.com" 
-              target="_blank" 
+            <a
+              href="https://www.oracle.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-24 transition-opacity hover:opacity-70"
             >
-              <img 
+              <img
                 src={siebelLogo}
                 alt="Siebel"
                 className="h-16 w-auto object-contain"
@@ -411,22 +354,23 @@ export function Overview() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="overflow-x-auto overflow-y-hidden scrollbar-hide pb-8">
-              <div className="flex gap-6 min-w-max px-4">
-                {[
+            <div className="industry-marquee overflow-hidden pb-8">
+              <div className="flex gap-6 min-w-max px-4 industry-track">
+                {((items) => [...items, ...items])([
                   { name: 'Manufacturing', detail: 'Discrete & Process', gradient: 'from-gray-50 to-gray-100' },
+                  { name: 'Life Sciences & Pharma', detail: 'Regulated Industries', gradient: 'from-gray-50 to-gray-100' },
+                  { name: 'Healthcare', detail: 'Providers & MedTech', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Consumer Goods', detail: 'CPG / FMCG', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Retail', detail: 'Omnichannel', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Utilities & Energy', detail: 'Power & Resources', gradient: 'from-gray-50 to-gray-100' },
-                  { name: 'Life Sciences & Pharma', detail: 'Regulated Industries', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Automotive', detail: 'OEMs & Suppliers', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Chemicals', detail: 'Process Industries', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Engineering & Construction', detail: 'EPC Projects', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Public Sector', detail: 'Government Services', gradient: 'from-gray-50 to-gray-100' },
                   { name: 'Financial Services', detail: 'Banking & Insurance', gradient: 'from-gray-50 to-gray-100' },
-                ].map((industry, index) => (
+                ]).map((industry, index) => (
                   <motion.div
-                    key={industry.name}
+                    key={`${industry.name}-${index}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
@@ -448,16 +392,31 @@ export function Overview() {
               </div>
             </div>
 
-            {/* Scroll Hint */}
+            {/* Hover hint */}
             <div className="text-center mt-8">
               <p className="text-xs uppercase tracking-widest text-gray-400">
-                Scroll to explore
+                Hover to glide across industries
               </p>
             </div>
           </motion.div>
         </div>
 
-        <style dangerouslySetInnerHTML={{__html: `\n          .scrollbar-hide::-webkit-scrollbar {\n            display: none;\n          }\n          .scrollbar-hide {\n            -ms-overflow-style: none;\n            scrollbar-width: none;\n          }\n        `}} />
+        <style dangerouslySetInnerHTML={{__html: `
+          .scrollbar-hide::-webkit-scrollbar { display: none; }
+          .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+          .industry-track {
+            animation: industry-scroll 65s linear infinite;
+            animation-play-state: paused;
+            will-change: transform;
+          }
+          .industry-marquee:hover .industry-track {
+            animation-play-state: running;
+          }
+          @keyframes industry-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+        `}} />
       </section>
 
       {/* Approach Preview */}
