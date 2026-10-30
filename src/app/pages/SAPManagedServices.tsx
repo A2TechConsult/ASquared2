@@ -18,12 +18,12 @@ export default function SAPManagedServices() {
     {
       icon: Target,
       title: 'Precision First',
-      body: 'We engineer stability — not just tickets. Architecture-led operations.',
+      body: 'We engineer stability,  not just tickets. Architecture-led operations.',
     },
     {
       icon: Globe,
       title: 'Global Delivery',
-      body: 'US leadership with cost-optimized India execution. 24Ã7 coverage.',
+      body: 'US leadership with cost-optimized India execution. 247 coverage.',
     },
     {
       icon: Gauge,
@@ -38,7 +38,7 @@ export default function SAPManagedServices() {
   ];
 
   const services = [
-    { icon: Layers, title: 'Application Management', body: 'FI / CO, SD, MM, PP, HCM — functional + technical.' },
+    { icon: Layers, title: 'Application Management', body: 'FI / CO, SD, MM, PP, HCM,  functional + technical.' },
     { icon: Server, title: 'Basis & Technical Ops', body: 'Monitoring, patching, HANA DBA, performance tuning.' },
     { icon: Cloud, title: 'Cloud & Migration', body: 'RISE / GROW moves on AWS, Azure and GCP.' },
     { icon: Activity, title: 'Proactive Monitoring', body: 'AIOps alerts, predictive maintenance, automation.' },
@@ -49,7 +49,7 @@ export default function SAPManagedServices() {
   const engagement = [
     { phase: 'Discovery', body: 'Free 2-week landscape assessment.' },
     { phase: 'Transition', body: 'Zero-downtime handover from incumbent.' },
-    { phase: 'Operations', body: '24Ã7 command centre with SLA dashboards.' },
+    { phase: 'Operations', body: '247 command centre with SLA dashboards.' },
     { phase: 'Continuous', body: 'Quarterly optimization and roadmap review.' },
   ];
 
@@ -67,7 +67,7 @@ export default function SAPManagedServices() {
             SAP Managed Services. Without the noise.
           </h1>
           <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Enterprise-grade SAP support delivered with precision. From ECC to S/4HANA — we run your
+            Enterprise-grade SAP support delivered with precision. From ECC to S/4HANA,  we run your
             landscape so your team doesn't have to.
           </p>
         </motion.div>
@@ -86,14 +86,14 @@ export default function SAPManagedServices() {
             Built for stability. Designed for scale.
           </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            SAP isn’t just a system — it’s your business backbone. Our Managed Services deliver
+            SAP isn’t just a system, it’s your business backbone. Our Managed Services deliver
             predictable performance, reduced run-cost, and zero surprises, with delivery teams
             across Hyderabad and San Francisco.
           </p>
         </motion.div>
       </section>
 
-      {/* WHY ASQUARED — full-width 4-column grid */}
+      {/* WHY ASQUARED, full-width 4-column grid */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <motion.div
           initial={{ opacity: 0 }}
@@ -131,7 +131,7 @@ export default function SAPManagedServices() {
         </div>
       </section>
 
-      {/* SERVICES — 3-column grid, compact tiles */}
+      {/* SERVICES,  3-column grid, compact tiles */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <motion.div
           initial={{ opacity: 0 }}
@@ -171,10 +171,10 @@ export default function SAPManagedServices() {
         </div>
       </section>
 
-      {/* ENGAGEMENT + RESULTS — compact two-column strip */}
+      {/* ENGAGEMENT + RESULTS,  compact two-column strip */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <div className="grid lg:grid-cols-5 gap-10">
-          {/* Engagement — 3/5 as 4-step horizontal strip */}
+          {/* Engagement,  3/5 as 4-step horizontal strip */}
           <div className="lg:col-span-3">
             <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
               Engagement Model
@@ -199,7 +199,7 @@ export default function SAPManagedServices() {
             </div>
           </div>
 
-          {/* Proven Results — 2/5 as quote cards */}
+          {/* Proven Results,  2/5 as quote cards */}
           <div className="lg:col-span-2">
             <h2 className="text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
               Proven Results
@@ -238,7 +238,7 @@ export default function SAPManagedServices() {
             Take the noise out of your SAP operations
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's build a predictable, high-performance SAP environment — starting with a free
+            Let's build a predictable, high-performance SAP environment,  starting with a free
             2-week assessment of your landscape.
           </p>
           <Link
