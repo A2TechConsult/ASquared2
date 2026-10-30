@@ -169,7 +169,7 @@ export function Footer() {
                 © {new Date().getFullYear()} ASquared Technologies. All rights reserved.
               </div>
               <div className="text-xs text-gray-400">
-                Enterprise SAP consulting with precision.
+                Enterprise consulting with precision.
               </div>
             </div>
           </div>
