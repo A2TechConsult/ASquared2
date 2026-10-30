@@ -45,8 +45,8 @@ export function Overview() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
             AI-first consulting. Enterprise-ready.
           </h1>
-          <p className="text-base md:text-lg text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-            An AI development partner at our core, with expert talent, deep ERP, SAP foundations, and the discipline to make AI real in production.<br />Without the noise.
+          <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+            An AI development partner at our core, with expert talent, deep ERP, SAP foundations, and the discipline to make AI real in production. Without the noise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
