@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+text-sm md:text-base text-gray-500 mb-12 max-w-2xlimport { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
 import { HeroBackground } from '@/app/components/HeroBackground';
