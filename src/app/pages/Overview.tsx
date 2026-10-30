@@ -46,7 +46,7 @@ export function Overview() {
             AI-first consulting. Enterprise-ready.
           </h1>
           <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-            An AI development partner at our core, with expert talent, deep ERP, SAP foundations, and the discipline to make AI real in production.<br />Without the noise.
+            An AI development partner at our core, with expert talent, deep ERP, SAP foundations, and the discipline to make AI real in production. Without the noise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
