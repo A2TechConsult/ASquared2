@@ -16,38 +16,12 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    id: 'sap',
-    eyebrow: 'SAP S/4HANA & Managed Services',
-    icon: Database,
-    title: 'Enterprise SAP, run with precision.',
-    description:
-      'Deep SAP foundations,  brownfield conversions, greenfield builds, Vistex pricing, Plex manufacturing, and 247 managed services on SAP Solution Manager and Cloud ALM, with Joule copilot and BTP integration.',
-    highlights: ['S/4HANA Transformation', 'Managed Services + Cloud ALM', 'Vistex, Plex, BTP depth'],
-    ctaLabel: 'Explore SAP Managed Services',
-    ctaTo: '/sap-managed-services',
-  },
-  {
-    id: 'ai',
-    eyebrow: 'AI & Agentic Systems',
-    icon: Brain,
-    title: 'AI that reaches production.',
-    description:
-      'Generative AI, RAG on your proprietary data, autonomous agents on LangGraph and AutoGen, MLOps on Databricks and Vertex,  and governance for responsible, enterprise-grade AI from discovery to go-live.',
-    highlights: ['LLM / RAG applications', 'Agentic AI architectures', 'MLOps + Responsible AI'],
-    ctaLabel: 'Explore AI Capabilities',
-    ctaTo: '/ai-capabilities',
-  },
-  {
-    id: 'healthcare',
-    eyebrow: 'Healthcare & Clinical Workflows',
-    icon: Stethoscope,
-    title: 'CGM intelligence, inside Epic.',
-    description:
-      'AI on continuous glucose monitor streams, Dexcom, FreeStyle Libre, Medtronic Guardian, fused with nutrition, insulin and activity context. Delivered inside the Epic workflow via HL7 and FHIR, under a HIPAA perimeter.',
-    highlights: ['CGM streaming + glycemic risk', 'Epic in-basket integration', 'HL7 v2 and FHIR R4'],
-    ctaLabel: 'Explore Healthcare',
-    ctaTo: '/healthcare',
-  },
+    id: 'sap', eyebrow: 'SAP S/4HANA & Managed Services', icon: Database, title: 'Enterprise SAP, run with precision.', description:
+      'Deep SAP foundations — brownfield conversions, greenfield builds, Vistex pricing, Plex manufacturing, and 24Ã7 managed services on SAP Solution Manager and Cloud ALM, with Joule copilot and BTP integration.', highlights: ['S/4HANA Transformation', 'Managed Services + Cloud ALM', 'Vistex, Plex, BTP depth'], ctaLabel: 'Explore SAP Managed Services', ctaTo: '/sap-managed-services', }, {
+    id: 'ai', eyebrow: 'AI & Agentic Systems', icon: Brain, title: 'AI that reaches production.', description:
+      'Generative AI, RAG on your proprietary data, autonomous agents on LangGraph and AutoGen, MLOps on Databricks and Vertex — and governance for responsible, enterprise-grade AI from discovery to go-live.', highlights: ['LLM / RAG applications', 'Agentic AI architectures', 'MLOps + Responsible AI'], ctaLabel: 'Explore AI Capabilities', ctaTo: '/ai-capabilities', }, {
+    id: 'healthcare', eyebrow: 'Healthcare & Clinical Workflows', icon: Stethoscope, title: 'CGM intelligence, inside Epic.', description:
+      'AI on continuous glucose monitor streams — Dexcom, FreeStyle Libre, Medtronic Guardian — fused with nutrition, insulin and activity context. Delivered inside the Epic workflow via HL7 and FHIR, under a HIPAA perimeter.', highlights: ['CGM streaming + glycemic risk', 'Epic in-basket integration', 'HL7 v2 and FHIR R4'], ctaLabel: 'Explore Healthcare', ctaTo: '/healthcare', },
 ];
 
 export function DomainSlider() {
