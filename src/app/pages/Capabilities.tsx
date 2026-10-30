@@ -9,28 +9,28 @@ export function Capabilities() {
       title: 'AI Engineering & Agentic Systems',
       tags: ['LLM / RAG', 'Agentic AI', 'MLOps', 'Responsible AI'],
       description:
-        'An AI development partner at our core — generative AI and LLM applications, RAG on your proprietary data, autonomous agents (LangGraph / AutoGen), MLOps on Databricks and Vertex, and governance frameworks for responsible, production-grade AI.',
+        'An AI development partner at our core, generative AI and LLM applications, RAG on your proprietary data, autonomous agents (LangGraph / AutoGen), MLOps on Databricks and Vertex, and governance frameworks for responsible, production-grade AI.',
     },
     {
       icon: Users,
       title: 'Expert Talent & Staff Augmentation',
       tags: ['AI / ML Engineers', 'Data Scientists', 'SAP Architects', 'Dedicated Teams'],
       description:
-        'Platinum-level technologists integrated into your teams — AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, .NET developers, DevOps engineers and Fiori developers. Current, reliable, ready to execute from day one.',
+        'Platinum-level technologists integrated into your teams, AI / ML engineers, data scientists, SAP architects, Vistex and Plex specialists, .NET developers, DevOps engineers and Fiori developers. Current, reliable, ready to execute from day one.',
     },
     {
       icon: Stethoscope,
       title: 'Healthcare AI & Clinical Workflows',
       tags: ['CGM AI', 'Epic Integration', 'HL7 / FHIR', 'HIPAA'],
       description:
-        'HIPAA-ready CGM intelligence — streaming ingestion from Dexcom, FreeStyle Libre and Medtronic Guardian, delivered inside the Epic workflow via HL7 and FHIR, with glycemic risk, time-in-range dashboards and clinician-tuned thresholds.',
+        'HIPAA-ready CGM intelligence, streaming ingestion from Dexcom, FreeStyle Libre and Medtronic Guardian, delivered inside the Epic workflow via HL7 and FHIR, with glycemic risk, time-in-range dashboards and clinician-tuned thresholds.',
     },
     {
       icon: Database,
       title: 'SAP S/4HANA & Managed Services',
       tags: ['S/4HANA', 'ECC to S/4', 'SAP Joule', 'AMS / Cloud ALM'],
       description:
-        'Deep SAP foundations — brownfield conversions, greenfield builds, SAP Joule copilot integration — paired with 24×7 managed services, L2 / L3 support, and continuous optimization through SAP Solution Manager and Cloud ALM.',
+        'Deep SAP foundations, brownfield conversions, greenfield builds, SAP Joule copilot integration, paired with 24/7 managed services, L2 / L3 support, and continuous optimization through SAP Solution Manager and Cloud ALM.',
     },
     {
       icon: Network,
@@ -44,21 +44,21 @@ export function Capabilities() {
       title: '.NET Development & Product Engineering',
       tags: ['.NET 8', 'ASP.NET Core', 'Azure .NET', 'Dynamics 365'],
       description:
-        'Enterprise .NET talent and full product engineering teams — ASP.NET Core, Blazor, MAUI, microservices on Clean Architecture, Azure App Service and Functions, SQL Server, SharePoint and Dynamics 365. Greenfield products through GA.',
+        'Enterprise .NET talent and full product engineering teams, ASP.NET Core, Blazor, MAUI, microservices on Clean Architecture, Azure App Service and Functions, SQL Server, SharePoint and Dynamics 365. Greenfield products through GA.',
     },
     {
       icon: GitBranch,
       title: 'DevOps, Cloud & SRE',
       tags: ['Azure / AWS / GCP', 'Kubernetes', 'Terraform', 'Observability'],
       description:
-        'CI / CD pipelines, Kubernetes platforms, infrastructure as code (Terraform, Bicep), SRE practices, and DevSecOps across Azure, AWS and GCP — including SAP BTP and Cloud ALM pipelines for enterprise release discipline.',
+        'CI / CD pipelines, Kubernetes platforms, infrastructure as code (Terraform, Bicep), SRE practices, and DevSecOps across Azure, AWS and GCP, including SAP BTP and Cloud ALM pipelines for enterprise release discipline.',
     },
         {
       icon: Rocket,
       title: 'Program & Project Delivery',
       tags: ['SAP Activate', 'Global Rollouts', 'Agile / Hybrid', 'Go-Live'],
       description:
-        'Full-lifecycle delivery with the SAP Activate framework — architecture authority, testing strategy, cutover planning, go-live execution, and hypercare — on multi-country, multi-site programs.',
+        'Full-lifecycle delivery with the SAP Activate framework, architecture authority, testing strategy, cutover planning, go-live execution, and hypercare, on multi-country, multi-site programs.',
     },
   ];
 
@@ -77,12 +77,12 @@ export function Capabilities() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            AI-first consulting. Expert talent. Deep enterprise foundations. The capabilities we lead with — and the ones you can count on behind them.
+            AI-first consulting. Expert talent. Deep enterprise foundations. The capabilities we lead with, and the ones you can count on behind them.
           </p>
         </motion.div>
       </section>
 
-      {/* Grouped tiles — 2 columns */}
+      {/* Grouped tiles, 2 columns */}
       <section className="max-w-6xl mx-auto mb-16">
         <div className="grid md:grid-cols-2 gap-6">
           {groups.map((group, index) => {
@@ -187,7 +187,7 @@ export function Capabilities() {
             Discuss your AI roadmap
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Share the problem you want to move on — AI, talent, SAP, or healthcare — and we'll scope a path forward.
+            Share the problem you want to move on, AI, talent, SAP, or healthcare, and we'll scope a path forward.
           </p>
           <Link
             to="/contact"
