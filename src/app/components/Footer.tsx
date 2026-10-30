@@ -14,7 +14,7 @@ export function Footer() {
                 ASquared Technologies
               </div>
               <p className="text-sm text-gray-500 max-w-md leading-relaxed mb-8">
-                SAP-centric consulting for enterprises that value precision over noise.
+                Consulting for enterprises that value precision over noise.
               </p>
               <div className="space-y-1">
                 <div className="text-xs uppercase tracking-widest text-gray-400">
@@ -169,7 +169,7 @@ export function Footer() {
                 © {new Date().getFullYear()} ASquared Technologies. All rights reserved.
               </div>
               <div className="text-xs text-gray-400">
-                Enterprise consulting with precision.
+                Enterprise SAP consulting with precision.
               </div>
             </div>
           </div>
