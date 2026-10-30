@@ -8,10 +8,10 @@ export function AICapabilities() {
     {
       icon: Activity,
       title: 'CGM Intelligence & Glycemic Risk',
-      subtitle: 'Healthcare — Continuous Glucose Monitoring AI, inside Epic',
-      description: 'AI on continuous glucose monitor streams fused with nutrition, insulin and activity context. Early flags for hypo and hyper events, pattern coaching and endocrinology dashboards — delivered inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.',
+      subtitle: 'Healthcare, Continuous Glucose Monitoring AI, inside Epic',
+      description: 'AI on continuous glucose monitor streams fused with nutrition, insulin and activity context. Early flags for hypo and hyper events, pattern coaching and endocrinology dashboards, delivered inside the Epic workflow via HL7 and FHIR under a HIPAA perimeter.',
       features: [
-        'Streaming CGM ingestion — Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
+        'Streaming CGM ingestion, Dexcom G7, FreeStyle Libre 3, Medtronic Guardian',
         'Hypo / hyper early-warning scoring with personalized thresholds',
         'TIR, TBR, GMI dashboards for endocrinology teams',
         'Epic in-basket integration via HL7 v2 and FHIR R4',
@@ -120,7 +120,7 @@ export function AICapabilities() {
   // Mixed order: healthcare and enterprise projects interleaved
   const projects = [
     {
-      title: 'CGM Glycemic Intelligence — Endocrinology Group',
+      title: 'CGM Glycemic Intelligence, Endocrinology Group',
       challenge: 'Endocrinology team needed earlier flags for hypo events and clearer time-in-range reporting across a diverse CGM device mix',
       solution: 'Streaming ingestion from Dexcom G7, FreeStyle Libre 3 and Medtronic Guardian, with personalized thresholds, context fusion and Epic in-basket integration via HL7 and FHIR',
       impact: 'Hypo warnings delivered 32 minutes earlier on average; TIR reporting adopted by 94% of clinicians within 60 days; zero PHI incidents in year 1',
@@ -172,7 +172,7 @@ export function AICapabilities() {
             </h1>
 
             <p className="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed">
-              Enterprise-grade AI across SAP and operations — and continuous glucose monitoring intelligence for healthcare. Precision-engineered AI designed for enterprise scale, security and governance, with HIPAA-ready delivery into the Epic workflow via HL7 and FHIR.
+              Enterprise-grade AI across SAP and operations, and continuous glucose monitoring intelligence for healthcare. Precision-engineered AI designed for enterprise scale, security and governance, with HIPAA-ready delivery into the Epic workflow via HL7 and FHIR.
             </p>
           </motion.div>
         </div>
@@ -286,7 +286,7 @@ export function AICapabilities() {
               Representative Projects
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Real implementations delivering measurable business value — across enterprise AI and healthcare.
+              Real implementations delivering measurable business value, across enterprise AI and healthcare.
             </p>
           </motion.div>
 
