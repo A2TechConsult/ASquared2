@@ -55,12 +55,12 @@ export function StaffAugmentation() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-              Platinum-level technologists integrated into your teams. Skilled, current, reliable — and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and healthcare CGM specialty talent for critical enterprise initiatives.
+              Platinum-level technologists integrated into your teams. Skilled, current, reliable, and ready to execute from day one. SAP, Vistex, Plex, AI/ML, .NET, Azure, DevOps, and healthcare CGM specialty talent for critical enterprise initiatives.
             </p>
           </motion.div>
         </div>
       </section>
-      {/* Expertise Areas — two columns */}
+      {/* Expertise Areas, two columns */}
       <section className="px-6 mb-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
