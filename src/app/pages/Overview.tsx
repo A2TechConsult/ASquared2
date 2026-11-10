@@ -1,4 +1,4 @@
-text-sm md:text-base text-gray-500 mb-12 max-w-2xlimport { Link } from 'react-router';
+url="https://www.indorama.com"import eplLogo from '../../assets/epl.webp';import indoramaLogo from '../../assets/indorama.svg';{/* EPL */}src={eplLogo}alt="EPL"url="https://www.eplglobal.com"text-sm md:text-base text-gray-500 mb-12 max-w-2xlimport { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
 import { HeroBackground } from '@/app/components/HeroBackground';
