@@ -1,4 +1,4 @@
-url="https://www.indorama.com"import eplLogo from '../../assets/epl.webp';import indoramaLogo from '../../assets/indorama.svg';{/* EPL */}src={eplLogo}alt="EPL"url="https://www.eplglobal.com"text-sm md:text-base text-gray-500 mb-12 max-w-2xlimport { Link } from 'react-router';
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ParticleNetwork } from '@/app/components/ParticleNetwork';
 import { HeroBackground } from '@/app/components/HeroBackground';
@@ -10,7 +10,7 @@ import { Settings } from 'lucide-react';
 // Import client logos - Batch 1
 import logo1 from '../../assets/17a876490970448871e6331ad39dd508943d5a91.png';
 import logo2 from '../../assets/b94bdf3058fa32d0591cf6cbabe6def9f8a9b794.png';
-import logo3 from '../../assets/48c7d6157a7f96628520185f2034126fa0d42914.png';
+import eplLogo from '../../assets/epl.webp';
 
 // Import client logos - Batch 2
 import arcelorMittalLogo from '../../assets/e7f26c5422b66e66fb341a9ddd5de3dc7e5e3cf6.png';
@@ -20,7 +20,7 @@ import mohawkLogo from '../../assets/0d0273bdcd269ab4651431a5d15db826df51af00.pn
 // Import client logos - Batch 3 (Final)
 import medtronicLogo from '../../assets/e3c0a31cc16458fc7bd53a67b5c7a9cb41da28ec.png';
 import vistexClientLogo from '../../assets/0e35773da41fd1c0fdd252643e1eeeaab9fa05a2.png';
-import indoramaLogo from '../../assets/f4caa8eb37211ab3baa2ff040f55bbb14461b849.png';
+import indoramaLogo from '../../assets/indorama.svg';
 
 // Import technology partner logos
 import sapLogo from '../../assets/c9abc9544e6f5a5b70e5eec942b60f8010decd05.png';
@@ -176,14 +176,14 @@ export function Overview() {
             <ClientLogo
               src={indoramaLogo}
               alt="Indorama"
-              url="https://www.indorama.net"
+              url="https://www.indorama.com"
             />
 
-            {/* Essel */}
+            {/* EPL */}
             <ClientLogo
-              src={logo3}
-              alt="Essel"
-              url="https://www.esselpropack.com"
+              src={eplLogo}
+              alt="EPL"
+              url="https://www.eplglobal.com"
             />
 
             {/* Johnson Controls */}
